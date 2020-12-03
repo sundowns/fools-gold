@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Entity",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://entities/Enemy.gd"
+}, {
 "base": "KinematicBody",
 "class": "Entity",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://entities/Player.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "Entity": "",
 "Player": ""
 }
@@ -33,6 +39,12 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://shared/global.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/aspect="keep"
 
 [input]
 

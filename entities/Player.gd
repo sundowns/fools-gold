@@ -29,29 +29,10 @@ func _process(delta):
 	handle_viewport_lean(delta)
 
 func _physics_process(delta):
-	if not is_on_floor():
-		var gravity_force = Vector3.DOWN * gravity * delta
-		if gravity_vector.y < 0:
-			gravity_force *= falling_gravity_modifier
-		gravity_vector += gravity_force
-		gravity_vector.y = max(gravity_vector.y, terminal_fall_velocity)
-	# Just ignoring ground-based gravity vector if the entity has JUST been pushed (so it can leave the ground)
-	else:
-		if is_on_floor():
-			gravity_vector = -get_floor_normal() * gravity
-		else:
-			gravity_vector = -get_floor_normal()
-	
 	if is_on_floor():
 		grounded_movement(delta)
+	apply_gravity(delta)
 	apply_movement()
-
-func apply_movement():
-	var movement = Vector3.ZERO
-	movement.z = velocity.z + gravity_vector.z
-	movement.x = velocity.x + gravity_vector.x
-	movement.y = gravity_vector.y
-	move_and_slide(movement, Vector3.UP)
 
 func grounded_movement(delta: float):
 	direction = Vector3.ZERO
