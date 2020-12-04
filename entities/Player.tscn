@@ -15,8 +15,11 @@ radius = 0.7
 ]]
 script = ExtResource( 2 )
 gravity = 10.0
-falling_gravity_modifier = 1.75
-jump_force = 7.25
+falling_gravity_modifier = 1.25
+ground_speed = 12.0
+jump_force = 5.0
+aerial_acceleration = 16.0
+aerial_drag = 4.0
 
 [node name="MovementStateMachine" type="Node" parent="."]
 script = ExtResource( 5 )

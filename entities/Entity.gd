@@ -28,8 +28,8 @@ func apply_gravity(delta):
 
 func apply_movement():
 	var movement = Vector3.ZERO
-	movement.z = velocity.z + gravity_vector.z
-	movement.x = velocity.x + gravity_vector.x
+	movement.z = velocity.z
+	movement.x = velocity.x
 	movement.y = gravity_vector.y
 	move_and_slide(movement, Vector3.UP)
 

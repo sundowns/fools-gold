@@ -14,15 +14,15 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
-	e.handle_jump()
-	e.grounded_movement(delta)
-	e.apply_movement()
 	if not e.is_on_floor():
 		exit(e, "Airborne")
 		return
 	if e.direction != Vector3.ZERO:
 		exit(e, "Move")
 		return
+	e.handle_jump()
+	e.grounded_movement(delta)
+	e.apply_movement()
 
 func input(_e, event):
 	return event

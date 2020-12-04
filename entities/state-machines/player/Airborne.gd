@@ -3,9 +3,10 @@ extends Node
 var fsm: StateMachine
 
 func enter(e):
-	e.velocity.y = 0
+	pass
 
 func exit(e, next_state):
+	e.just_jumped = false
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
@@ -14,11 +15,12 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
-	e.aerial_movement(delta)
-	e.apply_movement()
 	if e.is_on_floor():
 		exit(e, "Move")
 		return
+	e.aerial_movement(delta)
+	e.apply_movement()
+	e.just_jumped = false
 
 func input(_e, event):
 	return event
