@@ -18,7 +18,8 @@ gravity = 10.0
 falling_gravity_modifier = 1.25
 ground_speed = 12.0
 jump_force = 5.0
-aerial_acceleration = 16.0
+aerial_speed = 14.0
+aerial_acceleration = 4.0
 aerial_drag = 4.0
 
 [node name="MovementStateMachine" type="Node" parent="."]

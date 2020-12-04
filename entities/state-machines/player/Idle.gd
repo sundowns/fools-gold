@@ -2,7 +2,7 @@ extends Node
 
 var fsm: StateMachine
 
-func enter(e):
+func enter(_e):
 	pass
 
 func exit(_e, next_state):

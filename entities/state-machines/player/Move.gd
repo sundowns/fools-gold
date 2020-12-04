@@ -7,7 +7,7 @@ func enter(_e):
 
 func exit(e, next_state):
 	if not e.just_jumped and next_state in ["Airborne"]:
-		e.gravity_vector.y = e.gravity_vector.y / 4
+		e.gravity_vector.y = 0
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events

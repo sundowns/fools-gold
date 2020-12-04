@@ -10,7 +10,7 @@ func _physics_process(delta):
 	if player_node:
 		look_at(player_node.global_transform.origin, Vector3.UP)
 
-func _process(delta):
+func _process(_delta):
 	# This is kinda trash but probably good enough...
 	if player_node == null:
 		player_node = get_tree().current_scene.find_node("Player", true, false)
