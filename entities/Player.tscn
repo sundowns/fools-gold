@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
+[ext_resource path="res://entities/state-machines/player/Move.gd" type="Script" id=3]
+[ext_resource path="res://entities/state-machines/player/Idle.gd" type="Script" id=4]
+[ext_resource path="res://entities/state-machines/StateMachine.gd" type="Script" id=5]
+[ext_resource path="res://entities/state-machines/player/Airborne.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -10,6 +14,18 @@ radius = 0.7
 "Player",
 ]]
 script = ExtResource( 2 )
+
+[node name="MovementStateMachine" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Move" type="Node" parent="MovementStateMachine"]
+script = ExtResource( 3 )
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource( 4 )
+
+[node name="Airborne" type="Node" parent="MovementStateMachine"]
+script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )

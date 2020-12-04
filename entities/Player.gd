@@ -10,8 +10,13 @@ export var ground_speed: float = 10
 export var ground_acceleration: float = 16
 export var jump_force: float = 10 # Initial vertical impulse when jumping
 
+export var aerial_speed: float = 14
+export var aerial_acceleration: float = 3.0 # 4.5 juicy but quite high
+export var aerial_drag: float = 6
+
 const strafe_viewport_rotation_speed := deg2rad(25)
 const max_strafe_viewport_rotation := deg2rad(0.75)
+#const weapon_sway := 35
 
 var strafe_viewport_rotation = 0
 var direction = Vector3.ZERO
@@ -29,10 +34,7 @@ func _process(delta):
 	handle_viewport_lean(delta)
 
 func _physics_process(delta):
-	if is_on_floor():
-		grounded_movement(delta)
 	apply_gravity(delta)
-	apply_movement()
 
 func grounded_movement(delta: float):
 	direction = Vector3.ZERO
@@ -49,6 +51,24 @@ func grounded_movement(delta: float):
 
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * ground_speed, ground_acceleration * delta)
+
+func aerial_movement(delta):
+	direction = Vector3.ZERO
+	if Input.is_action_pressed("move_forward"):
+		direction -= transform.basis.z
+	elif Input.is_action_pressed("move_backward"):
+		direction += transform.basis.z
+	
+	if Input.is_action_pressed("move_left"):
+		direction -= transform.basis.x
+	elif Input.is_action_pressed("move_right"):
+		direction += transform.basis.x
+		
+	direction = direction.normalized()
+	if direction != Vector3.ZERO:
+		velocity = velocity.linear_interpolate(direction * aerial_speed, aerial_acceleration * delta)
+	velocity = velocity.move_toward(Vector3(0, velocity.y, 0), delta * aerial_drag)
+	.handle_ceiling_bonk()
 
 func handle_viewport_lean(delta):
 	if Input.is_action_pressed("move_left"):

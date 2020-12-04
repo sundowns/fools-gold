@@ -32,3 +32,7 @@ func apply_movement():
 	movement.x = velocity.x + gravity_vector.x
 	movement.y = gravity_vector.y
 	move_and_slide(movement, Vector3.UP)
+
+func handle_ceiling_bonk():
+	if is_on_ceiling() and gravity_vector.y > 0:
+		gravity_vector.y = 0
