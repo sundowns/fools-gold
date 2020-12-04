@@ -14,7 +14,7 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
-#	e.handle_jump()
+	e.handle_jump()
 	e.grounded_movement(delta)
 	e.apply_movement()
 	if not e.is_on_floor():

@@ -3,7 +3,7 @@ class_name Entity
 
 export(float) var gravity: float = 10
 export(float) var falling_gravity_modifier: float = 1.0
-export(float) var max_health: float = 200
+export(float) var max_health: float = 100
 
 const terminal_fall_velocity: float = -40.0
 

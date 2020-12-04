@@ -14,6 +14,9 @@ radius = 0.7
 "Player",
 ]]
 script = ExtResource( 2 )
+gravity = 10.0
+falling_gravity_modifier = 1.75
+jump_force = 7.25
 
 [node name="MovementStateMachine" type="Node" parent="."]
 script = ExtResource( 5 )

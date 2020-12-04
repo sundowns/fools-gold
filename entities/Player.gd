@@ -8,10 +8,10 @@ onready var hand: Spatial = $Head/Hand
 # Player movement values
 export var ground_speed: float = 10
 export var ground_acceleration: float = 16
-export var jump_force: float = 10 # Initial vertical impulse when jumping
+export var jump_force: float = 7 # Initial vertical impulse when jumping
 
-export var aerial_speed: float = 14
-export var aerial_acceleration: float = 3.0 # 4.5 juicy but quite high
+export var aerial_speed: float = 13
+export var aerial_acceleration: float = 2.75 # 4.5 juicy but quite high
 export var aerial_drag: float = 6
 
 const strafe_viewport_rotation_speed := deg2rad(25)
@@ -69,6 +69,15 @@ func aerial_movement(delta):
 		velocity = velocity.linear_interpolate(direction * aerial_speed, aerial_acceleration * delta)
 	velocity = velocity.move_toward(Vector3(0, velocity.y, 0), delta * aerial_drag)
 	.handle_ceiling_bonk()
+
+func handle_jump():
+	if Input.is_action_pressed("jump"):
+		if is_on_floor(): # or is_grounded():
+			jump()
+	
+
+func jump(height_modifier: float = 1.0):
+	gravity_vector = Vector3.UP * jump_force * height_modifier
 
 func handle_viewport_lean(delta):
 	if Input.is_action_pressed("move_left"):
