@@ -48,6 +48,8 @@ far = 200.0
 [node name="AimCast" type="RayCast" parent="Head/Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, -1000 )
+collision_mask = 9
+collide_with_areas = true
 
 [node name="InteractCast" type="RayCast" parent="Head/Camera"]
 enabled = true

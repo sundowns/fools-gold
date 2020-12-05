@@ -4,13 +4,23 @@ class_name Entity
 export(float) var gravity: float = 10
 export(float) var falling_gravity_modifier: float = 1.0
 export(float) var max_health: float = 100
+export(float) var mass: float = 100
+export(float) var knockback_drag: float = 5.0
 
 const terminal_fall_velocity: float = -40.0
+const base_mass: float = 100.0
 
 onready var health = max_health
 
 var gravity_vector := Vector3.ZERO
 var velocity := Vector3.ZERO
+var knockback := Vector3.ZERO
+
+signal hurt
+signal dead
+
+func _physics_process(delta):
+	apply_knockback_force(delta)
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -33,6 +43,23 @@ func apply_movement():
 	movement.y = gravity_vector.y
 	move_and_slide(movement, Vector3.UP)
 
+func apply_knockback_force(delta):
+	if knockback.length() <= 0:
+		return
+	move_and_slide(knockback, Vector3.UP)
+	# Reduce the knockback...
+	knockback = knockback.move_toward(Vector3.ZERO, delta * knockback_drag)
+
 func handle_ceiling_bonk():
 	if is_on_ceiling() and gravity_vector.y > 0:
 		gravity_vector.y = 0
+
+func update_health(delta: float):
+	health += delta
+	if delta < 0:
+		emit_signal("hurt")
+	if health <= 0:
+		emit_signal("dead")
+
+func push(raw_knockback_force: Vector3):
+	knockback += raw_knockback_force * (mass/base_mass)

@@ -1,4 +1,4 @@
-extends Node
+extends Spatial
 class_name Gun
 
 onready var cooldown_timer: Timer = $Cooldown

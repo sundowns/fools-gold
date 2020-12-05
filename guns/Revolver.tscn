@@ -6,8 +6,10 @@
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 0.5, 0.15, 0.225 )
 
-[node name="Gun" instance=ExtResource( 1 )]
+[node name="Revolver" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+damage = 30.0
+knockback_magnitude = 7.0
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="1"]
 mesh = SubResource( 1 )
