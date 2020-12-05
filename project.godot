@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://guns/Gun.gd"
 }, {
+"base": "Area",
+"class": "InteractableHitbox",
+"language": "GDScript",
+"path": "res://world/components/InteractableBox.gd"
+}, {
 "base": "Entity",
 "class": "Player",
 "language": "GDScript",
@@ -44,6 +49,7 @@ _global_script_class_icons={
 "Entity": "",
 "EntityHitbox": "",
 "Gun": "",
+"InteractableHitbox": "",
 "Player": "",
 "StateMachine": ""
 }

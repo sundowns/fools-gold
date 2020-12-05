@@ -6,6 +6,7 @@ onready var camera: Camera = $Head/Camera
 onready var hand: Spatial = $Head/Hand
 onready var hand_location: Spatial = $Head/HandLocation
 onready var aim_cast: RayCast = $Head/Camera/AimCast
+onready var interact_cast: RayCast = $Head/Camera/InteractCast
 
 # Player movement values
 export var ground_speed: float = 10
@@ -44,6 +45,7 @@ func initialise():
 func _process(delta):
 	handle_viewport_lean(delta)
 	handle_shooting()
+	handle_interaction()
 	handle_weapon_sway(delta)
 
 func _physics_process(delta):
@@ -101,6 +103,14 @@ func handle_shooting():
 	if Input.is_action_just_pressed("fire") or (Input.is_action_pressed("fire")):
 		if aim_cast.is_colliding() and active_weapon.is_ready:
 			active_weapon.shoot(aim_cast, head.global_transform.origin)
+
+func handle_interaction():
+	if not interact_cast.is_colliding():
+		return
+	if Input.is_action_just_pressed("use"):
+		var collider = interact_cast.get_collider()
+		if collider is InteractableHitbox:
+			collider.interact()
 
 func jump(height_modifier: float = 1.0):
 	gravity_vector = Vector3.UP * jump_force * height_modifier
