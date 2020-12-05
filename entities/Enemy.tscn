@@ -40,7 +40,6 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
