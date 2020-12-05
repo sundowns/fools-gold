@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://entities/state-machines/player/Idle.gd" type="Script" id=4]
 [ext_resource path="res://entities/state-machines/StateMachine.gd" type="Script" id=5]
 [ext_resource path="res://entities/state-machines/player/Airborne.gd" type="Script" id=6]
+[ext_resource path="res://guns/Revolver.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -14,12 +15,9 @@ radius = 0.7
 "Player",
 ]]
 script = ExtResource( 2 )
-gravity = 10.0
 falling_gravity_modifier = 1.25
 ground_speed = 12.0
-jump_force = 5.0
 aerial_speed = 14.0
-aerial_acceleration = 4.0
 aerial_drag = 4.0
 
 [node name="MovementStateMachine" type="Node" parent="."]
@@ -47,6 +45,21 @@ current = true
 near = 0.1
 far = 200.0
 
+[node name="AimCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="InteractCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -5 )
+collision_mask = 4
+
 [node name="Hand" type="Spatial" parent="Head"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0102582 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.35, -0.677 )
 script = ExtResource( 1 )
+
+[node name="Revolver" parent="Head/Hand" instance=ExtResource( 7 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="HandLocation" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.35, -0.677 )
