@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/grid.png" type="Texture" id=3]
+[ext_resource path="res://world/static/Obelisk1.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
@@ -34,6 +35,9 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0.13
 operation = 2
 width = 6.0
 height = 6.0
+
+[node name="Spatial" parent="Statics" index="1" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9744, 1.09756, 7.03272 )
 
 [node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
