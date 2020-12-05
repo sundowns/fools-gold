@@ -84,4 +84,4 @@ anims/Fire = SubResource( 1 )
 anims/Reload = SubResource( 2 )
 
 [node name="Mesh" parent="." index="2" instance=ExtResource( 3 )]
-transform = Transform( -6.51683e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -6.51683e-09, -0.0300543, 0.104169, 0 )
+transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )

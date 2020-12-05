@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Industrial big red button.png-cfe67dfe698afa2f8be14bf50029a3e8.stex"
+path="res://.import/buttonplinth.png-5934d0b22d1bc6e83c84d1384b6325ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Industrial big red button.png"
-dest_files=[ "res://.import/Industrial big red button.png-cfe67dfe698afa2f8be14bf50029a3e8.stex" ]
+source_file="res://textures/buttonplinth.png"
+dest_files=[ "res://.import/buttonplinth.png-5934d0b22d1bc6e83c84d1384b6325ab.stex" ]
 
 [params]
 
@@ -20,15 +20,15 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
