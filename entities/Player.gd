@@ -44,11 +44,11 @@ func initialise():
 
 func _process(delta):
 	handle_viewport_lean(delta)
-	handle_shooting()
-	handle_interaction()
 	handle_weapon_sway(delta)
 
 func _physics_process(delta):
+	handle_shooting()
+	handle_interaction()
 	apply_gravity(delta)
 
 func grounded_movement(delta: float):
@@ -98,8 +98,11 @@ func handle_jump():
 			jump()
 
 func handle_shooting():
-	if not active_weapon:
+	if not active_weapon or active_weapon.is_reloading:
 		return
+	if Input.is_action_just_pressed("reload"):
+		active_weapon.start_reload()
+	
 	if Input.is_action_just_pressed("fire") or (Input.is_action_pressed("fire")):
 		if aim_cast.is_colliding() and active_weapon.is_ready:
 			active_weapon.shoot(aim_cast, head.global_transform.origin)
