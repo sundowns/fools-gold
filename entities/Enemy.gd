@@ -18,7 +18,7 @@ func _process(_delta):
 	if player_node == null:
 		player_node = get_tree().current_scene.find_node("Player", true, false)
 
-func on_gun_hit(damage: float, knockback: Vector3):
+func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 	.update_health(-damage)
 	.push(knockback)
 
