@@ -39,5 +39,8 @@ height = 6.0
 [node name="Spatial" parent="Statics" index="1" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9744, 1.09756, 7.03272 )
 
+[node name="Spatial2" parent="Statics" index="2" instance=ExtResource( 4 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -14.053, 1.09756, 8.23885 )
+
 [node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
