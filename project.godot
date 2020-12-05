@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "Effect",
+"language": "GDScript",
+"path": "res://effects/Effect.gd"
+}, {
 "base": "Entity",
 "class": "Enemy",
 "language": "GDScript",
@@ -34,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://world/components/InteractableBox.gd"
 }, {
+"base": "Effect",
+"class": "ParticleEffect",
+"language": "GDScript",
+"path": "res://effects/ParticleEffect.gd"
+}, {
 "base": "Entity",
 "class": "Player",
 "language": "GDScript",
@@ -45,11 +55,13 @@ _global_script_classes=[ {
 "path": "res://entities/state-machines/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Effect": "",
 "Enemy": "",
 "Entity": "",
 "EntityHitbox": "",
 "Gun": "",
 "InteractableHitbox": "",
+"ParticleEffect": "",
 "Player": "",
 "StateMachine": ""
 }
@@ -116,6 +128,7 @@ use={
 3d_physics/layer_2="Player"
 3d_render/layer_3="Guns"
 3d_physics/layer_3="Interactable"
+3d_render/layer_4="Effects"
 3d_physics/layer_4="EntityHitbox"
 
 [rendering]
