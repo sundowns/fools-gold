@@ -67,12 +67,9 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -14.053, 1.09756, 8.23885 )
 [node name="ButtonPlinth" parent="Statics" index="8" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, -9, 0, -2 )
 
-[node name="button2" parent="Statics/ButtonPlinth" index="2" instance=ExtResource( 9 )]
-transform = Transform( -8.31846e-08, -0.754961, -0.655769, 2.16743e-07, 0.655769, -0.754961, 1, -2.04934e-07, 1.09082e-07, 0.0479679, 1.97181, 0.0512789 )
-one_shot = false
-
 [node name="button" parent="Statics" index="9" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 0.998678, -0.0513947, 0, 0.0513947, 0.998678, -14.1976, 3.91555, 6.98194 )
+one_shot = false
 
 [node name="Terrain1" parent="Statics" index="11" instance=ExtResource( 7 )]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -17.9348, -10.1588, 13.8632 )
@@ -126,6 +123,6 @@ transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.
 transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.2252, 0.940248, 8.02277 )
 
 [node name="Spawner" parent="Statics" index="28" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2673, 2.97434, 2.34586 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4413, 2.97434, 7.12992 )
 parent_node_path = NodePath("../../Entities")
-[connection signal="activated" from="Statics/ButtonPlinth/button2" to="Statics/Spawner" method="spawn"]
+[connection signal="activated" from="Statics/button" to="Statics/Spawner" method="spawn"]

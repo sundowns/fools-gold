@@ -8,7 +8,7 @@ var world_node: Node
 
 func _ready():
 	# Trash approach but w/e - fine for now.. Fix if it lags
-	world_node = get_tree().current_scene.find_node("World", true, false)
+	world_node = get_tree().current_scene.get_node("World")
 
 func shoot(aim_cast: RayCast, camera_origin: Vector3):
 	if current_ammo <= 0:
