@@ -35,8 +35,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0363283, 0.0217867, 0.00262
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="Plane"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Plane/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0363283, 0.0217867, 0.00262547 )
 visible = false
 shape = SubResource( 3 )

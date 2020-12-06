@@ -61,7 +61,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0 )
 cull_mask = 1048569
 current = true
 near = 0.1
-far = 200.0
+far = 300.0
 
 [node name="AimCast" type="RayCast" parent="Head/Camera"]
 enabled = true
