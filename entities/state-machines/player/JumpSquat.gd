@@ -2,12 +2,17 @@ extends Node
 
 var fsm: StateMachine
 
-func enter(_e):
-	pass
+onready var timer: Timer = $Timer
+var exit_to_airborne := false
+
+func enter(e):
+	e.just_jumped = true
+	exit_to_airborne = false
+	timer.start()
 
 func exit(e, next_state):
-	if not e.just_jumped and next_state in ["Airborne"]:
-		e.gravity_vector.y = 0
+	exit_to_airborne = false
+	timer.stop()
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
@@ -16,16 +21,10 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
-	if not e.is_on_floor() and not e.ground_check.is_grounded():
-		e.just_fell = true
+	if exit_to_airborne:
 		exit(e, "Airborne")
 		return
-	if e.direction == Vector3.ZERO:
-		exit(e, "Idle")
-		return
-	e.apply_gravity(delta)
-	e.handle_jump()
-	e.grounded_movement(delta)
+	e.aerial_movement(delta)
 	e.apply_movement()
 
 func input(_e, event):
@@ -39,3 +38,6 @@ func unhandled_key_input(_e, event):
 
 func notification(what, flag = false):
 	return [what, flag]
+
+func _on_Timer_timeout():
+	exit_to_airborne = true

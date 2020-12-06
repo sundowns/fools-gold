@@ -1,5 +1,7 @@
 extends Spatial
 
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 signal activated
 
 var is_pressed := false
@@ -9,5 +11,8 @@ func activate():
 	if is_pressed and one_shot:
 		return
 	is_pressed = true
+	animation_player.play("Button Press")
+
+func on_button_press_animation_finished():
 	emit_signal("activated")
-	print("Button pressed...") 
+	animation_player.play("Default")

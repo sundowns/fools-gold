@@ -7,6 +7,7 @@ onready var hand: Spatial = $Head/Hand
 onready var hand_location: Spatial = $Head/HandLocation
 onready var aim_cast: RayCast = $Head/Camera/AimCast
 onready var interact_cast: RayCast = $Head/Camera/InteractCast
+onready var state_machine: StateMachine = $MovementStateMachine
 
 # Player movement values
 export var ground_speed: float = 10
@@ -25,12 +26,12 @@ const weapon_sway := 35
 var strafe_viewport_rotation = 0
 var direction = Vector3.ZERO
 var just_jumped := false
+var just_fell := true
+var active_weapon: Gun = null
 
 onready var weapon_list = {
 	1: $Head/Hand/Revolver
 }
-
-var active_weapon: Gun = null
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -41,7 +42,12 @@ func _input(event):
 func initialise():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	active_weapon = weapon_list.get(1)
+	call_deferred("connect_ui")
 
+func connect_ui():
+	var ui_node = get_tree().current_scene.find_node("HUD", true, false)
+	state_machine.connect("state_changed", ui_node, "_on_player_state_updated")
+	
 func _process(delta):
 	handle_viewport_lean(delta)
 	handle_weapon_sway(delta)
@@ -49,7 +55,6 @@ func _process(delta):
 func _physics_process(delta):
 	handle_shooting()
 	handle_interaction()
-	apply_gravity(delta)
 
 func grounded_movement(delta: float):
 	direction = Vector3.ZERO
@@ -94,7 +99,7 @@ func handle_weapon_sway(delta):
 
 func handle_jump():
 	if Input.is_action_pressed("jump"):
-		if is_on_floor(): # or is_grounded():
+		if is_on_floor() or ground_check.is_grounded():
 			jump()
 
 func handle_shooting():
@@ -117,7 +122,7 @@ func handle_interaction():
 
 func jump(height_modifier: float = 1.0):
 	gravity_vector = Vector3.UP * jump_force * height_modifier
-	just_jumped = true
+	state_machine.exit_and_change_to("JumpSquat")
 
 func handle_viewport_lean(delta):
 	if Input.is_action_pressed("move_left"):
