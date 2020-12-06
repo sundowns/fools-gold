@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/components/InteractableBox.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.52205, 1, 1 )
+
+[node name="InteractableHitbox" type="Area"]
+script = ExtResource( 1 )
+owning_entity_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.62403, 0 )
+shape = SubResource( 1 )

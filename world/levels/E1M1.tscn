@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/grid.png" type="Texture" id=3]
 [ext_resource path="res://world/static/Obelisk1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://world/static/ButtonPlinth.tscn" type="PackedScene" id=5]
@@ -68,7 +67,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -14.053, 1.09756, 8.23885 )
 transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, -9, 0, -2 )
 
 [node name="button" parent="Statics" index="9" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 0.998678, -0.0513947, 0, 0.0513947, 0.998678, -14.2124, 1.5727, 6.8793 )
+transform = Transform( 1, 0, 0, 0, 0.998678, -0.0513947, 0, 0.0513947, 0.998678, -14.1976, 3.91555, 6.98194 )
 
 [node name="Terrain1" parent="Statics" index="11" instance=ExtResource( 7 )]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -17.9348, -10.1588, 13.8632 )
@@ -120,6 +119,3 @@ transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.
 
 [node name="wall12" parent="Statics" index="27" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.2252, 0.940248, 8.02277 )
-
-[node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )

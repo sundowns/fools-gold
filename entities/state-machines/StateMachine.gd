@@ -9,6 +9,8 @@ var state: Object
 onready var parent = get_parent()
 var is_awake: bool = true
 
+signal state_changed(new_state)
+
 func _ready():
 	state = get_child(0)
 	_enter_state()
@@ -28,6 +30,7 @@ func back():
 
 func _enter_state():
 	# Give the new state a reference to this state machine script
+	emit_signal("state_changed", state.name)
 	state.fsm = self
 	state.enter(parent)
 
