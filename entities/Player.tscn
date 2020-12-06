@@ -43,10 +43,10 @@ wait_time = 0.5
 process_mode = 0
 wait_time = 0.2
 
-[node name="JumpSquat" type="Node" parent="MovementStateMachine"]
+[node name="Jump" type="Node" parent="MovementStateMachine"]
 script = ExtResource( 10 )
 
-[node name="Timer" type="Timer" parent="MovementStateMachine/JumpSquat"]
+[node name="Timer" type="Timer" parent="MovementStateMachine/Jump"]
 process_mode = 0
 wait_time = 0.2
 
@@ -130,6 +130,6 @@ script = ExtResource( 8 )
 camera_path = NodePath("../../../Head/Camera")
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
-[connection signal="timeout" from="MovementStateMachine/JumpSquat/Timer" to="MovementStateMachine/JumpSquat" method="_on_Timer_timeout"]
+[connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]
 
 [editable path="GroundCheck"]

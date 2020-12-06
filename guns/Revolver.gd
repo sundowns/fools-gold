@@ -1,6 +1,7 @@
 extends Gun
 
-onready var hit_particle_scene: PackedScene = preload("res://effects/RevolverHitEffect.tscn")
+onready var hit_particle_scene: PackedScene = preload("res://effects/BulletHitEffect.tscn")
+onready var blood_hit_particle_scene: PackedScene = preload("res://effects/FleshyBulletHitEffect.tscn")
 
 export(float) var headshot_damage_modifier = 1.5
 
@@ -26,7 +27,9 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		if entity_hit.is_headshot:
 			real_damage = real_damage * headshot_damage_modifier
 		owning_entity.on_gun_hit(damage, calculate_knockback(camera_origin, contact_position), entity_hit.is_headshot)
-	spawn_hit_particles(contact_position)
+		spawn_hit_particles(contact_position, true)
+	else:
+		spawn_hit_particles(contact_position, false)
 	.gun_fired()
 
 func handle_no_ammo():
@@ -36,8 +39,12 @@ func handle_no_ammo():
 func calculate_knockback(from: Vector3, to: Vector3) -> Vector3:
 	return (to - from).normalized() * knockback_magnitude
 
-func spawn_hit_particles(position: Vector3):
-	# TODO: do diff ones for hitting enemies vs world
-	var new_hit_particles = hit_particle_scene.instance()
+func spawn_hit_particles(position: Vector3, use_bloody_effect: bool):
+	var new_hit_particles = null
+	if use_bloody_effect:
+		new_hit_particles = blood_hit_particle_scene.instance()
+	else:
+		new_hit_particles = hit_particle_scene.instance()
+		
 	world_node.add_effect(new_hit_particles)
 	new_hit_particles.global_transform.origin = position

@@ -121,8 +121,9 @@ func handle_interaction():
 			collider.interact()
 
 func jump(height_modifier: float = 1.0):
+	print('jump')
 	gravity_vector = Vector3.UP * jump_force * height_modifier
-	state_machine.exit_and_change_to("JumpSquat")
+	state_machine.exit_and_change_to("Jump")
 
 func handle_viewport_lean(delta):
 	if Input.is_action_pressed("move_left"):
