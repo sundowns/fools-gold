@@ -94,6 +94,6 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape" parent="InteractableHitbox" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0739721 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.363492 )
 
 [editable path="InteractableHitbox"]

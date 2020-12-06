@@ -1,6 +1,8 @@
 extends Entity
 class_name Enemy
 
+onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var player_node: Player
 
 func _ready():
@@ -21,6 +23,7 @@ func _process(_delta):
 func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 	.update_health(-damage)
 	.push(knockback)
+	animation_player.play("Hurt")
 
 func _on_death():
 	queue_free() #TODO: death anim
