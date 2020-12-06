@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://world/static/Obelisk2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://models/Terrain1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://world/static/palm1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://models/button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/static/wall2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world/static/wall1.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
@@ -16,7 +19,7 @@ albedo_texture = ExtResource( 3 )
 [node name="World" instance=ExtResource( 1 )]
 
 [node name="PlayerSpawnPoint" parent="." index="0"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 2.80796, -4 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 2.80796, -2 )
 
 [node name="CSGCombiner" parent="Statics" index="0"]
 use_collision = true
@@ -41,28 +44,82 @@ width = 6.0
 height = 6.0
 
 [node name="Spatial" parent="Statics" index="1" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9744, 1.09756, 7.03272 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9744, 1.09756, 4.03272 )
 
-[node name="Spatial2" parent="Statics" index="2" instance=ExtResource( 4 )]
+[node name="Spatial5" parent="Statics" index="2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0256, 1.09756, 4.03272 )
+
+[node name="Spatial6" parent="Statics" index="3" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0256, 1.09756, -7.96728 )
+
+[node name="Spatial7" parent="Statics" index="4" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9744, 1.09756, -7.96728 )
+
+[node name="Spatial3" parent="Statics" index="5" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8353, 1.09756, 2.61712 )
+
+[node name="Spatial4" parent="Statics" index="6" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9837, 1.09756, -6.38288 )
+
+[node name="Spatial2" parent="Statics" index="7" instance=ExtResource( 4 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -14.053, 1.09756, 8.23885 )
 
-[node name="ButtonPlinth" parent="Statics" index="3" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, -9, 0, 0 )
+[node name="ButtonPlinth" parent="Statics" index="8" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, -9, 0, -2 )
 
-[node name="Terrain1" parent="Statics" index="5" instance=ExtResource( 7 )]
-transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -17.8867, -10.1877, 13.885 )
+[node name="button" parent="Statics" index="9" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 0.998678, -0.0513947, 0, 0.0513947, 0.998678, -14.2124, 1.5727, 6.8793 )
 
-[node name="palm1" parent="Statics" index="6" instance=ExtResource( 8 )]
+[node name="Terrain1" parent="Statics" index="11" instance=ExtResource( 7 )]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -17.9348, -10.1588, 13.8632 )
+
+[node name="palm1" parent="Statics" index="12" instance=ExtResource( 8 )]
 transform = Transform( 0.365364, 0, 0.930865, 0, 1, 0, -0.930865, 0, 0.365364, -80.4139, 0.543865, 1.97481 )
 
-[node name="palm2" parent="Statics" index="7" instance=ExtResource( 8 )]
+[node name="palm2" parent="Statics" index="13" instance=ExtResource( 8 )]
 transform = Transform( 0.391725, 0, 0.697532, 0, 0.8, 0, -0.697532, 0, 0.391725, -76.7943, -1.57217, 0.11377 )
 
-[node name="palm3" parent="Statics" index="8" instance=ExtResource( 8 )]
+[node name="palm3" parent="Statics" index="14" instance=ExtResource( 8 )]
 transform = Transform( -0.836736, 0, 0.547607, 0, 1, 0, -0.547607, 0, -0.836736, -81.6464, -1.91098, -2.71032 )
 
-[node name="Obelisk2" parent="Statics" index="9" instance=ExtResource( 6 )]
+[node name="Obelisk2" parent="Statics" index="15" instance=ExtResource( 6 )]
 transform = Transform( 0.997042, -0.0745544, -0.0186574, 0.0671807, 0.963387, -0.259561, 0.0373258, 0.25754, 0.965547, -70.5267, 6.79227, -55.4678 )
+
+[node name="wall3" parent="Statics" index="16" instance=ExtResource( 11 )]
+transform = Transform( -5.24537e-08, 0, -1.2, 0, 1, 0, 1, 0, -4.37114e-08, 20.2844, 0.759623, 6.38035 )
+
+[node name="wall9" parent="Statics" index="17" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 11.6835, 0.759621, -12.1799 )
+
+[node name="wall10" parent="Statics" index="18" instance=ExtResource( 11 )]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 9.87213, 0.759624, 8.48564 )
+
+[node name="wall4" parent="Statics" index="19" instance=ExtResource( 11 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.6315, 0.759622, 6.19294 )
+
+[node name="wall5" parent="Statics" index="20" instance=ExtResource( 11 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.6315, 0.759622, -1.07631 )
+
+[node name="wall6" parent="Statics" index="21" instance=ExtResource( 11 )]
+transform = Transform( -5.24537e-08, 0, -1.2, 0, 1, 0, 1, 0, -4.37114e-08, 20.3743, 0.759622, -8.06321 )
+
+[node name="wall2" parent="Statics" index="22" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0968, 0, -6.36228 )
+
+[node name="wall1" parent="Statics" index="23" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1288, 0.416854, 0.820213 )
+
+[node name="wall7" parent="Statics" index="24" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1288, 0.416854, -13.8746 )
+
+[node name="wall8" parent="Statics" index="25" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 0.3, 0, 0, 0, 2.5, -11.2273, 0.940248, -12.7045 )
+
+[node name="wall11" parent="Statics" index="26" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.3043, 0.940248, -10.0194 )
+
+[node name="wall12" parent="Statics" index="27" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.2252, 0.940248, 8.02277 )
 
 [node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
