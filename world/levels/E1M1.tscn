@@ -1,16 +1,19 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://world/components/MeleeEnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/grid.png" type="Texture" id=3]
 [ext_resource path="res://world/static/Obelisk1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://world/static/ButtonPlinth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://world/static/Obelisk2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://models/Terrain1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://world/static/palm1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://world/components/button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://models/button.tscn" type="PackedScene" id=9]
 [ext_resource path="res://world/static/wall2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/static/wall1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://world/static/Rock2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://world/static/Rock1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://world/static/mesa.tscn" type="PackedScene" id=14]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
@@ -68,8 +71,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -14.053, 1.09756, 8.23885 )
 transform = Transform( 1, 0, -1.1921e-07, 0, 1, 0, 1.1921e-07, 0, 1, -9, 0, -2 )
 
 [node name="button" parent="Statics" index="9" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 0.998678, -0.0513947, 0, 0.0513947, 0.998678, -14.1976, 3.91555, 6.98194 )
-one_shot = false
+transform = Transform( 1, 0, 0, 0, 0.998678, -0.0513947, 0, 0.0513947, 0.998678, -14.2124, 1.5727, 6.8793 )
 
 [node name="Terrain1" parent="Statics" index="11" instance=ExtResource( 7 )]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -17.9348, -10.1588, 13.8632 )
@@ -122,7 +124,17 @@ transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.
 [node name="wall12" parent="Statics" index="27" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.2252, 0.940248, 8.02277 )
 
-[node name="Spawner" parent="Statics" index="28" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4413, 2.97434, 7.12992 )
-parent_node_path = NodePath("../../Entities")
-[connection signal="activated" from="Statics/button" to="Statics/Spawner" method="spawn"]
+[node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="Rock1" parent="." index="4" instance=ExtResource( 13 )]
+transform = Transform( 4.582, 1.78663, -0.90179, -1.87886, 4.61619, -0.400906, 0.689312, 0.706258, 4.90164, -24.6482, -6.95593, 50.4899 )
+
+[node name="Rock2" parent="." index="5" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2483, -9.31278, 52.2924 )
+
+[node name="Rock3" parent="." index="6" instance=ExtResource( 12 )]
+transform = Transform( 1.97746, 0, -0.299416, 0, 2, 0, 0.299416, 0, 1.97746, -14.9072, -8.61437, 49.5574 )
+
+[node name="mesa" parent="." index="7" instance=ExtResource( 14 )]
+transform = Transform( 7.87366, 0, 6.16486, 0, 10, 0, -6.16486, 0, 7.87366, -0.449853, -0.369355, 57.0811 )
