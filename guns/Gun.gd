@@ -14,7 +14,7 @@ var current_ammo: int
 var is_ready := true
 var is_reloading := false
 
-signal reloaded
+signal reloaded(new_ammo_count)
 
 func _ready():
 	cooldown_timer.connect("timeout", self, "_on_cooldown_finish") 
@@ -39,4 +39,4 @@ func start_reload():
 func reload():
 	is_reloading = false
 	current_ammo = ammo_per_reload
-	emit_signal("reloaded")
+	emit_signal("reloaded", current_ammo)

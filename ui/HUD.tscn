@@ -23,6 +23,18 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 4
 
+[node name="AmmoLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -75.0
+margin_right = 224.0
+text = "Ammo: 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DEBUG" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0

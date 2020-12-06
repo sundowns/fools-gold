@@ -33,6 +33,8 @@ onready var weapon_list = {
 	1: $Head/Hand/Revolver
 }
 
+signal ammo_changed(new_ammo)
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg2rad(-event.relative.x * Global.mouse_sensitivity))
@@ -47,6 +49,8 @@ func initialise():
 func connect_ui():
 	var ui_node = get_tree().current_scene.find_node("HUD", true, false)
 	state_machine.connect("state_changed", ui_node, "_on_player_state_updated")
+	connect("ammo_changed", ui_node, "_on_player_ammo_updated")
+	call_deferred("_on_gun_reload", active_weapon.current_ammo)
 	
 func _process(delta):
 	handle_viewport_lean(delta)
@@ -111,6 +115,7 @@ func handle_shooting():
 	if Input.is_action_just_pressed("fire") or (Input.is_action_pressed("fire")):
 		if aim_cast.is_colliding() and active_weapon.is_ready:
 			active_weapon.shoot(aim_cast, head.global_transform.origin)
+			emit_signal("ammo_changed", active_weapon.current_ammo)
 
 func handle_interaction():
 	if not interact_cast.is_colliding():
@@ -121,7 +126,6 @@ func handle_interaction():
 			collider.interact()
 
 func jump(height_modifier: float = 1.0):
-	print('jump')
 	gravity_vector = Vector3.UP * jump_force * height_modifier
 	state_machine.exit_and_change_to("Jump")
 
@@ -135,3 +139,6 @@ func handle_viewport_lean(delta):
 
 	strafe_viewport_rotation = clamp(strafe_viewport_rotation, -max_strafe_viewport_rotation, max_strafe_viewport_rotation)
 	camera.rotation.z = strafe_viewport_rotation
+
+func _on_gun_reload(new_ammo_count):
+	emit_signal("ammo_changed", new_ammo_count)
