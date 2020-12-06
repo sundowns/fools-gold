@@ -5,10 +5,10 @@
 [ext_resource path="res://world/components/InteractableHitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world/components/button.gd" type="Script" id=4]
 
-[sub_resource type="ConcavePolygonShape" id=6]
+[sub_resource type="ConcavePolygonShape" id=1]
 data = PoolVector3Array( -0.3615, 2.3531, -0.535, -0.2474, 2.9576, -0.535, -0.3619, 2.9576, -0.535, -0.3615, 2.3531, -0.535, -0.2471, 2.3532, -0.535, -0.2474, 2.9576, -0.535, -0.2474, 2.9576, -0.535, -0.2195, 2.9577, 0.535, -0.2474, 2.9576, 0.535, -0.2474, 2.9576, -0.535, -0.2195, 2.9577, -0.535, -0.2195, 2.9577, 0.535, -0.3615, 2.3531, 0.535, -0.2471, 2.3532, -0.535, -0.3615, 2.3531, -0.535, -0.3615, 2.3531, 0.535, -0.2471, 2.3532, 0.535, -0.2471, 2.3532, -0.535, -0.3619, 2.9576, -0.535, -0.2474, 2.9576, 0.535, -0.3619, 2.9576, 0.535, -0.3619, 2.9576, -0.535, -0.2474, 2.9576, -0.535, -0.2474, 2.9576, 0.535, -0.3619, 2.9576, 0.535, -0.2471, 2.3532, 0.535, -0.3615, 2.3531, 0.535, -0.3619, 2.9576, 0.535, -0.2474, 2.9576, 0.535, -0.2471, 2.3532, 0.535, -0.2191, 2.3532, -0.535, -0.2195, 2.9577, 0.535, -0.2195, 2.9577, -0.535, -0.2191, 2.3532, -0.535, -0.2191, 2.3532, 0.535, -0.2195, 2.9577, 0.535, -0.2474, 2.9576, 0.535, -0.2191, 2.3532, 0.535, -0.2471, 2.3532, 0.535, -0.2474, 2.9576, 0.535, -0.2195, 2.9577, 0.535, -0.2191, 2.3532, 0.535, -0.2471, 2.3532, -0.535, -0.2195, 2.9577, -0.535, -0.2474, 2.9576, -0.535, -0.2471, 2.3532, -0.535, -0.2191, 2.3532, -0.535, -0.2195, 2.9577, -0.535, -0.2471, 2.3532, 0.535, -0.2191, 2.3532, -0.535, -0.2471, 2.3532, -0.535, -0.2471, 2.3532, 0.535, -0.2191, 2.3532, 0.535, -0.2191, 2.3532, -0.535 )
 
-[sub_resource type="ArrayMesh" id=1]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Button"
 surfaces/0 = {
 "aabb": AABB( -0.361883, 2.35314, -0.534955, 0.142753, 0.604517, 1.06991 ),
@@ -23,10 +23,10 @@ surfaces/0 = {
 "vertex_count": 36
 }
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Button:translation")
@@ -55,7 +55,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "Default"
 length = 0.1
 tracks/0/type = "value"
@@ -76,16 +76,16 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -0.03, -2.6, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Button" type="MeshInstance" parent="."]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -0.03, -2.6, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Button Press" = SubResource( 7 )
-anims/Default = SubResource( 8 )
+"anims/Button Press" = SubResource( 4 )
+anims/Default = SubResource( 5 )
 "next/Button Press" = "Button Press"
 
 [node name="InteractableHitbox" parent="." instance=ExtResource( 3 )]
@@ -94,6 +94,6 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape" parent="InteractableHitbox" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0739721 )
 
 [editable path="InteractableHitbox"]
