@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/components/EntityHitbox.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.65
+height = 0.8
+
+[node name="BodyHitbox" type="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.301207, 0 )
+monitoring = false
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 1 )
+owning_entity_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.0740399, 0 )
+shape = SubResource( 1 )

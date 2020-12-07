@@ -42,6 +42,7 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
 
 func initialise():
+	Global.player_node = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	active_weapon = weapon_list.get(1)
 	call_deferred("connect_ui")
@@ -143,6 +144,9 @@ func handle_viewport_lean(delta):
 
 	strafe_viewport_rotation = clamp(strafe_viewport_rotation, -max_strafe_viewport_rotation, max_strafe_viewport_rotation)
 	camera.rotation.z = strafe_viewport_rotation
+
+func _exit_tree():
+	Global.player_node = null
 
 func _on_gun_reload(new_ammo_count):
 	emit_signal("ammo_changed", new_ammo_count)

@@ -141,6 +141,7 @@ reload={
 3d_physics/layer_3="Interactable"
 3d_render/layer_4="Effects"
 3d_physics/layer_4="EntityHitbox"
+3d_physics/layer_5="Enemy"
 
 [rendering]
 
