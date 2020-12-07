@@ -176,5 +176,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -13.3398 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 1.38667 )
 
 [node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 [connection signal="activated" from="Statics/button" to="Statics/MeleeSpawner" method="spawn"]

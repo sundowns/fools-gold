@@ -23,10 +23,10 @@ radius = 0.6
 
 [sub_resource type="CapsuleShape" id=4]
 radius = 0.65
-height = 0.5
+height = 0.8
 
 [sub_resource type="SphereShape" id=5]
-radius = 0.4
+radius = 0.3
 
 [sub_resource type="Animation" id=6]
 resource_name = "Hurt"
@@ -50,7 +50,7 @@ script = ExtResource( 2 )
 knockback_drag = 10.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform( 0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.0634742, 0.151578, 0 )
+transform = Transform( 0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.0634742, -0.0499849, 0 )
 frames = SubResource( 2 )
 playing = true
 
@@ -60,7 +60,7 @@ visible = false
 shape = SubResource( 3 )
 
 [node name="BodyHitbox" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.129098, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.301207, 0 )
 monitoring = false
 collision_layer = 8
 collision_mask = 0
@@ -68,11 +68,11 @@ script = ExtResource( 3 )
 owning_entity_path = NodePath("..")
 
 [node name="CollisionShape" type="CollisionShape" parent="BodyHitbox"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.0740399, 0 )
 shape = SubResource( 4 )
 
 [node name="HeadHitbox" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04132, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.985692, 0 )
 monitoring = false
 collision_layer = 8
 collision_mask = 0
@@ -85,7 +85,7 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0
 shape = SubResource( 5 )
 
 [node name="GroundCheck" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.339647, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.339647, -0.0490065 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hurt = SubResource( 6 )

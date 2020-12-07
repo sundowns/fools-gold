@@ -101,6 +101,7 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 damage = 30.0
 knockback_magnitude = 7.0
+headshot_damage_modifier = 2.0
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/Fire = SubResource( 1 )

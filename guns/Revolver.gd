@@ -19,7 +19,7 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		var real_damage = damage
 		if entity_hit.is_headshot:
 			real_damage = real_damage * headshot_damage_modifier
-		owning_entity.on_gun_hit(damage, calculate_knockback(camera_origin, contact_position), entity_hit.is_headshot)
+		owning_entity.on_gun_hit(real_damage, calculate_knockback(camera_origin, contact_position), entity_hit.is_headshot)
 		spawn_hit_particles(contact_position, true)
 	else:
 		spawn_hit_particles(contact_position, false)
