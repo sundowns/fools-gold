@@ -34,6 +34,8 @@ func _on_cooldown_finish():
 	is_ready = true
 
 func start_reload():
+	if current_ammo == ammo_per_reload:
+		return
 	animation_player.play("Reload")
 	is_reloading = true
 
