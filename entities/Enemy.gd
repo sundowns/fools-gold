@@ -2,6 +2,7 @@ extends Entity
 class_name Enemy
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var death_effect_scene: PackedScene = preload("res://effects/EnemyDeathEffect.tscn")
 
 var player_node: Player
 
@@ -28,4 +29,10 @@ func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 	animation_player.play("Hurt")
 
 func _on_death():
-	queue_free() #TODO: death anim
+	spawn_death_particles()
+	queue_free()
+
+func spawn_death_particles():
+	var new_particles = death_effect_scene.instance()
+	Global.world_node.add_effect(new_particles)
+	new_particles.global_transform.origin = global_transform.origin

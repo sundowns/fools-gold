@@ -5,12 +5,6 @@ onready var blood_hit_particle_scene: PackedScene = preload("res://effects/Flesh
 
 export(float) var headshot_damage_modifier = 1.5
 
-var world_node: Node
-
-func _ready():
-	# Trash approach but w/e - fine for now.. Fix if it lags
-	world_node = get_tree().current_scene.get_node("World")
-
 func shoot(aim_cast: RayCast, camera_origin: Vector3):
 	if current_ammo <= 0:
 		handle_no_ammo()
@@ -45,5 +39,5 @@ func spawn_hit_particles(position: Vector3, use_bloody_effect: bool):
 	else:
 		new_hit_particles = hit_particle_scene.instance()
 		
-	world_node.add_effect(new_hit_particles)
+	Global.world_node.add_effect(new_hit_particles)
 	new_hit_particles.global_transform.origin = position

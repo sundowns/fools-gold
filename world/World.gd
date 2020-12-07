@@ -4,6 +4,7 @@ onready var spawn_point: Position3D = $PlayerSpawnPoint
 onready var effects: Node = $Effects
 
 func _ready():
+	Global.world_node = self
 	var player = spawn_player()
 	player.call_deferred("initialise")
 
@@ -15,3 +16,6 @@ func spawn_player():
 
 func add_effect(instanced_scene: Node):
 	effects.add_child(instanced_scene)
+
+func _exit_tree():
+	Global.world_node = null
