@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://guns/Revolver.gd" type="Script" id=2]
+[ext_resource path="res://effects/MuzzleFlash.tscn" type="PackedScene" id=3]
 [ext_resource path="res://models/revolver.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -40,6 +41,18 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "clips": PoolStringArray( "RotateChamber" ),
 "times": PoolRealArray( 0.2 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshLocation/MuzzleFlash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0204635, 0.0836035 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -97,6 +110,10 @@ anims/Reload = SubResource( 2 )
 transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
 
 [node name="Cylinder" parent="MeshLocation/revolver" index="1"]
-transform = Transform( -2.91456e-07, 1.78895, 0, -0.894472, -1.45728e-07, -1.54927, -1.54927, -2.52409e-07, 0.894472, 4.0172, 4.30901, 0 )
+transform = Transform( -7.81972e-08, 1.78895, 0, -0.894472, -3.90987e-08, -1.54927, -1.54927, -6.7721e-08, 0.894472, 4.0172, 4.30901, 0 )
+
+[node name="MuzzleFlash" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.260041, -0.660193 )
+visible = false
 
 [editable path="MeshLocation/revolver"]
