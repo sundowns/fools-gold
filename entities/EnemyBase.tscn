@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://entities/components/GroundCheck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/components/BodyHitbox.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.6
+
+[sub_resource type="SphereShape" id=2]
+radius = 40.0
 
 [node name="Enemy" type="KinematicBody"]
 collision_layer = 16
@@ -38,3 +41,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684485, 0 )
 autoplay = "Default"
 anims/Default = ExtResource( 6 )
 anims/Hurt = ExtResource( 4 )
+
+[node name="PlayerNavigateToPlayerDetectionZone" type="Area" parent="."]
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerNavigateToPlayerDetectionZone"]
+shape = SubResource( 2 )

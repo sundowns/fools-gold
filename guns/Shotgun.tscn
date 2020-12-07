@@ -8,7 +8,7 @@
 resource_name = "Fire"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mesh:rotation_degrees")
+tracks/0/path = NodePath("MeshLocation/Mesh:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 90, 0 ), Vector3( -2.68195e-06, 90, 16.697 ), Vector3( 0, 90, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mesh:translation")
+tracks/1/path = NodePath("MeshLocation/Mesh:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -36,7 +36,7 @@ tracks/1/keys = {
 resource_name = "Reload"
 length = 1.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mesh:rotation_degrees")
+tracks/0/path = NodePath("MeshLocation/Mesh:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 90, 0 ), Vector3( 7.01903e-06, 90, -48.758 ), Vector3( 7.01903e-06, 90, -48.758 ), Vector3( 0, 90, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mesh:translation")
+tracks/1/path = NodePath("MeshLocation/Mesh:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -81,5 +81,5 @@ script = ExtResource( 2 )
 anims/Fire = SubResource( 1 )
 anims/Reload = SubResource( 2 )
 
-[node name="Mesh" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Mesh" parent="MeshLocation" index="0" instance=ExtResource( 3 )]
 transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )

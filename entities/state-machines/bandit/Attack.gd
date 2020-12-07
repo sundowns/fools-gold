@@ -2,8 +2,8 @@ extends Node
 
 var fsm: StateMachine
 
-func enter(_e):
-	pass
+func enter(e):
+	e.velocity = Vector3.ZERO
 
 func exit(_e, next_state):
 	fsm._change_to(next_state)
@@ -15,7 +15,9 @@ func process(_e, delta):
 
 func physics_process(e, delta):
 	e.apply_gravity(delta)
+	e.run_at_player()
 	e.apply_movement()
+	# TODO: Switch back to Navigate To Player if we lose LOS
 
 func input(_e, event):
 	return event
@@ -28,3 +30,4 @@ func unhandled_key_input(_e, event):
 
 func notification(what, flag = false):
 	return [what, flag]
+

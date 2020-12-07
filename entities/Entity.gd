@@ -37,14 +37,6 @@ func apply_gravity(delta):
 		else:
 			gravity_vector = -get_floor_normal()
 
-func apply_movement():
-	var movement = Vector3.ZERO
-	movement.z = velocity.z + gravity_vector.z
-	movement.x = velocity.x + gravity_vector.x
-	movement.y = gravity_vector.y
-# warning-ignore:return_value_discarded
-	move_and_slide(movement, Vector3.UP)
-
 func apply_knockback_force(delta):
 	if knockback.length() <= 0:
 		return

@@ -65,6 +65,14 @@ func _physics_process(_delta):
 	handle_shooting()
 	handle_interaction()
 
+func apply_movement():
+	var movement = Vector3.ZERO
+	movement.z = velocity.z + gravity_vector.z
+	movement.x = velocity.x + gravity_vector.x
+	movement.y = gravity_vector.y
+# warning-ignore:return_value_discarded
+	move_and_slide(movement, Vector3.UP)
+
 func grounded_movement(delta: float):
 	direction = Vector3.ZERO
 

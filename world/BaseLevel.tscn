@@ -10,16 +10,20 @@ script = ExtResource( 1 )
 [node name="PlayerSpawnPoint" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807961, 0 )
 
-[node name="Statics" type="Node" parent="."]
+[node name="Navigation" type="Navigation" parent="."]
 
-[node name="CSGCombiner" type="CSGCombiner" parent="Statics"]
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+
+[node name="Statics" type="Node" parent="Navigation/NavigationMeshInstance"]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="Navigation/NavigationMeshInstance/Statics"]
 material_override = ExtResource( 2 )
 
-[node name="CSGBox" type="CSGBox" parent="Statics/CSGCombiner"]
+[node name="CSGBox" type="CSGBox" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner"]
 width = 8.0
 depth = 8.0
 
-[node name="Skybox" parent="Statics" instance=ExtResource( 3 )]
+[node name="Skybox" parent="Navigation/NavigationMeshInstance/Statics" instance=ExtResource( 3 )]
 
 [node name="Entities" type="Node" parent="."]
 

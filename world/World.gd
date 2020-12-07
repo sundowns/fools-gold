@@ -5,6 +5,7 @@ onready var effects: Node = $Effects
 
 func _ready():
 	Global.world_node = self
+	Global.navigation_map = get_node("Navigation")
 	var player = spawn_player()
 	player.call_deferred("initialise")
 
@@ -19,3 +20,4 @@ func add_effect(instanced_scene: Node):
 
 func _exit_tree():
 	Global.world_node = null
+	Global.navigation_map = null

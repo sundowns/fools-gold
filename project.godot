@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Enemy",
+"class": "Bandit",
+"language": "GDScript",
+"path": "res://entities/Bandit.gd"
+}, {
 "base": "Spatial",
 "class": "Effect",
 "language": "GDScript",
@@ -60,6 +65,7 @@ _global_script_classes=[ {
 "path": "res://entities/state-machines/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Bandit": "",
 "Effect": "",
 "Enemy": "",
 "Entity": "",

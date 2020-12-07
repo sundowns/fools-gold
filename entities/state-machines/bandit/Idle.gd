@@ -28,3 +28,6 @@ func unhandled_key_input(_e, event):
 
 func notification(what, flag = false):
 	return [what, flag]
+	
+func entered_sight_range(e: Bandit, _params: Dictionary = {}):
+	exit(e, "NavigateToPlayer")
