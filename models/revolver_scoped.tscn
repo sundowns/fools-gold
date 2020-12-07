@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://meshes/revolver_scoped.glb" type="PackedScene" id=1]
-[ext_resource path="res://models/gun textures.tres" type="Material" id=2]
+[ext_resource path="res://textures/gun textures.tres" type="Material" id=2]
 [ext_resource path="res://meshes/Material_002.material" type="Material" id=3]
+
 
 [node name="revolver_scoped" instance=ExtResource( 1 )]
 
