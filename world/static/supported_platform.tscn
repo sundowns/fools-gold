@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/static/Log.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/static/Platform.tscn" type="PackedScene" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Platform" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -5 )
+
+[node name="Log4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -5.54689, -6.43978, -1 )
+
+[node name="Log5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 1.52927, -6.43978, -1 )
+
+[node name="Log" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, -0.8, 0, 1, 0, 1, 0, -1.30337e-07, -6.31503, -1.70667, -7.62885 )
