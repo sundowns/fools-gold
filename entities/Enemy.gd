@@ -2,20 +2,25 @@ extends Entity
 class_name Enemy
 
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var action_animation_player: AnimationPlayer = $ActionAnimationPlayer
 onready var death_effect_scene: PackedScene = preload("res://effects/EnemyDeathEffect.tscn")
 onready var state_machine: StateMachine = $StateMachine
 onready var player_navigate_detection_zone: Area = $PlayerNavigateToPlayerDetectionZone
+onready var attack_cooldown: Timer = $AttackCooldown
 
+var can_attack := true
 var path := []
 var path_index := 0
 
-export(float) var move_speed := 8.0
+export(float) var move_speed := 9.0
 
 func _ready():
 # warning-ignore:return_value_discarded
 	connect("dead", self, "_on_death")
 # warning-ignore:return_value_discarded
 	player_navigate_detection_zone.connect("body_entered", self, "_on_PlayerChaseDetectionZone_body_entered")
+# warning-ignore:return_value_discarded
+	attack_cooldown.connect("timeout", self, "reset_attack")
 
 func _physics_process(_delta):
 	if Global.player_node:
@@ -26,6 +31,7 @@ func apply_movement():
 	movement.z = velocity.z + gravity_vector.z
 	movement.x = velocity.x + gravity_vector.x
 	movement.y = velocity.y + gravity_vector.y
+# warning-ignore:return_value_discarded
 	move_and_slide(movement, Vector3.UP)
 
 # warning-ignore:unused_argument
@@ -72,3 +78,6 @@ func follow_path() -> bool:
 			return true
 	else:
 		return false
+
+func reset_attack():
+	can_attack = true

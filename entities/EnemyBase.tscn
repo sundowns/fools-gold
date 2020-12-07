@@ -38,9 +38,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.221716, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684485, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Default"
 anims/Default = ExtResource( 6 )
 anims/Hurt = ExtResource( 4 )
+
+[node name="ActionAnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="PlayerNavigateToPlayerDetectionZone" type="Area" parent="."]
 monitorable = false
@@ -49,3 +50,5 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerNavigateToPlayerDetectionZone"]
 shape = SubResource( 2 )
+
+[node name="AttackCooldown" type="Timer" parent="."]

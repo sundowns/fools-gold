@@ -2,8 +2,8 @@ extends Node
 
 var fsm: StateMachine
 
-func enter(_e):
-	pass
+func enter(e):
+	e.velocity = Vector3.ZERO
 
 func exit(_e, next_state):
 	fsm._change_to(next_state)
@@ -16,6 +16,9 @@ func process(_e, delta):
 func physics_process(e, delta):
 	e.apply_gravity(delta)
 	e.apply_movement()
+	if e.check_if_player_attackable():
+		exit(e, "Attack")
+		return
 
 func input(_e, event):
 	return event

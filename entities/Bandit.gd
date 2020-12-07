@@ -1,7 +1,9 @@
 extends Enemy
 class_name Bandit
 
-export(float) var start_attacking_distance := 5.0
+export(float) var start_attacking_distance := 12.0
+export(float) var attack_damage := 10.0
+export(float) var knockback_force := 20.0
 
 func _ready():
 	animation_player.play("Default")
@@ -17,6 +19,13 @@ func run_at_player():
 	var direction_to_player = (Global.player_node.global_transform.origin - global_transform.origin).normalized()
 	velocity = direction_to_player * move_speed
 
+func swing_at_the_cunt():
+	if not can_attack:
+		return
+	action_animation_player.play("Attack")
+	can_attack = false
+	attack_cooldown.start()
+
 func _on_AttackHitbox_body_entered(body):
-	print(body)
-	print("I hit the player!!")
+	var knockback_direction = (Global.player_node.global_transform.origin - global_transform.origin).normalized()
+	body.hit_by_bandit(attack_damage, knockback_force * knockback_direction)

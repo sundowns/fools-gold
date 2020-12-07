@@ -17,6 +17,7 @@ func physics_process(e, delta):
 	e.apply_gravity(delta)
 	e.run_at_player()
 	e.apply_movement()
+	e.swing_at_the_cunt()
 	# TODO: Switch back to Navigate To Player if we lose LOS
 
 func input(_e, event):

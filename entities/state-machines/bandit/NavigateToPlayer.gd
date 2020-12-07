@@ -13,8 +13,9 @@ func enter(e):
 		return
 	path_calc_timer.start()
 
-func exit(_e, next_state):
+func exit(e, next_state):
 	path_calc_timer.stop()
+	e.reset_path()
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
@@ -23,18 +24,17 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
+	if e.check_if_player_attackable():
+		exit(e, "Attack")
+		return
+	
 	if should_recalculate_path:
-		print('recalcy')
 		e.calculate_path_to_player()
 	
 	e.apply_gravity(delta)
 	
 	var path_exists = e.follow_path()
 	e.apply_movement()
-	
-	if e.check_if_player_attackable():
-		exit(e, "Attack")
-		return
 	
 	if not path_exists:
 		exit(e, "Idle")

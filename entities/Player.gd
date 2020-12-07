@@ -156,8 +156,9 @@ func handle_viewport_lean(delta):
 func _exit_tree():
 	Global.player_node = null
 
+func hit_by_bandit(damage: float, knockback: Vector3):
+	update_health(-damage)
+	push(knockback)
+
 func _on_gun_reload(new_ammo_count):
 	emit_signal("ammo_changed", new_ammo_count)
-
-func _on_BodyHurtbox_area_entered(_area):
-	update_health(-10)

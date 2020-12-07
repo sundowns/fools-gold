@@ -6,6 +6,7 @@
 [ext_resource path="res://entities/Bandit.gd" type="Script" id=4]
 [ext_resource path="res://entities/state-machines/bandit/NavigateToPlayer.gd" type="Script" id=5]
 [ext_resource path="res://entities/state-machines/bandit/Attack.gd" type="Script" id=6]
+[ext_resource path="res://animations/bandit_attack.tres" type="Animation" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 16
@@ -27,56 +28,19 @@ height = 0.8
 [sub_resource type="SphereShape" id=4]
 radius = 0.3
 
-[sub_resource type="Animation" id=5]
-resource_name = "Attack"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Hand:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -0.767778, 0, 0.307794 ), Vector3( 0, 0, 0.937 ), Vector3( 0.768, 0, 0.308 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Hand:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Hand/AttackHitbox:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-
 [sub_resource type="SpatialMaterial" id=8]
 flags_transparent = true
-albedo_color = Color( 0, 0.686275, 0.654902, 0.643137 )
+albedo_color = Color( 0.686275, 0, 0, 0.643137 )
 
 [sub_resource type="SphereMesh" id=9]
 material = SubResource( 8 )
+radius = 0.5
+height = 1.0
 radial_segments = 16
 rings = 8
 
 [sub_resource type="SphereShape" id=7]
+radius = 0.5
 
 [node name="Bandit" instance=ExtResource( 1 )]
 collision_mask = 17
@@ -117,11 +81,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03513, 0 )
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 4 )
 
-[node name="AnimationPlayer" parent="." index="6"]
-anims/Attack = SubResource( 5 )
+[node name="ActionAnimationPlayer" parent="." index="7"]
+anims/Attack = ExtResource( 7 )
 
-[node name="Hand" type="Spatial" parent="." index="7"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768, 0, 0.308 )
+[node name="Hand" type="Spatial" parent="." index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768, 0, -0.308 )
 visible = false
 
 [node name="DebugMeshInstance" type="MeshInstance" parent="Hand" index="0"]
