@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/enemymelee.PNG" type="Texture" id=2]
+[ext_resource path="res://entities/state-machines/bandit/Idle.gd" type="Script" id=3]
 [ext_resource path="res://entities/Bandit.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -17,18 +18,39 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.65
+height = 0.8
+
+[sub_resource type="SphereShape" id=4]
+radius = 0.3
+
 [node name="Bandit" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 
-[node name="AnimatedSprite3D" parent="." index="0"]
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource( 3 )
+
+[node name="Chase" type="Node" parent="StateMachine" index="1"]
+
+[node name="AnimatedSprite3D" parent="." index="1"]
 transform = Transform( 0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.0500918, 0, 0 )
 frames = SubResource( 2 )
 playing = true
 
-[node name="BodyHitbox" parent="." index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249261, 0 )
-owning_entity_path = NodePath("../../Bandit")
+[node name="RayCast" type="RayCast" parent="GroundCheck" index="0"]
+enabled = true
 
-[node name="HeadHitbox" parent="." index="4"]
+[node name="BodyHitbox" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249261, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BodyHitbox" index="0"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.0740399, 0 )
+shape = SubResource( 3 )
+
+[node name="HeadHitbox" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03513, 0 )
-owning_entity_path = NodePath("../../Bandit")
+
+[node name="CollisionShape" type="CollisionShape" parent="HeadHitbox" index="0"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 4 )

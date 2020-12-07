@@ -9,12 +9,8 @@ func _ready():
 	connect("dead", self, "_on_death")
 
 func _physics_process(delta):
-	apply_gravity(delta)
-	apply_movement()
-	
 	if Global.player_node:
 		look_at(Vector3(Global.player_node.global_transform.origin.x, global_transform.origin.y, Global.player_node.global_transform.origin.z), Vector3.UP)
-
 
 # warning-ignore:unused_argument
 func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):

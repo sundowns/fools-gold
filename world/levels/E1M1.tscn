@@ -178,4 +178,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 1.38667 )
 
 [node name="Bandit" parent="Entities" index="0" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7 )
+
+[node name="Bandit2" parent="Entities" index="1" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+
+[node name="Bandit3" parent="Entities" index="2" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 2, 46 )
 [connection signal="activated" from="Statics/button" to="Statics/MeleeSpawner" method="spawn"]
