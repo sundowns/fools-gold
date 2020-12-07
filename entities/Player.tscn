@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -10,9 +10,13 @@
 [ext_resource path="res://entities/components/GunCamera.gd" type="Script" id=8]
 [ext_resource path="res://entities/components/GroundCheck.tscn" type="PackedScene" id=9]
 [ext_resource path="res://entities/state-machines/player/JumpSquat.gd" type="Script" id=10]
+[ext_resource path="res://entities/components/EntityHitbox.gd" type="Script" id=11]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.8
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -128,9 +132,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0 )
 cull_mask = 4
 script = ExtResource( 8 )
 camera_path = NodePath("../../../Head/Camera")
+
+[node name="BodyHurtbox" type="Area" parent="."]
+collision_layer = 2147483648
+collision_mask = 8
+script = ExtResource( 11 )
+owning_entity_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="BodyHurtbox"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 2 )
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]
 [connection signal="reloaded" from="Head/Hand/Revolver" to="." method="_on_gun_reload"]
+[connection signal="area_entered" from="BodyHurtbox" to="." method="_on_BodyHurtbox_area_entered"]
 
 [editable path="GroundCheck"]

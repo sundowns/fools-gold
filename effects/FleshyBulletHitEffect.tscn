@@ -18,7 +18,7 @@ initial_velocity = 1.0
 linear_accel = 10.0
 scale_curve = SubResource( 2 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=4]
 material = ExtResource( 3 )
 size = Vector3( 0.08, 0.08, 0.08 )
 
@@ -34,4 +34,4 @@ one_shot = true
 explosiveness = 1.0
 randomness = 0.25
 process_material = SubResource( 3 )
-draw_pass_1 = SubResource( 5 )
+draw_pass_1 = SubResource( 4 )

@@ -17,7 +17,7 @@ var gravity_vector := Vector3.ZERO
 var velocity := Vector3.ZERO
 var knockback := Vector3.ZERO
 
-signal hurt
+signal hurt(new_health)
 signal dead
 
 func _physics_process(delta):
@@ -60,7 +60,7 @@ func handle_ceiling_bonk():
 func update_health(delta: float):
 	health += delta
 	if delta < 0:
-		emit_signal("hurt")
+		emit_signal("hurt", health)
 	if health <= 0:
 		emit_signal("dead")
 

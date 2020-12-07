@@ -53,7 +53,7 @@ func connect_ui():
 # warning-ignore:return_value_discarded
 	connect("ammo_changed", ui_node, "_on_player_ammo_updated")
 # warning-ignore:return_value_discarded
-	connect("hurt", ui_node, "_on_player_health_changed")
+	connect("hurt", ui_node, "_on_player_health_updated")
 	call_deferred("_on_gun_reload", active_weapon.current_ammo)
 	
 func _process(delta):
@@ -146,3 +146,6 @@ func handle_viewport_lean(delta):
 
 func _on_gun_reload(new_ammo_count):
 	emit_signal("ammo_changed", new_ammo_count)
+
+func _on_BodyHurtbox_area_entered(_area):
+	update_health(-10)
