@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://models/Terrain1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://world/static/palm1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://world/components/button.tscn" type="PackedScene" id=9]
-[ext_resource path="res://world/static/wall2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world/static/wall2_heiroglyphics.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/static/wall1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://world/static/Rock2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://world/static/Rock1.tscn" type="PackedScene" id=13]
@@ -17,6 +17,7 @@
 [ext_resource path="res://world/components/MeleeEnemySpawner.tscn" type="PackedScene" id=15]
 [ext_resource path="res://world/static/supported_platform.tscn" type="PackedScene" id=16]
 [ext_resource path="res://models/ankh.tscn" type="PackedScene" id=17]
+[ext_resource path="res://world/static/wall1_heiroglyphics.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
@@ -125,54 +126,54 @@ transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 18.6315
 [node name="wall6" parent="Statics" index="26" instance=ExtResource( 11 )]
 transform = Transform( -5.24537e-08, 0, -1.2, 0, 1, 0, 1, 0, -4.37114e-08, 20.3743, 0.759622, -8.06321 )
 
-[node name="wall2" parent="Statics" index="27" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0968, 0, -6.36228 )
-
-[node name="wall1" parent="Statics" index="28" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1288, 0.416854, 0.820213 )
-
-[node name="wall7" parent="Statics" index="29" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1288, 0.416854, -13.8746 )
-
-[node name="wall8" parent="Statics" index="30" instance=ExtResource( 11 )]
+[node name="wall8" parent="Statics" index="27" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 0.3, 0, 0, 0, 2.5, -11.2273, 0.940248, -12.7045 )
 
-[node name="wall11" parent="Statics" index="31" instance=ExtResource( 11 )]
+[node name="wall11" parent="Statics" index="28" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.3043, 0.940248, -10.0194 )
 
-[node name="wall12" parent="Statics" index="32" instance=ExtResource( 11 )]
+[node name="wall12" parent="Statics" index="29" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, -3.2, 0, 0.3, 0, 1, 0, -1.39876e-07, 13.2252, 0.940248, 8.02277 )
 
-[node name="Rock1" parent="Statics" index="33" instance=ExtResource( 13 )]
+[node name="Rock1" parent="Statics" index="30" instance=ExtResource( 13 )]
 transform = Transform( 4.582, 1.78663, -0.90179, -1.87886, 4.61619, -0.400906, 0.689312, 0.706258, 4.90164, -24.6482, -6.95593, 50.4899 )
 
-[node name="Rock2" parent="Statics" index="34" instance=ExtResource( 12 )]
+[node name="Rock2" parent="Statics" index="31" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2483, -9.31278, 52.2924 )
 
-[node name="Rock3" parent="Statics" index="35" instance=ExtResource( 12 )]
+[node name="Rock3" parent="Statics" index="32" instance=ExtResource( 12 )]
 transform = Transform( 1.97746, 0, -0.299416, 0, 2, 0, 0.299416, 0, 1.97746, -14.9072, -8.61437, 49.5574 )
 
-[node name="ankh" parent="Statics" index="36" instance=ExtResource( 17 )]
+[node name="ankh" parent="Statics" index="33" instance=ExtResource( 17 )]
 transform = Transform( -0.81341, -0.284399, 4.19287, -1.0092, 4.15893, 0.0863131, -4.07953, -0.97214, -0.85736, -2.15398, 3.6801, 45.8744 )
 
-[node name="mesa" parent="Statics" index="37" instance=ExtResource( 14 )]
+[node name="mesa" parent="Statics" index="34" instance=ExtResource( 14 )]
 transform = Transform( 7.87366, 0, 6.16486, 0, 10, 0, -6.16486, 0, 7.87366, -0.449853, -0.369355, 57.0811 )
 
-[node name="MeleeSpawner" parent="Statics" index="38" instance=ExtResource( 15 )]
+[node name="MeleeSpawner" parent="Statics" index="35" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9571, 2.43947, 8.81751 )
 parent_node_path = NodePath("../../Entities")
 
-[node name="ankh2" parent="Statics" index="39" instance=ExtResource( 17 )]
+[node name="ankh2" parent="Statics" index="36" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5643, 3.02085, -8.02149 )
 
-[node name="ankh3" parent="Statics" index="40" instance=ExtResource( 17 )]
+[node name="ankh3" parent="Statics" index="37" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5643, 3.02085, 4.10405 )
 
-[node name="ankh4" parent="Statics" index="41" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9331, 3.02085, 4.10405 )
+[node name="ankh4" parent="Statics" index="38" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8498, 3.02085, 4.10405 )
 
-[node name="ankh5" parent="Statics" index="42" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9323, 3.02085, -8.75721 )
+[node name="ankh5" parent="Statics" index="39" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.849, 3.02085, -8.75721 )
+
+[node name="wall2" parent="Statics" index="40" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -6 )
+
+[node name="wall1" parent="Statics" index="41" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, -13.3398 )
+
+[node name="wall7" parent="Statics" index="42" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 1.38667 )
 
 [node name="Enemy" parent="Entities" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
