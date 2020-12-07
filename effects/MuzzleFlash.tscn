@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://materials/muzzleflash_cone.tres" type="Material" id=1]
+[ext_resource path="res://materials/muzzleflash_plane.tres" type="Material" id=2]
+[ext_resource path="res://meshes/muzzleflash_cone.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 2, 1 )
+
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 2, 1 )
+
+[node name="MuzzleFlash" type="Spatial"]
+
+[node name="Cone" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.742033 )
+material_override = ExtResource( 1 )
+cast_shadow = 0
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="Plane1" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+material_override = ExtResource( 2 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Plane2" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -1.62921e-07, 2.65431e-14, 0, 0, 0 )
+material_override = ExtResource( 2 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
