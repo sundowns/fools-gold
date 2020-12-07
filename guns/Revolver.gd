@@ -17,7 +17,6 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		return
 	else:
 		current_ammo -= 1
-	print(current_ammo)
 	
 	var contact_position: Vector3 = aim_cast.get_collision_point()
 	var entity_hit = aim_cast.get_collider()
