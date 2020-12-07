@@ -31,6 +31,16 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 27, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
+tracks/2/type = "animation"
+tracks/2/path = NodePath("MeshLocation/revolver/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "RotateChamber" ),
+"times": PoolRealArray( 0.2 )
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Reload"
@@ -85,3 +95,8 @@ anims/Reload = SubResource( 2 )
 
 [node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 4 )]
 transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
+
+[node name="Cylinder" parent="MeshLocation/revolver" index="1"]
+transform = Transform( -2.91456e-07, 1.78895, 0, -0.894472, -1.45728e-07, -1.54927, -1.54927, -2.52409e-07, 0.894472, 4.0172, 4.30901, 0 )
+
+[editable path="MeshLocation/revolver"]

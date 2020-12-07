@@ -76,6 +76,10 @@ tracks/2/keys = {
 
 [node name="Shotgun" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+cooldown = 0.5
+damage = 1.0
+knockback_magnitude = 1.0
+ammo_per_reload = 6
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/Fire = SubResource( 1 )
