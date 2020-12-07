@@ -2,13 +2,13 @@
 
 [ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://guns/Revolver.gd" type="Script" id=2]
-[ext_resource path="res://models/Shotgun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://models/revolver.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fire"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mesh:rotation_degrees")
+tracks/0/path = NodePath("MeshLocation:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -17,10 +17,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 90, 0 ), Vector3( -2.68195e-06, 90, 16.697 ), Vector3( 0, 90, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.024, -0.027, 0.2 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mesh:translation")
+tracks/1/path = NodePath("MeshLocation:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -29,49 +29,49 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.0300543, 0.104169, 0 ), Vector3( -0.0300543, 0.104169, 0.563336 ), Vector3( -0.0300543, 0.104169, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 27, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "Reload"
 length = 1.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Mesh:rotation_degrees")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.9, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 90, 0 ), Vector3( 7.01903e-06, 90, -48.758 ), Vector3( 7.01903e-06, 90, -48.758 ), Vector3( 0, 90, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Mesh:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.9, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -0.0300543, 0.104169, 0 ), Vector3( -0.03, -1, 0 ), Vector3( -0.03, -1, 0 ), Vector3( -0.0300543, 0.104169, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 1.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "reload"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshLocation:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.024, -1, 0.05 ), Vector3( 0.024, -1, 0.05 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshLocation:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -48.758, 0, 0 ), Vector3( -48.758, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [node name="Revolver" instance=ExtResource( 1 )]
@@ -83,5 +83,5 @@ knockback_magnitude = 7.0
 anims/Fire = SubResource( 1 )
 anims/Reload = SubResource( 2 )
 
-[node name="Mesh" parent="." index="2" instance=ExtResource( 3 )]
-transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
+[node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 4 )]
+transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )

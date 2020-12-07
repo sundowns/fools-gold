@@ -9,3 +9,5 @@ script = ExtResource( 1 )
 wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="MeshLocation" type="Spatial" parent="."]

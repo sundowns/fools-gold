@@ -81,7 +81,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445279, -0.677 )
 script = ExtResource( 1 )
 
 [node name="Revolver" parent="Head/Hand" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0757217 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.224315 )
 
 [node name="HandLocation" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445, -0.677 )
