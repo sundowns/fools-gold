@@ -6,6 +6,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 var player_node: Player
 
 func _ready():
+# warning-ignore:return_value_discarded
 	connect("dead", self, "_on_death")
 
 func _physics_process(delta):
@@ -20,6 +21,7 @@ func _process(_delta):
 	if player_node == null:
 		player_node = get_tree().current_scene.find_node("Player", true, false)
 
+# warning-ignore:unused_argument
 func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 	.update_health(-damage)
 	.push(knockback)

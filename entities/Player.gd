@@ -48,7 +48,9 @@ func initialise():
 
 func connect_ui():
 	var ui_node = get_tree().current_scene.find_node("HUD", true, false)
+# warning-ignore:return_value_discarded
 	state_machine.connect("state_changed", ui_node, "_on_player_state_updated")
+# warning-ignore:return_value_discarded
 	connect("ammo_changed", ui_node, "_on_player_ammo_updated")
 	call_deferred("_on_gun_reload", active_weapon.current_ammo)
 	
@@ -56,7 +58,7 @@ func _process(delta):
 	handle_viewport_lean(delta)
 	handle_weapon_sway(delta)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_shooting()
 	handle_interaction()
 

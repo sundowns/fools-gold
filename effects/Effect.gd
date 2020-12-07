@@ -8,6 +8,7 @@ onready var clear_timer: Timer = $ClearAfterTimer
 
 func _ready():
 	set_as_toplevel(true)
+# warning-ignore:return_value_discarded
 	clear_timer.connect("timeout", self, "_on_ClearAfterTimer_timeout")
 	clear_timer.start()
 

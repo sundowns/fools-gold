@@ -14,12 +14,14 @@ func enter(_e):
 	no_longer_just_jumped = false
 	no_longer_just_fell = false
 
+# warning-ignore:unused_argument
 func exit(e, next_state):
 	just_jumped_timer.stop()
 	just_fell_timer.stop()
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
+# warning-ignore:unused_argument
 func process(e, delta):
 	return delta
 

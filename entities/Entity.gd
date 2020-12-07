@@ -42,11 +42,13 @@ func apply_movement():
 	movement.z = velocity.z + gravity_vector.z
 	movement.x = velocity.x + gravity_vector.x
 	movement.y = gravity_vector.y
+# warning-ignore:return_value_discarded
 	move_and_slide(movement, Vector3.UP)
 
 func apply_knockback_force(delta):
 	if knockback.length() <= 0:
 		return
+# warning-ignore:return_value_discarded
 	move_and_slide(knockback, Vector3.UP)
 	# Reduce the knockback...
 	knockback = knockback.move_toward(Vector3.ZERO, delta * knockback_drag)

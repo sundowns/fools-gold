@@ -10,6 +10,7 @@ func enter(e):
 	exit_to_airborne = false
 	timer.start()
 
+# warning-ignore:unused_argument
 func exit(e, next_state):
 	exit_to_airborne = false
 	timer.stop()
