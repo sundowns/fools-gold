@@ -100,5 +100,8 @@ collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Hand/AttackHitbox" index="0"]
 shape = SubResource( 7 )
+
+[node name="AttackCooldown" parent="." index="10"]
+wait_time = 1.5
 [connection signal="timeout" from="StateMachine/NavigateToPlayer/PathRecalculateTimer" to="StateMachine/NavigateToPlayer" method="_on_PathRecalculateTimer_timeout"]
 [connection signal="body_entered" from="Hand/AttackHitbox" to="." method="_on_AttackHitbox_body_entered"]
