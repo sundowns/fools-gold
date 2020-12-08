@@ -8,4 +8,3 @@ func _ready():
 
 func _on_master_volume_changed(val):
 	unit_db = linear2db(db2linear(base_unit_db) * val)
-	print(unit_db)
