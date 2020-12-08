@@ -2,9 +2,9 @@ extends Gun
 
 onready var hit_particle_scene: PackedScene = preload("res://effects/BulletHitEffect.tscn")
 
-func shoot(aim_cast: RayCast, camera_origin: Vector3):
+func shoot(_aim_cast: RayCast, _camera_origin: Vector3):
+	print('shotgun go boom!!')
 	# TODO: shoot a bunch of slightly randomised raycasts out (8 pellets?)
-	pass
 #	.gun_fired()
 
 

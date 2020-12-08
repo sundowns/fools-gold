@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://entities/state-machines/player/JumpSquat.gd" type="Script" id=10]
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=11]
 [ext_resource path="res://audio/footstep.wav" type="AudioStream" id=12]
+[ext_resource path="res://guns/Shotgun.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -88,6 +89,8 @@ script = ExtResource( 1 )
 [node name="Revolver" parent="Head/Hand" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.224315 )
 
+[node name="Shotgun" parent="Head/Hand" instance=ExtResource( 13 )]
+
 [node name="HandLocation" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445, -0.677 )
 
@@ -142,5 +145,6 @@ max_db = 1.0
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]
 [connection signal="reloaded" from="Head/Hand/Revolver" to="." method="_on_gun_reload"]
+[connection signal="reloaded" from="Head/Hand/Shotgun" to="." method="_on_gun_reload"]
 
 [editable path="GroundCheck"]

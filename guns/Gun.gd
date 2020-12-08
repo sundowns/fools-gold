@@ -3,6 +3,7 @@ class_name Gun
 
 onready var cooldown_timer: Timer = $Cooldown
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var mesh_location: Spatial = $MeshLocation
 
 export(float) var cooldown: float = 0.5
 export(float) var damage: float = 1.0
@@ -13,13 +14,20 @@ var current_ammo: int
 
 var is_ready := true
 var is_reloading := false
+var is_holstered := true
 
 signal reloaded(new_ammo_count)
+signal gun_holstered
+signal gun_unholstered
 
-func _ready():
+func initialise():
 # warning-ignore:return_value_discarded
 	cooldown_timer.connect("timeout", self, "_on_cooldown_finish") 
 	current_ammo = ammo_per_reload
+# warning-ignore:return_value_discarded
+	connect("gun_holstered", Global.player_node, "_on_gun_holstered")
+# warning-ignore:return_value_discarded
+	connect("gun_unholstered", Global.player_node, "_on_gun_unholstered")
 
 func gun_fired():
 	animation_player.play("Fire")
@@ -43,3 +51,24 @@ func reload():
 	is_reloading = false
 	current_ammo = ammo_per_reload
 	emit_signal("reloaded", current_ammo)
+
+func hide():
+	mesh_location.visible = false
+	
+func show():
+	mesh_location.visible = true
+	
+func holster():
+	is_holstered = true
+	animation_player.play("Holster")
+
+func unholster():
+	is_holstered = false
+	animation_player.play("Unholster")
+
+func emit_holster_status_update():
+	if is_holstered:
+		emit_signal("gun_holstered")
+	else:
+		is_ready = true
+		emit_signal("gun_unholstered")

@@ -29,9 +29,12 @@ var just_jumped := false
 var just_fell := true
 var active_weapon: Gun = null
 var sensitivity_multipler: float = 1
+var is_switching_weapons := false
+var next_weapon_index := 1
 
 onready var weapon_list = {
-	1: $Head/Hand/Revolver
+	1: $Head/Hand/Revolver,
+	2: $Head/Hand/Shotgun
 }
 
 signal ammo_changed(new_ammo)
@@ -47,6 +50,9 @@ func initialise():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	active_weapon = weapon_list.get(1)
 	call_deferred("connect_ui")
+	for weapon in weapon_list.values():
+		weapon.initialise()
+	call_deferred("switch_to_next_weapon")
 
 func connect_ui():
 	var ui_node = get_tree().current_scene.find_node("HUD", true, false)
@@ -63,6 +69,7 @@ func _process(delta):
 	handle_weapon_sway(delta)
 
 func _physics_process(_delta):
+	handle_weapon_switch()
 	handle_shooting()
 	handle_interaction()
 
@@ -160,7 +167,37 @@ func handle_viewport_lean(delta):
 	camera.rotation.z = strafe_viewport_rotation
 
 func handle_weapon_switch():
-	pass
+	for i in range(1,3):
+		if Input.is_action_just_pressed("weapon_%d" % i):
+			begin_weapon_switch(i)
+
+func begin_weapon_switch(weapon_index: int):
+	assert(weapon_list.has(weapon_index), "No weapon at weapon index %d" % weapon_index)
+	if weapon_list[weapon_index] == active_weapon:
+		return
+	is_switching_weapons = true
+	next_weapon_index = weapon_index
+	if active_weapon:
+		active_weapon.holster()
+
+func switch_to_next_weapon():
+	assert(next_weapon_index != -1, "Switching to weapon called without next_weapon_index set")
+	if weapon_list.size() == 0:
+		return
+	active_weapon = weapon_list[next_weapon_index]
+	for weapon in weapon_list.values():
+		weapon.hide()
+	active_weapon.show()
+	active_weapon.unholster()
+	emit_signal("ammo_changed", active_weapon.current_ammo)
+
+
+func _on_gun_holstered():
+	if weapon_list.has(next_weapon_index):
+		switch_to_next_weapon()
+
+func _on_gun_unholstered():
+	is_switching_weapons = false
 
 func _exit_tree():
 	Global.player_node = null

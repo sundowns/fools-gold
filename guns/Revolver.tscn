@@ -110,7 +110,7 @@ anims/Reload = SubResource( 2 )
 transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
 
 [node name="Cylinder" parent="MeshLocation/revolver" index="1"]
-transform = Transform( -7.81972e-08, 1.78895, 0, -0.894472, -3.90987e-08, -1.54927, -1.54927, -6.7721e-08, 0.894472, 4.0172, 4.30901, 0 )
+transform = Transform( -7.81972e-08, 1.78895, 0, -1.36619, -5.97184e-08, -1.15492, -1.15492, -5.04832e-08, 1.36619, 4.0172, 4.30901, 0 )
 
 [node name="MuzzleFlash" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.260041, -0.660193 )

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://guns/Gun.gd" type="Script" id=1]
+[ext_resource path="res://animations/gun_holster.tres" type="Animation" id=2]
+[ext_resource path="res://animations/gun_unholster.tres" type="Animation" id=3]
 
 [node name="Gun" type="Spatial"]
 script = ExtResource( 1 )
@@ -9,5 +11,7 @@ script = ExtResource( 1 )
 wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Holster = ExtResource( 2 )
+anims/Unholster = ExtResource( 3 )
 
 [node name="MeshLocation" type="Spatial" parent="."]
