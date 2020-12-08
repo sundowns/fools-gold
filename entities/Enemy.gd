@@ -9,6 +9,7 @@ onready var player_navigate_detection_zone: Area = $PlayerNavigateToPlayerDetect
 onready var attack_cooldown: Timer = $AttackCooldown
 onready var check_for_los_timer: Timer = $LosCheckTimer
 onready var hurt_sound: AudioStreamPlayer3D = $HurtSound
+onready var death_sound: AudioStreamPlayer3D = $DeathSound
 
 var can_attack := true
 var path := []
@@ -50,11 +51,20 @@ func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 	animation_player.play("Hurt")
 
 func _on_death():
+	play_death_sound()
 	spawn_death_particles()
 	queue_free()
 
 func _on_hurt(_val):
 	hurt_sound.play()
+
+func play_death_sound():
+	remove_child(death_sound)
+# warning-ignore:return_value_discarded
+	death_sound.connect("finished", death_sound, "queue_free")
+	Global.world_node.add_child(death_sound)
+	death_sound.global_transform.origin = global_transform.origin
+	death_sound.play()
 
 func spawn_death_particles():
 	var new_particles = death_effect_scene.instance()
