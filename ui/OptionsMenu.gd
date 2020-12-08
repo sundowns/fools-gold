@@ -2,11 +2,15 @@ extends Control
 
 onready var fullscreen_menubutton = $FullScreen/MenuButton
 onready var master_vol_slider = $MasterVolume/MasterVolSlider
+onready var music_vol_slider = $MusicVolume/MusicVolSlider
+onready var sfx_vol_slider = $SfxVolume/SfxVolSlider
 onready var sens_slider = $Sensitivity/SensSlider
 
 signal options_closed
 signal sensitivity_changed(new_sens_multiplier)
-signal master_volume_changed(new_master_volume)
+signal master_volume_changed(new_volume)
+signal music_volume_changed(new_volume)
+signal sfx_volume_changed(new_volume)
 
 var is_open = false
 
@@ -15,7 +19,13 @@ func _ready():
 	connect("sensitivity_changed", Global, "_on_sensitivity_changed")
 # warning-ignore:return_value_discarded
 	connect("master_volume_changed", Global, "_on_master_volume_changed")
+# warning-ignore:return_value_discarded
+	connect("music_volume_changed", Global, "_on_music_volume_changed")
+# warning-ignore:return_value_discarded
+	connect("sfx_volume_changed", Global, "_on_sfx_volume_changed")
 	master_vol_slider.value = Global.master_volume
+	music_vol_slider.value = Global.music_volume
+	sfx_vol_slider.value = Global.sfx_volume
 	sens_slider.value = Global.sens_multiplier
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
@@ -56,3 +66,11 @@ func _on_MasterVolSlider_value_changed(value):
 
 func _on_SensSlider_value_changed(value):
 	emit_signal("sensitivity_changed", value)
+
+
+func _on_MusicVolSlider_value_changed(value):
+	emit_signal("music_volume_changed", value)
+
+
+func _on_SfxVolSlider_value_changed(value):
+	emit_signal("sfx_volume_changed", value)
