@@ -6,11 +6,8 @@ onready var path_calc_timer: Timer = $PathRecalculateTimer
 var should_recalculate_path := false
 
 func enter(e):
+	e.velocity = Vector3.ZERO
 	e.calculate_path_to_player()
-	# Instead of this we should wait and recalculate probably..
-	if e.path.size() == 0:
-		exit(e, "Idle")
-		return
 	path_calc_timer.start()
 
 func exit(e, next_state):
@@ -30,6 +27,7 @@ func physics_process(e, delta):
 	
 	if should_recalculate_path:
 		e.calculate_path_to_player()
+		should_recalculate_path = false
 	
 	e.apply_gravity(delta)
 	

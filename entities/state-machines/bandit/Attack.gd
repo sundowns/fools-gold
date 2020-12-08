@@ -17,8 +17,12 @@ func physics_process(e, delta):
 	e.apply_gravity(delta)
 	e.run_at_player()
 	e.apply_movement()
-	e.swing_at_the_cunt()
-	# TODO: Switch back to Navigate To Player if we lose LOS
+	
+	if e.has_los_to_player:
+		e.swing_at_the_cunt()
+	else:
+		# Switch back to Navigate To Player if we lose LOS
+		exit(e, "NavigateToPlayer")
 
 func input(_e, event):
 	return event
@@ -31,4 +35,3 @@ func unhandled_key_input(_e, event):
 
 func notification(what, flag = false):
 	return [what, flag]
-

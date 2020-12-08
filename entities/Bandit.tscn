@@ -28,12 +28,12 @@ height = 0.8
 [sub_resource type="SphereShape" id=4]
 radius = 0.3
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 albedo_color = Color( 0.686275, 0, 0, 0.643137 )
 
-[sub_resource type="SphereMesh" id=9]
-material = SubResource( 8 )
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
 radius = 0.5
 height = 1.0
 radial_segments = 16
@@ -45,6 +45,7 @@ radius = 0.5
 [node name="Bandit" instance=ExtResource( 1 )]
 collision_mask = 17
 script = ExtResource( 4 )
+los_collision_mask = 3
 
 [node name="Idle" type="Node" parent="StateMachine" index="0"]
 script = ExtResource( 3 )
@@ -89,7 +90,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768, 0, -0.308 )
 visible = false
 
 [node name="DebugMeshInstance" type="MeshInstance" parent="Hand" index="0"]
-mesh = SubResource( 9 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="AttackHitbox" type="Area" parent="Hand" index="1"]

@@ -11,6 +11,8 @@ func _ready():
 func check_if_player_attackable() -> bool:
 	if not Global.player_node:
 		return false
+	if not has_los_to_player:
+		return false
 	return global_transform.origin.distance_to(Global.player_node.global_transform.origin) <= start_attacking_distance
 
 func run_at_player():

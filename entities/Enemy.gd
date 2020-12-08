@@ -7,12 +7,15 @@ onready var death_effect_scene: PackedScene = preload("res://effects/EnemyDeathE
 onready var state_machine: StateMachine = $StateMachine
 onready var player_navigate_detection_zone: Area = $PlayerNavigateToPlayerDetectionZone
 onready var attack_cooldown: Timer = $AttackCooldown
+onready var check_for_los_timer: Timer = $LosCheckTimer
 
 var can_attack := true
 var path := []
 var path_index := 0
+var has_los_to_player := true
 
 export(float) var move_speed := 9.0
+export(int, LAYERS_3D_PHYSICS) var los_collision_mask
 
 func _ready():
 # warning-ignore:return_value_discarded
@@ -21,6 +24,8 @@ func _ready():
 	player_navigate_detection_zone.connect("body_entered", self, "_on_PlayerChaseDetectionZone_body_entered")
 # warning-ignore:return_value_discarded
 	attack_cooldown.connect("timeout", self, "reset_attack")
+# warning-ignore:return_value_discarded
+	check_for_los_timer.connect("timeout", self, "calculate_los_to_player")
 
 func _physics_process(_delta):
 	if Global.player_node:
@@ -63,6 +68,18 @@ func calculate_path_to_player():
 	path = Global.navigation_map.get_simple_path(global_transform.origin, target_position)
 	path_index = 0
 
+func calculate_los_to_player():
+	assert(Global.player_node, "Missing player_node in globals")
+	var raycast_impact := get_world().direct_space_state.intersect_ray(global_transform.origin, Global.player_node.global_transform.origin, [self], los_collision_mask)
+	if raycast_impact:
+		if raycast_impact.collider is Player:
+			has_los_to_player = true
+		else:
+			has_los_to_player = false
+	else:
+		has_los_to_player = false
+	check_for_los_timer.start()
+
 # Sets velocity towards the next point in the path. Returns whether the path is still valid or not (more left to follow)
 func follow_path() -> bool:
 	# Move along the path if it exists (just sets a velocity towards next point)
@@ -81,3 +98,11 @@ func follow_path() -> bool:
 
 func reset_attack():
 	can_attack = true
+
+func check_if_player_in_PlayerChaseDetectionZone() -> bool:
+	if not player_navigate_detection_zone:
+		return false
+	var we_got_em = false
+	for body in player_navigate_detection_zone.get_overlapping_bodies():
+		we_got_em = true
+	return we_got_em

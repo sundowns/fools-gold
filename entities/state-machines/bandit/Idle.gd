@@ -4,6 +4,10 @@ var fsm: StateMachine
 
 func enter(e):
 	e.velocity = Vector3.ZERO
+	var player_is_in_nav_range = e.check_if_player_in_PlayerChaseDetectionZone()
+	if player_is_in_nav_range:
+		exit(e, "NavigateToPlayer")
+		return
 
 func exit(_e, next_state):
 	fsm._change_to(next_state)
