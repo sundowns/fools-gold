@@ -100,8 +100,6 @@ func grounded_movement(delta: float):
 	if velocity.length() > 5:
 		if !$FootstepAudio.is_playing():
 			$FootstepAudio.play()
-	else:
-		$FootstepAudio.stop()
 
 func aerial_movement(delta):
 	direction = Vector3.ZERO

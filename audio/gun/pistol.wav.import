@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/footstep.wav-713471070f8032247c1fe48c94683a94.sample"
+path="res://.import/pistol.wav-f2cce9c76f6336af30a6a59536cf5425.sample"
 
 [deps]
 
-source_file="res://audio/footstep.wav"
-dest_files=[ "res://.import/footstep.wav-713471070f8032247c1fe48c94683a94.sample" ]
+source_file="res://audio/gun/pistol.wav"
+dest_files=[ "res://.import/pistol.wav-f2cce9c76f6336af30a6a59536cf5425.sample" ]
 
 [params]
 

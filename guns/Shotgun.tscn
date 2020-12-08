@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://guns/Shotgun.gd" type="Script" id=2]
 [ext_resource path="res://models/Shotgun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://audio/gun/shotgun.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fire"
@@ -86,3 +87,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="Mesh" parent="MeshLocation" index="0" instance=ExtResource( 3 )]
 transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
+
+[node name="FireAudio" parent="." index="3"]
+stream = ExtResource( 4 )

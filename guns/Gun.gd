@@ -4,6 +4,7 @@ class_name Gun
 onready var cooldown_timer: Timer = $Cooldown
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var mesh_location: Spatial = $MeshLocation
+onready var fire_audio: AudioStreamPlayer3D = $FireAudio
 
 export(float) var cooldown: float = 0.5
 export(float) var damage: float = 1.0
@@ -31,6 +32,7 @@ func initialise():
 
 func gun_fired():
 	animation_player.play("Fire")
+	fire_audio.play()
 	is_ready = false
 	cooldown_timer.start()
 	# TODO: use a timer here for cooldown

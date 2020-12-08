@@ -11,8 +11,9 @@
 [ext_resource path="res://entities/components/GroundCheck.tscn" type="PackedScene" id=9]
 [ext_resource path="res://entities/state-machines/player/JumpSquat.gd" type="Script" id=10]
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=11]
-[ext_resource path="res://audio/footstep.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/player/footstep.wav" type="AudioStream" id=12]
 [ext_resource path="res://guns/Shotgun.tscn" type="PackedScene" id=13]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
