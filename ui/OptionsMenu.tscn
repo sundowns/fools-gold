@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/OptionsMenu.gd" type="Script" id=1]
+
+[node name="OptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.14902, 0.14902, 0.14902, 0.67451 )
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 524.0
+margin_top = 386.0
+margin_right = 780.0
+margin_bottom = 466.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sensitivity" type="Control" parent="."]
+margin_left = 568.0
+margin_top = 290.0
+margin_right = 988.0
+margin_bottom = 350.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="Sensitivity"]
+margin_right = 420.0
+margin_bottom = 60.0
+min_value = 0.1
+max_value = 1.5
+step = 0.01
+value = 0.5
+
+[node name="Label" type="RichTextLabel" parent="Sensitivity"]
+margin_left = -91.4802
+margin_top = 23.7798
+margin_right = -21.4802
+margin_bottom = 43.7798
+text = "Sensitivity"
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="value_changed" from="Sensitivity/HSlider" to="." method="_on_HSlider_value_changed"]

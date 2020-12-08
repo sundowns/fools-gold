@@ -28,6 +28,7 @@ var direction = Vector3.ZERO
 var just_jumped := false
 var just_fell := true
 var active_weapon: Gun = null
+var sensitivity_multipler: float = 1
 
 onready var weapon_list = {
 	1: $Head/Hand/Revolver
