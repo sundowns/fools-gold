@@ -42,6 +42,8 @@ func shoot(_aim_cast: RayCast, _camera_origin: Vector3):
 
 func _on_cooldown_finish():
 	is_ready = true
+	if current_ammo <= 0:
+		start_reload()
 
 func start_reload():
 	if current_ammo == ammo_per_reload:

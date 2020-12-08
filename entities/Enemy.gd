@@ -15,6 +15,7 @@ var can_attack := true
 var path := []
 var path_index := 0
 var has_los_to_player := true
+var queued_for_death = false # Used to avoid dying multiple times in one frame
 
 export(float) var move_speed := 9.0
 export(int, LAYERS_3D_PHYSICS) var los_collision_mask
@@ -51,9 +52,11 @@ func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 	animation_player.play("Hurt")
 
 func _on_death():
-	play_death_sound()
-	spawn_death_particles()
-	queue_free()
+	if !queued_for_death:
+		queued_for_death = true
+		play_death_sound()
+		spawn_death_particles()
+		queue_free()
 
 func _on_hurt(_val):
 	hurt_sound.play()
