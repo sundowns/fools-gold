@@ -5,6 +5,8 @@ onready var fullscreen_menubutton = $FullScreen/MenuButton
 signal options_closed
 signal sensitivity_changed(new_sens_multiplier)
 
+var is_open = false
+
 func _ready():
 # warning-ignore:return_value_discarded
 	connect("sensitivity_changed", Global, "_on_sensitivity_changed")
@@ -17,9 +19,15 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		close_menu()
+		if is_open:
+			close_menu()
+
+func open_menu():
+	is_open = true
+	self.visible = true
 
 func close_menu():
+	is_open = false
 	self.visible = false
 	emit_signal("options_closed")
 
