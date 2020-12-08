@@ -26,9 +26,9 @@ __meta__ = {
 }
 
 [node name="Sensitivity" type="Control" parent="."]
-margin_left = 568.0
+margin_left = 500.0
 margin_top = 290.0
-margin_right = 988.0
+margin_right = 920.0
 margin_bottom = 350.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,10 +43,37 @@ step = 0.01
 value = 0.5
 
 [node name="Label" type="RichTextLabel" parent="Sensitivity"]
-margin_left = -91.4802
+margin_left = -98.9718
 margin_top = 23.7798
-margin_right = -21.4802
+margin_right = -28.9718
 margin_bottom = 43.7798
-text = "Sensitivity"
+text = "Sensitivity:"
+
+[node name="FullScreen" type="Control" parent="."]
+margin_left = 500.0
+margin_top = 232.044
+margin_right = 920.0
+margin_bottom = 292.044
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="FullScreen"]
+margin_left = -123.0
+margin_top = 24.0
+margin_right = -22.0
+margin_bottom = 44.0
+text = "Window Mode:"
+
+[node name="MenuButton" type="MenuButton" parent="FullScreen"]
+margin_left = 2.0
+margin_top = 21.0
+margin_right = 418.0
+margin_bottom = 41.0
+text = "Windowed"
+flat = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="value_changed" from="Sensitivity/HSlider" to="." method="_on_HSlider_value_changed"]
