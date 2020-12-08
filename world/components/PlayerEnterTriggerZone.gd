@@ -17,7 +17,7 @@ func _ready():
 		is_active = false
 		wakeup_delay_timer.start(wake_up_delay)
 	else:
-		monitoring = is_active
+		set_deferred('monitoring', is_active)
 
 func trigger():
 	if not is_active:
@@ -34,11 +34,11 @@ func trigger():
 
 func deactivate():
 	is_active = false
-	monitoring = false
+	set_deferred('monitoring', false)
 
 func activate():
 	is_active = true
-	monitoring = true
+	set_deferred('monitoring', true)
 	# Check if player is already inside the zone
 	for body in get_overlapping_bodies():
 		trigger()
