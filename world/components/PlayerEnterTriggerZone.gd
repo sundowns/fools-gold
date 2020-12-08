@@ -38,7 +38,7 @@ func deactivate():
 
 func activate():
 	is_active = true
-	set_deferred('monitoring', true)
+	monitoring = true
 	# Check if player is already inside the zone
 	for body in get_overlapping_bodies():
 		trigger()
