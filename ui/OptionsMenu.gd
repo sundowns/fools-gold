@@ -34,6 +34,6 @@ func _on_item_pressed(item_id):
 	fullscreen_menubutton.set_text(item_name)
 	match item_name:
 		"Windowed":
-			print("Put windowed code here")
+			OS.window_fullscreen = false
 		"Full Screen":
-			print("Put fullscreen code here")
+			OS.window_fullscreen = true
