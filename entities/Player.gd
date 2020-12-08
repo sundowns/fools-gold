@@ -159,6 +159,9 @@ func handle_viewport_lean(delta):
 	strafe_viewport_rotation = clamp(strafe_viewport_rotation, -max_strafe_viewport_rotation, max_strafe_viewport_rotation)
 	camera.rotation.z = strafe_viewport_rotation
 
+func handle_weapon_switch():
+	pass
+
 func _exit_tree():
 	Global.player_node = null
 
