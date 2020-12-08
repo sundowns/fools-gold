@@ -54,5 +54,5 @@ shape = SubResource( 2 )
 [node name="AttackCooldown" type="Timer" parent="."]
 
 [node name="LosCheckTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
