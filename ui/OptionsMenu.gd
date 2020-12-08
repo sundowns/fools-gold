@@ -1,16 +1,22 @@
 extends Control
 
 onready var fullscreen_menubutton = $FullScreen/MenuButton
+onready var master_vol_slider = $MasterVolume/MasterVolSlider
+onready var sens_slider = $Sensitivity/SensSlider
 
 signal options_closed
 signal sensitivity_changed(new_sens_multiplier)
+signal master_volume_changed(new_master_volume)
 
 var is_open = false
 
 func _ready():
 # warning-ignore:return_value_discarded
 	connect("sensitivity_changed", Global, "_on_sensitivity_changed")
-	$Sensitivity/HSlider.value = Global.sens_multiplier
+# warning-ignore:return_value_discarded
+	connect("master_volume_changed", Global, "_on_master_volume_changed")
+	master_vol_slider.value = Global.master_volume
+	sens_slider.value = Global.sens_multiplier
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
 	fullscreen_menubutton.get_popup().add_item("Windowed")
@@ -33,9 +39,6 @@ func close_menu():
 
 func _on_BackButton_pressed():
 	close_menu()
-
-func _on_HSlider_value_changed(value):
-	emit_signal("sensitivity_changed", value)
 	
 func _on_item_pressed(item_id):
 	var item_name = fullscreen_menubutton.get_popup().get_item_text(item_id)
@@ -45,3 +48,11 @@ func _on_item_pressed(item_id):
 			OS.window_fullscreen = false
 		"Full Screen":
 			OS.window_fullscreen = true
+
+
+func _on_MasterVolSlider_value_changed(value):
+	emit_signal("master_volume_changed", value)
+
+
+func _on_SensSlider_value_changed(value):
+	emit_signal("sensitivity_changed", value)

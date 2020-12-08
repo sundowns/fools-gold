@@ -90,6 +90,11 @@ func grounded_movement(delta: float):
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * ground_speed, ground_acceleration * delta)
 	velocity = velocity.move_toward(Vector3(0, velocity.y, 0), delta * ground_friction)
+	if velocity.length() > 5:
+		if !$FootstepAudio.is_playing():
+			$FootstepAudio.play()
+	else:
+		$FootstepAudio.stop()
 
 func aerial_movement(delta):
 	direction = Vector3.ZERO
