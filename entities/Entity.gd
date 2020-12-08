@@ -6,14 +6,12 @@ export(float) var falling_gravity_modifier: float = 1.0
 export(float) var max_health: float = 100
 export(float) var mass: float = 100
 export(float) var knockback_drag: float = 5.0
-export(NodePath) var hurt_sound_path 
 
 const terminal_fall_velocity: float = -40.0
 const base_mass: float = 100.0
 
 onready var ground_check: GroundCheck = $GroundCheck
 onready var health = max_health
-onready var hurt_sound = get_node(hurt_sound_path)
 
 var gravity_vector := Vector3.ZERO
 var velocity := Vector3.ZERO
@@ -56,8 +54,6 @@ func update_health(delta: float):
 	health += delta
 	if delta < 0:
 		emit_signal("hurt", health)
-		if hurt_sound:
-			hurt_sound.play()
 	if health <= 0:
 		emit_signal("dead")
 

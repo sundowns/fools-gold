@@ -8,6 +8,7 @@ onready var state_machine: StateMachine = $StateMachine
 onready var player_navigate_detection_zone: Area = $PlayerNavigateToPlayerDetectionZone
 onready var attack_cooldown: Timer = $AttackCooldown
 onready var check_for_los_timer: Timer = $LosCheckTimer
+onready var hurt_sound: AudioStreamPlayer3D = $HurtSound
 
 var can_attack := true
 var path := []
@@ -20,6 +21,8 @@ export(int, LAYERS_3D_PHYSICS) var los_collision_mask
 func _ready():
 # warning-ignore:return_value_discarded
 	connect("dead", self, "_on_death")
+# warning-ignore:return_value_discarded
+	connect("hurt", self, "_on_hurt")
 # warning-ignore:return_value_discarded
 	player_navigate_detection_zone.connect("body_entered", self, "_on_PlayerChaseDetectionZone_body_entered")
 # warning-ignore:return_value_discarded
@@ -49,6 +52,9 @@ func on_gun_hit(damage: float, knockback: Vector3, is_headshot: bool):
 func _on_death():
 	spawn_death_particles()
 	queue_free()
+
+func _on_hurt(_val):
+	hurt_sound.play()
 
 func spawn_death_particles():
 	var new_particles = death_effect_scene.instance()

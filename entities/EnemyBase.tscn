@@ -20,7 +20,6 @@ radius = 40.0
 collision_layer = 16
 script = ExtResource( 5 )
 knockback_drag = 10.0
-hurt_sound_path = NodePath("HurtSound")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 7 )
