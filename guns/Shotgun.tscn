@@ -9,7 +9,7 @@
 [ext_resource path="res://audio/gun/shotgun_pump.wav" type="AudioStream" id=7]
 [ext_resource path="res://models/shotgun shell.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/gun/load_shell.wav" type="AudioStream" id=9]
-[ext_resource path="res://audio/gun/weapon_switch.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/gun/Pistol Holster.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/gun/flesh_hit.wav" type="AudioStream" id=11]
 [ext_resource path="res://audio/gun/world_hit.wav" type="AudioStream" id=12]
 
@@ -388,6 +388,7 @@ stream = ExtResource( 9 )
 
 [node name="HolsterAudio" parent="." index="7"]
 stream = ExtResource( 10 )
+volume_db = 1.0
 
 [node name="FleshHitAudio" parent="." index="8"]
 stream = ExtResource( 11 )
@@ -398,7 +399,6 @@ max_db = -11.0
 [node name="WorldHitAudio" parent="." index="9"]
 stream = ExtResource( 12 )
 unit_db = 2.0
-unit_size = 2.0
-max_db = -5.0
+max_db = -15.0
 
 [editable path="MeshLocation/Mesh"]
