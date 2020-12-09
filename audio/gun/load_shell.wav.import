@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/load_shell.wav-40f8c399a1b81cc7fd2c934a88b9a47d.sample"
+
+[deps]
+
+source_file="res://audio/gun/load_shell.wav"
+dest_files=[ "res://.import/load_shell.wav-40f8c399a1b81cc7fd2c934a88b9a47d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
