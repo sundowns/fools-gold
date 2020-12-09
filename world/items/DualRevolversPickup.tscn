@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/revolver.tscn" type="PackedScene" id=2]
+
+[node name="Item" instance=ExtResource( 1 )]
+weapon_key = "dual_revolvers"
+
+[node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 2 )]
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, -0.7 )
+
+[node name="Revolver" parent="MeshLocation/revolver" index="0"]
+layers = 1
+
+[node name="Cylinder" parent="MeshLocation/revolver" index="1"]
+layers = 1
+
+[node name="revolver2" parent="MeshLocation" index="1" instance=ExtResource( 2 )]
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.7 )
+
+[node name="Revolver" parent="MeshLocation/revolver2" index="0"]
+layers = 1
+
+[node name="Cylinder" parent="MeshLocation/revolver2" index="1"]
+layers = 1
+
+[editable path="MeshLocation/revolver"]
+
+[editable path="MeshLocation/revolver2"]

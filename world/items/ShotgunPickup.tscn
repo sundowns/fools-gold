@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/items/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/Shotgun.tscn" type="PackedScene" id=2]
+
+[node name="Item" instance=ExtResource( 1 )]
+weapon_key = "shotgun"
+
+[node name="shotgun" parent="MeshLocation" index="0" instance=ExtResource( 2 )]
+transform = Transform( -0.07, 0, -2.7259e-08, 0, 0.07, 0, 2.7259e-08, 0, -0.07, 0, 0.46618, 0 )
+
+[node name="Shotgun" parent="MeshLocation/shotgun" index="0"]
+layers = 1
+
+[node name="Cylinder" parent="MeshLocation/shotgun" index="1"]
+layers = 1
+
+[editable path="MeshLocation/shotgun"]
