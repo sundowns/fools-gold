@@ -131,7 +131,7 @@ func handle_jump():
 			jump()
 
 func handle_shooting():
-	if not active_weapon or active_weapon.is_reloading:
+	if not active_weapon or active_weapon.is_reloading or is_switching_weapons:
 		return
 	if Input.is_action_just_pressed("reload"):
 		active_weapon.start_reload()
@@ -165,6 +165,8 @@ func handle_viewport_lean(delta):
 	camera.rotation.z = strafe_viewport_rotation
 
 func handle_weapon_switch():
+	if active_weapon and active_weapon.is_reloading:
+		return
 	for i in range(1,3):
 		if Input.is_action_just_pressed("weapon_%d" % i):
 			begin_weapon_switch(i)
