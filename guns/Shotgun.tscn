@@ -379,4 +379,14 @@ visible = false
 [node name="LoadAudio" parent="." index="6" instance=ExtResource( 6 )]
 stream = ExtResource( 9 )
 
+[node name="FleshHitAudio" parent="." index="8"]
+unit_db = 2.0
+unit_size = 2.0
+max_db = -2.0
+
+[node name="WorldHitAudio" parent="." index="9"]
+unit_db = 1.0
+unit_size = 2.0
+max_db = -3.0
+
 [editable path="MeshLocation/Mesh"]

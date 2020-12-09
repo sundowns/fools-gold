@@ -35,13 +35,21 @@ func calculate_knockback(from: Vector3, to: Vector3) -> Vector3:
 
 func spawn_hit_particles(position: Vector3, use_bloody_effect: bool, is_headshot: bool = false):
 	var new_hit_particles = null
+	var new_hit_sound = null
 	if use_bloody_effect:
+		new_hit_sound = $FleshHitAudio.duplicate()
 		if is_headshot:
 			new_hit_particles = headshot_hit_particle_scene.instance()
 		else:
 			new_hit_particles = blood_hit_particle_scene.instance()
 	else:
 		new_hit_particles = hit_particle_scene.instance()
+		new_hit_sound = $WorldHitAudio.duplicate()
 		
 	Global.world_node.add_effect(new_hit_particles)
 	new_hit_particles.global_transform.origin = position
+	
+	remove_child(new_hit_sound)
+	new_hit_particles.add_child(new_hit_sound)
+	new_hit_sound.global_transform.origin = position
+	new_hit_sound.play()

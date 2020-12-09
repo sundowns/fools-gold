@@ -107,9 +107,6 @@ knockback_magnitude = 7.0
 anims/Fire = SubResource( 1 )
 anims/Reload = SubResource( 2 )
 
-[node name="MeshLocation" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-
 [node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 4 )]
 transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
 
@@ -122,5 +119,15 @@ visible = false
 
 [node name="FireAudio" parent="." index="3"]
 stream = ExtResource( 5 )
+
+[node name="FleshHitAudio" parent="." index="5"]
+unit_db = 5.0
+unit_size = 5.0
+max_db = 6.0
+
+[node name="WorldHitAudio" parent="." index="6"]
+unit_db = 5.0
+unit_size = 5.0
+max_db = 4.0
 
 [editable path="MeshLocation/revolver"]
