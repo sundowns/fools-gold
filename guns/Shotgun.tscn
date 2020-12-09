@@ -339,7 +339,6 @@ tracks/3/keys = {
 }
 
 [node name="Shotgun" instance=ExtResource( 1 )]
-visible = true
 script = ExtResource( 2 )
 damage = 8.0
 knockback_magnitude = 1.4
@@ -356,7 +355,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, -1.5 )
 visible = false
 
 [node name="Mesh" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
+transform = Transform( -1.72106e-09, 3.08311e-10, 0.04, 0.00705333, 0.0393732, 0, -0.0393732, 0.00705332, -1.74846e-09, -0.0300433, 0.13401, -0.0203125 )
 
 [node name="Cylinder" parent="MeshLocation/Mesh" index="1"]
 transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 16.828, -6.3042, 0.0789626 )

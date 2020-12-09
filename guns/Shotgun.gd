@@ -84,7 +84,8 @@ func spawn_shell():
 	new_shell.global_transform.origin = shell_spawn_location.global_transform.origin
 
 func holster():
-	if animation_player.current_animation == "Pump":
+	var anim = animation_player.current_animation
+	if  anim == "Pump" || anim == "Fire":
 		animation_player.seek(0.0, true)
 		animation_player.stop()
 	is_holstered = true
