@@ -4,7 +4,7 @@ class_name Gun
 onready var cooldown_timer: Timer = $Cooldown
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var mesh_location: Spatial = $MeshLocation
-onready var fire_audio: AudioStreamPlayer3D = $FireAudio
+onready var fire_audio: AudioStreamPlayer = $FireAudio
 
 export(float) var cooldown: float = 0.5
 export(float) var damage: float = 1.0

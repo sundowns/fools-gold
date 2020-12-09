@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://guns/Shotgun.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://audio/gun/shotgun_pump.wav" type="AudioStream" id=7]
 [ext_resource path="res://models/shotgun shell.tscn" type="PackedScene" id=8]
 [ext_resource path="res://audio/gun/load_shell.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/gun/weapon_switch.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/gun/flesh_hit.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/gun/world_hit.wav" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fire"
@@ -368,9 +371,8 @@ transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.076175
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976102, 0.094408, -0.125633 )
 
 [node name="FireAudio" parent="." index="3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143429, -0.0355088, -0.143536 )
 stream = ExtResource( 4 )
-max_db = -1.0
+volume_db = -3.0
 
 [node name="PumpAudio" parent="." index="4" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )
@@ -384,14 +386,19 @@ visible = false
 [node name="LoadAudio" parent="." index="6" instance=ExtResource( 6 )]
 stream = ExtResource( 9 )
 
+[node name="HolsterAudio" parent="." index="7"]
+stream = ExtResource( 10 )
+
 [node name="FleshHitAudio" parent="." index="8"]
+stream = ExtResource( 11 )
 unit_db = 2.0
 unit_size = 2.0
-max_db = -10.0
+max_db = -11.0
 
 [node name="WorldHitAudio" parent="." index="9"]
-unit_db = 1.0
+stream = ExtResource( 12 )
+unit_db = 2.0
 unit_size = 2.0
-max_db = -3.0
+max_db = -5.0
 
 [editable path="MeshLocation/Mesh"]
