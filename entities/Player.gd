@@ -60,6 +60,7 @@ func initialise():
 	call_deferred("switch_to_next_weapon")
 # warning-ignore:return_value_discarded
 	connect("hurt", self, "_on_player_hurt")
+	WeaponUnlocks.connect("unlocked_weapon", self, "_on_weapon_unlock")
 	rng.randomize()
 
 func connect_ui():
@@ -226,3 +227,6 @@ func _on_player_hurt(_val):
 func _on_Player_dead():
 	is_dead = true
 	animation_player.play("Death")
+
+func _on_weapon_unlock(weapon_key: String):
+	print(weapon_key)

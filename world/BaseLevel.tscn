@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://world/World.gd" type="Script" id=1]
-[ext_resource path="res://materials/Grid.tres" type="Material" id=2]
 [ext_resource path="res://world/components/Skybox.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Spatial"]
@@ -16,14 +15,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807961, 0 )
 
 [node name="Statics" type="Node" parent="Navigation/NavigationMeshInstance"]
 
-[node name="CSGCombiner" type="CSGCombiner" parent="Navigation/NavigationMeshInstance/Statics"]
-material_override = ExtResource( 2 )
-
-[node name="CSGBox" type="CSGBox" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner"]
-width = 8.0
-depth = 8.0
-
 [node name="Skybox" parent="Navigation/NavigationMeshInstance/Statics" instance=ExtResource( 3 )]
+
+[node name="Props" type="Node" parent="."]
 
 [node name="Entities" type="Node" parent="."]
 
