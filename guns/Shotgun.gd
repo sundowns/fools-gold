@@ -1,13 +1,14 @@
 extends Gun
 
 export var num_pellets: int = 8
-export var spread_range: float = 60
+export var spread_range: float = 70
 
 onready var hit_particle_scene: PackedScene = preload("res://effects/BulletHitEffect.tscn")
 onready var blood_hit_particle_scene: PackedScene = preload("res://effects/FleshyBulletHitEffect.tscn")
+onready var rng = RandomNumberGenerator.new()
 
 func shoot(aim_cast: RayCast, camera_origin: Vector3):
-	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	if current_ammo <= 0:
 		handle_no_ammo()
 		return
