@@ -92,6 +92,7 @@ Global="*res://shared/global.gd"
 
 window/size/width=1280
 window/size/height=720
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [input]
@@ -162,6 +163,7 @@ weapon_3={
 3d_physics/layer_3="Interactable"
 3d_render/layer_4="Effects"
 3d_physics/layer_4="EntityHitbox"
+3d_physics/layer_5="Enemy"
 
 [rendering]
 
