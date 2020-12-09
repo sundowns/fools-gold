@@ -14,5 +14,5 @@ func _on_Timer_timeout():
 func _on_ShotgunShell_body_entered(_body):
 	if has_cligged:
 		return
-	print('clig')
+	$DropAudio.play()
 	has_cligged = true
