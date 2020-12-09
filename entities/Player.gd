@@ -35,11 +35,7 @@ var is_switching_weapons := false
 var next_weapon_index := 1
 var rng = RandomNumberGenerator.new()
 
-onready var weapon_list = {
-	1: $Head/Hand/Revolver,
-	2: $Head/Hand/Shotgun,
-	3: $Head/Hand/DualRevolvers
-}
+onready var weapon_list: Dictionary = {}
 
 signal ammo_changed(new_ammo)
 
@@ -54,10 +50,12 @@ func _input(event):
 func initialise():
 	Global.player_node = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	active_weapon = weapon_list.get(1)
 	call_deferred("connect_ui")
-	for weapon in weapon_list.values():
-		weapon.initialise()
+	for unlocked_weapon in WeaponUnlocks.unlocks.keys():
+		if WeaponUnlocks.unlocks[unlocked_weapon]:
+			_on_weapon_unlock(unlocked_weapon)
+	if weapon_list.size() > 0:
+		active_weapon = weapon_list.get(1)
 	call_deferred("switch_to_next_weapon")
 # warning-ignore:return_value_discarded
 	connect("hurt", self, "_on_player_hurt")
@@ -72,13 +70,20 @@ func connect_ui():
 	connect("ammo_changed", ui_node, "_on_player_ammo_updated")
 # warning-ignore:return_value_discarded
 	connect("hurt", ui_node, "_on_player_health_updated")
-	call_deferred("_on_gun_reload", active_weapon.current_ammo)
+	if active_weapon:
+		call_deferred("_on_gun_reload", active_weapon.current_ammo)
+	else:
+		call_deferred("_on_gun_reload", 0)
 	
 func _process(delta):
+	if is_dead:
+		return
 	handle_viewport_lean(delta)
 	handle_weapon_sway(delta)
 
 func _physics_process(_delta):
+	if is_dead:
+		return
 	handle_weapon_switch()
 	handle_shooting()
 	handle_interaction()
@@ -179,12 +184,13 @@ func handle_viewport_lean(delta):
 func handle_weapon_switch():
 	if active_weapon and active_weapon.is_reloading:
 		return
-	for i in range(1,4):
+	for i in range(1,3):
 		if Input.is_action_just_pressed("weapon_%d" % i):
 			begin_weapon_switch(i)
 
 func begin_weapon_switch(weapon_index: int):
-	assert(weapon_list.has(weapon_index), "No weapon at weapon index %d" % weapon_index)
+	if not weapon_list.has(weapon_index):
+		return
 	if weapon_list[weapon_index] == active_weapon:
 		return
 	is_switching_weapons = true
@@ -232,8 +238,18 @@ func _on_Player_dead():
 func _on_weapon_unlock(weapon_key: String):
 	match weapon_key:
 		"revolver":
-			print('volvy')
+			pickup_weapon($Head/Hand/Revolver, 1)
 		"shotgun":
-			print('shid')
+			pickup_weapon($Head/Hand/Shotgun, 2)
 		"dual_revolvers":
-			print("dubby")
+			upgrade_revolvers()
+
+func pickup_weapon(weapon: Gun, weapon_list_key: int):
+	weapon_list[weapon_list_key] = weapon
+	weapon_list[weapon_list_key].initialise()
+#	if not is_level_start:
+	begin_weapon_switch(weapon_list_key)
+
+func upgrade_revolvers():
+	# TODO: replace revolver in weapon list
+	pickup_weapon($Head/Hand/DualRevolvers, 1)
