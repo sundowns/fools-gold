@@ -45,10 +45,25 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "pump"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Pump"
 length = 0.8
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("MeshLocation/Mesh:rotation_degrees")
 tracks/0/interp = 2
@@ -86,6 +101,18 @@ tracks/2/keys = {
 "args": [  ],
 "method": "reload_finished"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:is_pumped")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -208,7 +235,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, -1.5 )
 visible = false
 
 [node name="Mesh" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( -6.51683e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -6.51683e-09, -0.0300543, 0.104169, 0 )
+transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
 
 [node name="FireAudio" parent="." index="3"]
 stream = ExtResource( 4 )
