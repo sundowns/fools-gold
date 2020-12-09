@@ -11,6 +11,7 @@ transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0
 collision_layer = 0
 mass = 0.5
 gravity_scale = 1.5
+continuous_cd = true
 contacts_reported = 1
 contact_monitor = true
 angular_velocity = Vector3( 15, 0, 0 )
