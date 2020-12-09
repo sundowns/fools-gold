@@ -17,4 +17,5 @@ layers = 4
 material/0 = SubResource( 1 )
 
 [node name="Cylinder" parent="." index="1"]
+layers = 4
 material/0 = SubResource( 2 )

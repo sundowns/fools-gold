@@ -7,7 +7,23 @@
 weapon_key = "dual_revolvers"
 
 [node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -0.7 )
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, -0.7 )
+
+[node name="Revolver" parent="MeshLocation/revolver" index="0"]
+layers = 1
+
+[node name="Cylinder" parent="MeshLocation/revolver" index="1"]
+layers = 1
 
 [node name="revolver2" parent="MeshLocation" index="1" instance=ExtResource( 2 )]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.7 )
+transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.7 )
+
+[node name="Revolver" parent="MeshLocation/revolver2" index="0"]
+layers = 1
+
+[node name="Cylinder" parent="MeshLocation/revolver2" index="1"]
+layers = 1
+
+[editable path="MeshLocation/revolver"]
+
+[editable path="MeshLocation/revolver2"]

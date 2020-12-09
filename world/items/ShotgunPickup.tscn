@@ -7,4 +7,12 @@
 weapon_key = "shotgun"
 
 [node name="shotgun" parent="MeshLocation" index="0" instance=ExtResource( 2 )]
-transform = Transform( -0.1, 0, -3.25841e-08, 0, 0.1, 0, 3.25841e-08, 0, -0.1, 0, 0, 0 )
+transform = Transform( -0.07, 0, -2.7259e-08, 0, 0.07, 0, 2.7259e-08, 0, -0.07, 0, 0.46618, 0 )
+
+[node name="Shotgun" parent="MeshLocation/shotgun" index="0"]
+layers = 1
+
+[node name="Cylinder" parent="MeshLocation/shotgun" index="1"]
+layers = 1
+
+[editable path="MeshLocation/shotgun"]
