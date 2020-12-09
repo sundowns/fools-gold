@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://audio/player/Grunt 3.wav" type="AudioStream" id=18]
 [ext_resource path="res://audio/player/Grunt 1.wav" type="AudioStream" id=19]
 [ext_resource path="res://ui/damageoverlay.png" type="Texture" id=20]
+[ext_resource path="res://guns/DualRevolvers.tscn" type="PackedScene" id=21]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -200,6 +201,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.224315 )
 
 [node name="Shotgun" parent="Head/Hand" instance=ExtResource( 13 )]
 
+[node name="DualRevolvers" parent="Head/Hand" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.224 )
+
 [node name="HandLocation" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445, -0.677 )
 
@@ -275,5 +279,6 @@ stream = ExtResource( 18 )
 [connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]
 [connection signal="reloaded" from="Head/Hand/Revolver" to="." method="_on_gun_reload"]
 [connection signal="reloaded" from="Head/Hand/Shotgun" to="." method="_on_gun_reload"]
+[connection signal="reloaded" from="Head/Hand/DualRevolvers" to="." method="_on_gun_reload"]
 
 [editable path="GroundCheck"]

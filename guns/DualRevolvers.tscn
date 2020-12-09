@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://guns/DualRevolvers.gd" type="Script" id=2]
+[ext_resource path="res://models/revolver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://effects/MuzzleFlash.tscn" type="PackedScene" id=4]
+[ext_resource path="res://animations/revolver_reload.tres" type="Animation" id=5]
+[ext_resource path="res://animations/revolver_fire.tres" type="Animation" id=6]
+
+[node name="DualRevolvers" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+cooldown = 0.25
+damage = 30.0
+knockback_magnitude = 7.0
+ammo_per_reload = 12
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/Fire = ExtResource( 6 )
+anims/Reload = ExtResource( 5 )
+
+[node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 3 )]
+transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
+
+[node name="MuzzleFlash" parent="MeshLocation/revolver" index="3" instance=ExtResource( 4 )]
+transform = Transform( -7.24092e-07, 0, 4.44444, 0, 4.44444, 0, -4.44444, 0, -7.24092e-07, -14.671, 5.77869, 2.3902e-06 )
+visible = false
+
+[node name="revolver2" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
+transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, -0.8, 0, 0 )
+
+[node name="MuzzleFlash" parent="MeshLocation/revolver2" index="3" instance=ExtResource( 4 )]
+transform = Transform( -7.2402e-07, 0, 4.444, 0, 4.444, 0, -4.444, 0, -7.2402e-07, -14.671, 5.779, 0 )
+visible = false

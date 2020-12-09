@@ -1,0 +1,51 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "Fire"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshLocation:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.024, -0.027, 0.2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshLocation:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 27, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("MeshLocation/revolver/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "RotateChamber" ),
+"times": PoolRealArray( 0.2 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshLocation/MuzzleFlash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0204635, 0.0836035 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}

@@ -37,7 +37,8 @@ var rng = RandomNumberGenerator.new()
 
 onready var weapon_list = {
 	1: $Head/Hand/Revolver,
-	2: $Head/Hand/Shotgun
+	2: $Head/Hand/Shotgun,
+	3: $Head/Hand/DualRevolvers
 }
 
 signal ammo_changed(new_ammo)
@@ -178,7 +179,7 @@ func handle_viewport_lean(delta):
 func handle_weapon_switch():
 	if active_weapon and active_weapon.is_reloading:
 		return
-	for i in range(1,3):
+	for i in range(1,4):
 		if Input.is_action_just_pressed("weapon_%d" % i):
 			begin_weapon_switch(i)
 
@@ -229,4 +230,10 @@ func _on_Player_dead():
 	animation_player.play("Death")
 
 func _on_weapon_unlock(weapon_key: String):
-	print(weapon_key)
+	match weapon_key:
+		"revolver":
+			print('volvy')
+		"shotgun":
+			print('shid')
+		"dual_revolvers":
+			print("dubby")

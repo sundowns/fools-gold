@@ -3,7 +3,7 @@ extends Node
 var unlocks: Dictionary = {
 	"revolver": true,
 	"shotgun": false,
-	"dual_revolvers": true
+	"dual_revolvers": false
 }
 
 signal unlocked_weapon(weapon_key)
