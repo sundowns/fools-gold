@@ -49,7 +49,6 @@ func spawn_hit_particles(position: Vector3, use_bloody_effect: bool, is_headshot
 	Global.world_node.add_effect(new_hit_particles)
 	new_hit_particles.global_transform.origin = position
 	
-	remove_child(new_hit_sound)
 	new_hit_particles.add_child(new_hit_sound)
 	new_hit_sound.global_transform.origin = position
 	new_hit_sound.play()
