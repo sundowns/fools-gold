@@ -37,12 +37,15 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 				
 			var contact_position: Vector3 = pellet_cast.get_collision_point()
 			var entity_hit = pellet_cast.get_collider()
+			var knockback_force = calculate_knockback(camera_origin, contact_position)
 			if entity_hit is EntityHitbox:
 				var owning_entity = entity_hit.owning_entity
-				owning_entity.on_gun_hit(damage, calculate_knockback(camera_origin, contact_position), entity_hit.is_headshot)
+				owning_entity.on_gun_hit(damage, knockback_force, entity_hit.is_headshot)
 				spawn_hit_particles(contact_position, true)
 			else:
-				spawn_hit_particles(contact_position, false)	
+				spawn_hit_particles(contact_position, false)
+				if entity_hit is Prop:
+					entity_hit.apply_impulse(entity_hit.to_local(contact_position), knockback_force)
 			pellet_cast.queue_free()
 	
 		.gun_fired()

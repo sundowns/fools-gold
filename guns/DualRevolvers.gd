@@ -15,15 +15,18 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 	
 	var contact_position: Vector3 = aim_cast.get_collision_point()
 	var entity_hit = aim_cast.get_collider()
+	var knockback_force = calculate_knockback(camera_origin, contact_position)
 	if entity_hit is EntityHitbox:
 		var owning_entity = entity_hit.owning_entity
 		var real_damage = damage
 		if entity_hit.is_headshot:
 			real_damage = real_damage * headshot_damage_modifier
-		owning_entity.on_gun_hit(real_damage, calculate_knockback(camera_origin, contact_position), entity_hit.is_headshot)
+		owning_entity.on_gun_hit(real_damage, knockback_force, entity_hit.is_headshot)
 		spawn_hit_particles(contact_position, true, entity_hit.is_headshot)
 	else:
 		spawn_hit_particles(contact_position, false)
+		if entity_hit is Prop:
+			entity_hit.apply_impulse(entity_hit.to_local(contact_position), knockback_force)
 	.gun_fired()
 
 func handle_no_ammo():
