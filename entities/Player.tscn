@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://guns/Shotgun.tscn" type="PackedScene" id=13]
 [ext_resource path="res://audio/player/jump.wav" type="AudioStream" id=14]
 [ext_resource path="res://audio/player/land.wav" type="AudioStream" id=15]
+[ext_resource path="res://audio/ScaledAudio.tscn" type="PackedScene" id=16]
+[ext_resource path="res://audio/player/Grunt 2.wav" type="AudioStream" id=17]
+[ext_resource path="res://audio/player/Grunt 3.wav" type="AudioStream" id=18]
+[ext_resource path="res://audio/player/Grunt 1.wav" type="AudioStream" id=19]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -151,6 +155,17 @@ max_db = -2.0
 [node name="LandingAudio" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 15 )
 max_db = -4.0
+
+[node name="HurtAudio" type="Node" parent="."]
+
+[node name="Hurt1" parent="HurtAudio" instance=ExtResource( 16 )]
+stream = ExtResource( 19 )
+
+[node name="Hurt2" parent="HurtAudio" instance=ExtResource( 16 )]
+stream = ExtResource( 17 )
+
+[node name="Hurt3" parent="HurtAudio" instance=ExtResource( 16 )]
+stream = ExtResource( 18 )
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]

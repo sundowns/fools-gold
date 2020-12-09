@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Grunt 3.wav-be9fd54b1c261c5d31abfe28108e95a9.sample"
+
+[deps]
+
+source_file="res://audio/player/Grunt 3.wav"
+dest_files=[ "res://.import/Grunt 3.wav-be9fd54b1c261c5d31abfe28108e95a9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -32,6 +32,7 @@ var active_weapon: Gun = null
 var sensitivity_multipler: float = 1
 var is_switching_weapons := false
 var next_weapon_index := 1
+var rng = RandomNumberGenerator.new()
 
 onready var weapon_list = {
 	1: $Head/Hand/Revolver,
@@ -54,6 +55,9 @@ func initialise():
 	for weapon in weapon_list.values():
 		weapon.initialise()
 	call_deferred("switch_to_next_weapon")
+# warning-ignore:return_value_discarded
+	connect("hurt", self, "_on_player_hurt")
+	rng.randomize()
 
 func connect_ui():
 	var ui_node = get_tree().current_scene.find_node("HUD", true, false)
@@ -210,3 +214,8 @@ func hit_by_bandit(damage: float, knockback: Vector3):
 
 func _on_gun_reload(new_ammo_count):
 	emit_signal("ammo_changed", new_ammo_count)
+	
+func _on_player_hurt(_val):
+	var n = rng.randi_range(0, $HurtAudio.get_child_count() -1)
+	$HurtAudio.get_child(n).play()
+		
