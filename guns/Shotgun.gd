@@ -82,3 +82,12 @@ func spawn_shell():
 	var new_shell = shell_scene.instance()
 	Global.world_node.add_effect(new_shell)
 	new_shell.global_transform.origin = shell_spawn_location.global_transform.origin
+
+func holster():
+	if animation_player.current_animation == "Pump":
+		animation_player.seek(0.0, true)
+		animation_player.stop()
+	is_holstered = true
+	animation_player.play("Holster")
+
+
