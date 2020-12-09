@@ -14,48 +14,24 @@
 resource_name = "Fire"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("MeshLocation/Mesh:rotation_degrees")
+tracks/0/path = NodePath("MeshLocation/MuzzleFlash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 90, 0 ), Vector3( -2.68195e-06, 90, 16.697 ), Vector3( 0, 90, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeshLocation/Mesh:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -0.0300543, 0.104169, 0 ), Vector3( -0.0300543, 0.104169, 0.563336 ), Vector3( -0.0300543, 0.104169, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("MeshLocation/MuzzleFlash:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.00480985, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -63,17 +39,41 @@ tracks/3/keys = {
 "method": "pump"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shell:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshLocation:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.03, 0.104, 0 ), Vector3( -0.03, 0.104, 0.563 ), Vector3( -0.03, 0.104, 0 ) ]
+}
 tracks/4/type = "value"
-tracks/4/path = NodePath("Shell:visible")
+tracks/4/path = NodePath("MeshLocation:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 16.697, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -339,6 +339,7 @@ tracks/3/keys = {
 }
 
 [node name="Shotgun" instance=ExtResource( 1 )]
+visible = true
 script = ExtResource( 2 )
 damage = 8.0
 knockback_magnitude = 1.4
@@ -350,12 +351,15 @@ anims/Reload = SubResource( 3 )
 "anims/Reload Finished" = SubResource( 4 )
 "anims/Reload One" = SubResource( 5 )
 
+[node name="MeshLocation" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.104, 0 )
+
 [node name="MuzzleFlash" parent="MeshLocation" index="0" instance=ExtResource( 5 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, -1.5 )
 visible = false
 
 [node name="Mesh" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( -1.72106e-09, 3.08311e-10, 0.04, 0.00705333, 0.0393732, 0, -0.0393732, 0.00705332, -1.74846e-09, -0.0300433, 0.13401, -0.0203125 )
+transform = Transform( -1.74845e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
 
 [node name="Cylinder" parent="MeshLocation/Mesh" index="1"]
 transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 16.828, -6.3042, 0.0789626 )
