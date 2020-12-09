@@ -28,6 +28,10 @@ func activate():
 	if intermittently_spawn:
 		spawn_timer.start(spawn_interval)
 
+func deactivate():
+	is_active = false
+	spawn_timer.stop()
+
 func spawn():
 	if not is_active:
 		return
