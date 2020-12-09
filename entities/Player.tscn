@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=11]
 [ext_resource path="res://audio/player/footstep.wav" type="AudioStream" id=12]
 [ext_resource path="res://guns/Shotgun.tscn" type="PackedScene" id=13]
+[ext_resource path="res://audio/player/jump.wav" type="AudioStream" id=14]
+[ext_resource path="res://audio/player/land.wav" type="AudioStream" id=15]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -139,8 +141,16 @@ camera_path = NodePath("../../../Head/Camera")
 
 [node name="FootstepAudio" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 12 )
-unit_db = -9.598
+unit_db = 1.0
 max_db = 1.0
+
+[node name="JumpAudio" parent="." instance=ExtResource( 11 )]
+stream = ExtResource( 14 )
+max_db = -2.0
+
+[node name="LandingAudio" parent="." instance=ExtResource( 11 )]
+stream = ExtResource( 15 )
+max_db = -4.0
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]

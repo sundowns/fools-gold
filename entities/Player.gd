@@ -8,6 +8,7 @@ onready var hand_location: Spatial = $Head/HandLocation
 onready var aim_cast: RayCast = $Head/Camera/AimCast
 onready var interact_cast: RayCast = $Head/Camera/InteractCast
 onready var state_machine: StateMachine = $MovementStateMachine
+onready var landing_audio: AudioStreamPlayer3D = $LandingAudio
 
 # Player movement values
 export var ground_speed: float = 10
@@ -128,6 +129,7 @@ func handle_weapon_sway(delta):
 func handle_jump():
 	if Input.is_action_pressed("jump"):
 		if is_on_floor() or ground_check.is_grounded():
+			$JumpAudio.play()
 			jump()
 
 func handle_shooting():
