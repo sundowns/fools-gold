@@ -330,12 +330,13 @@ visible = false
 transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
 
 [node name="Cylinder" parent="MeshLocation/Mesh" index="1"]
-transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 16.7962, -6.29901, 0.0789626 )
+transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 13.8282, -5.81542, 0.0789624 )
 
 [node name="ShellSpawnLocation" type="Position3D" parent="MeshLocation" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976102, 0.094408, -0.125633 )
 
 [node name="FireAudio" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143429, -0.0355088, -0.143536 )
 stream = ExtResource( 4 )
 
 [node name="PumpAudio" parent="." index="4" instance=ExtResource( 6 )]

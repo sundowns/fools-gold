@@ -6,8 +6,12 @@ export var is_pumped = true
 
 onready var hit_particle_scene: PackedScene = preload("res://effects/BulletHitEffect.tscn")
 onready var blood_hit_particle_scene: PackedScene = preload("res://effects/FleshyBulletHitEffect.tscn")
+onready var shell_scene: PackedScene = preload("res://guns/ShotgunShell.tscn")
+onready var shell_spawn_location: Position3D = $MeshLocation/ShellSpawnLocation
 onready var rng = RandomNumberGenerator.new()
 
+func _ready():
+	$Shell.visible = false
 
 func shoot(aim_cast: RayCast, camera_origin: Vector3):
 	if !is_pumped:
@@ -60,7 +64,6 @@ func reload_finished():
 	
 func pump():
 	animation_player.play("Pump")
-
 	
 func calculate_knockback(from: Vector3, to: Vector3) -> Vector3:
 	return (to - from).normalized() * knockback_magnitude
@@ -76,4 +79,6 @@ func spawn_hit_particles(position: Vector3, use_bloody_effect: bool):
 	new_hit_particles.global_transform.origin = position
 
 func spawn_shell():
-	pass
+	var new_shell = shell_scene.instance()
+	Global.world_node.add_effect(new_shell)
+	new_shell.global_transform.origin = shell_spawn_location.global_transform.origin
