@@ -41,6 +41,20 @@ func handle_no_ammo():
 	# TODO: play clicking/no ammo sound
 	.start_reload()
 	
+func reload_one():
+	current_ammo += 1
+	if current_ammo == ammo_per_reload:
+		animation_player.play("Reload Finished")
+	else:
+		animation_player.play("Reload One")
+	emit_signal("reloaded", current_ammo)
+	
+func reload_finished():
+	is_reloading = false
+	
+func pump():
+	animation_player.play("Pump")
+	
 func calculate_knockback(from: Vector3, to: Vector3) -> Vector3:
 	return (to - from).normalized() * knockback_magnitude
 
