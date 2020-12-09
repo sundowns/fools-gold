@@ -1,12 +1,13 @@
 extends Gun
 
 export var num_pellets: int = 8
-export var spread_range: float = 100
+export var spread_range: float = 60
 
 onready var hit_particle_scene: PackedScene = preload("res://effects/BulletHitEffect.tscn")
 onready var blood_hit_particle_scene: PackedScene = preload("res://effects/FleshyBulletHitEffect.tscn")
 
 func shoot(aim_cast: RayCast, camera_origin: Vector3):
+	var rng = RandomNumberGenerator.new()
 	if current_ammo <= 0:
 		handle_no_ammo()
 		return
@@ -18,8 +19,8 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		Global.player_node.camera.add_child(pellet_cast)
 		pellet_cast.global_transform.origin = aim_cast.global_transform.origin
 
-		var spread_x = rand_range(-spread_range, spread_range)
-		var spread_y = rand_range(-spread_range, spread_range)
+		var spread_x = rng.randfn(0, spread_range)
+		var spread_y = rng.randfn(0, spread_range)
 		pellet_cast.cast_to = aim_cast.cast_to + Vector3(spread_x, spread_y, 0)
 		pellet_cast.force_raycast_update()
 				
@@ -34,12 +35,11 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		pellet_cast.queue_free()
 	
 	.gun_fired()
-	# TODO: shoot a bunch of slightly randomised raycasts out (8 pellets?)
 
 func handle_no_ammo():
 	# TODO: play clicking/no ammo sound
 	.start_reload()
-
+	
 func calculate_knockback(from: Vector3, to: Vector3) -> Vector3:
 	return (to - from).normalized() * knockback_magnitude
 
