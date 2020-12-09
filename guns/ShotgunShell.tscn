@@ -11,6 +11,8 @@ transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0
 collision_layer = 0
 mass = 0.5
 gravity_scale = 1.5
+contacts_reported = 1
+contact_monitor = true
 angular_velocity = Vector3( 15, 0, 0 )
 script = ExtResource( 2 )
 impulse_magnitude = 3.0
@@ -26,6 +28,7 @@ shape = SubResource( 1 )
 process_mode = 0
 wait_time = 5.0
 autostart = true
+[connection signal="body_entered" from="." to="." method="_on_ShotgunShell_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="shotgun shell"]
