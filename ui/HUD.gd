@@ -16,6 +16,6 @@ func _on_player_ammo_updated(new_value: int):
 	ammo_label.text = "Ammo: %d" % new_value
 	
 func _on_player_health_updated(new_value: int):
-	health_label.text = "Health: %d / 100" % new_value
+	health_label.text = "Health: %d%%" % new_value
 	#nice and hardcoded max health fuck you
 	
