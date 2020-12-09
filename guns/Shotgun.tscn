@@ -215,13 +215,13 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Shell:translation")
-tracks/4/interp = 1
+tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0.3, 0.35, 0.55, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1 ),
 "update": 0,
 "values": [ Vector3( -0.853, -0.1, 0 ), Vector3( -0.55, 0.05, 0 ), Vector3( -0.24, 0.08, 0 ), Vector3( -0.18, -0.1, 0 ) ]
 }
@@ -313,13 +313,13 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Shell:translation")
-tracks/2/interp = 1
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.05, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1 ),
 "update": 0,
 "values": [ Vector3( -0.853, -0.1, 0 ), Vector3( -0.5, 0.05, 0 ), Vector3( -0.24, 0.08, 0 ), Vector3( -0.18, -0.1, 0 ) ]
 }
@@ -356,7 +356,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, -1.5 )
 visible = false
 
 [node name="Mesh" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.000263134, 0.0395442, 0.00601535, -0.00347296, 0.00601535, -0.0393923, -0.0398481, -0.000263139, 0.00347296, -0.1, -0.2, -0.3 )
+transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
 
 [node name="Cylinder" parent="MeshLocation/Mesh" index="1"]
 transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 16.828, -6.3042, 0.0789626 )
@@ -371,10 +371,11 @@ stream = ExtResource( 4 )
 [node name="PumpAudio" parent="." index="4" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )
 unit_db = -1.0
-pitch_scale = 0.9
+pitch_scale = 0.85
 
 [node name="Shell" parent="." index="5" instance=ExtResource( 8 )]
-transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.395, 0.065, 0 )
+transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.18, -0.1, 0 )
+visible = false
 
 [node name="LoadAudio" parent="." index="6" instance=ExtResource( 6 )]
 stream = ExtResource( 9 )

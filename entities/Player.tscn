@@ -139,7 +139,7 @@ camera_path = NodePath("../../../Head/Camera")
 
 [node name="FootstepAudio" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 12 )
-unit_db = -3.0
+unit_db = -9.598
 max_db = 1.0
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
