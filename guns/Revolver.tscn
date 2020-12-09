@@ -142,6 +142,7 @@ volume_db = -3.0
 
 [node name="HolsterAudio" parent="." index="4"]
 stream = ExtResource( 8 )
+volume_db = -10.0
 
 [node name="FleshHitAudio" parent="." index="5"]
 unit_db = 3.0

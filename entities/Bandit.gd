@@ -37,6 +37,9 @@ func swing_at_the_cunt():
 	action_animation_player.play("Attack")
 	can_attack = false
 	attack_cooldown.start()
+	
+	var n = rng.randi_range(0, $AttackSounds.get_child_count() -1)
+	$AttackSounds.get_child(n).play()
 
 func _on_AttackHitbox_body_entered(body):
 	var knockback_direction = (Global.player_node.global_transform.origin - global_transform.origin).normalized()
