@@ -88,10 +88,8 @@ script = ExtResource( 1 )
 
 [node name="Revolver" parent="Head/Hand" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.224315 )
-visible = true
 
 [node name="Shotgun" parent="Head/Hand" instance=ExtResource( 13 )]
-visible = true
 
 [node name="HandLocation" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445, -0.677 )

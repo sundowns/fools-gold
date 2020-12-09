@@ -29,6 +29,7 @@ func initialise():
 	connect("gun_holstered", Global.player_node, "_on_gun_holstered")
 # warning-ignore:return_value_discarded
 	connect("gun_unholstered", Global.player_node, "_on_gun_unholstered")
+	call_deferred("holster")
 
 func gun_fired():
 	animation_player.play("Fire")

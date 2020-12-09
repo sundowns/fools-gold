@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://guns/Shotgun.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://effects/MuzzleFlash.tscn" type="PackedScene" id=5]
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/gun/shotgun_pump.wav" type="AudioStream" id=7]
+[ext_resource path="res://models/shotgun shell.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fire"
@@ -42,10 +43,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.00480985, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true, false ]
 }
 tracks/3/type = "method"
 tracks/3/path = NodePath(".")
@@ -60,6 +61,18 @@ tracks/3/keys = {
 "args": [  ],
 "method": "pump"
 } ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Shell:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -97,9 +110,12 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "spawn_shell"
+}, {
 "args": [  ],
 "method": "reload_finished"
 } ]
@@ -130,9 +146,22 @@ tracks/4/keys = {
 "method": "play"
 } ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("MeshLocation/Mesh/Cylinder:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 16.828, -6.3042, 0.0789626 ), Vector3( 13.8282, -5.81542, 0.0789624 ), Vector3( 16.828, -6.3042, 0.0789626 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("MeshLocation/Mesh:rotation_degrees")
 tracks/0/interp = 1
@@ -140,7 +169,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.9, 1.2 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 90, 0 ), Vector3( 80, 60, -30 ), Vector3( 80, 60, -30 ), Vector3( 0, 90, 0 ) ]
@@ -152,10 +181,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.9, 1.2 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.0300543, 0.104169, 0 ), Vector3( -0.1, -0.2, 0 ), Vector3( -0.1, -0.2, 0 ), Vector3( -0.0300543, 0.104169, 0 ) ]
+"values": [ Vector3( -0.0300543, 0.104169, 0 ), Vector3( -0.1, -0.2, -0.3 ), Vector3( -0.1, -0.2, -0.3 ), Vector3( -0.0300543, 0.104169, 0 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -170,6 +199,30 @@ tracks/2/keys = {
 "args": [  ],
 "method": "reload_one"
 } ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Shell:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3, 0.55, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Shell:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 0.35, 0.55, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.853, -0.1, 0 ), Vector3( -0.55, 0.05, 0 ), Vector3( -0.24, 0.08, 0 ), Vector3( -0.18, -0.1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -197,7 +250,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.1, -0.2, 0 ), Vector3( -0.0300543, 0.104169, 0 ) ]
+"values": [ Vector3( -0.1, -0.2, -0.3 ), Vector3( -0.03, 0.104, -0.3 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -215,7 +268,8 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-length = 0.2
+length = 0.3
+step = 0.05
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -223,12 +277,36 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "reload_one"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shell:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shell:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.853, -0.1, 0 ), Vector3( -0.5, 0.05, 0 ), Vector3( -0.24, 0.08, 0 ), Vector3( -0.18, -0.1, 0 ) ]
 }
 
 [node name="Shotgun" instance=ExtResource( 1 )]
@@ -249,10 +327,13 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, -1.5 )
 visible = false
 
 [node name="Mesh" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( -6.51683e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -6.51683e-09, -0.0300543, 0.104169, 0 )
+transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
+
+[node name="Cylinder" parent="MeshLocation/Mesh" index="1"]
+transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 16.7962, -6.29901, 0.0789626 )
 
 [node name="ShellSpawnLocation" type="Position3D" parent="MeshLocation" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0719128, 0, -0.125633 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976102, 0.094408, -0.125633 )
 
 [node name="FireAudio" parent="." index="3"]
 stream = ExtResource( 4 )
@@ -261,3 +342,9 @@ stream = ExtResource( 4 )
 stream = ExtResource( 7 )
 unit_db = -1.0
 pitch_scale = 0.9
+
+[node name="Shell" parent="." index="5" instance=ExtResource( 8 )]
+transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.853, -0.1, 0 )
+visible = false
+
+[editable path="MeshLocation/Mesh"]

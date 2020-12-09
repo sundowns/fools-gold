@@ -108,11 +108,14 @@ knockback_magnitude = 7.0
 anims/Fire = SubResource( 1 )
 anims/Reload = SubResource( 2 )
 
+[node name="MeshLocation" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 0.970983, -0.239147, 0, 0.239147, 0.970983, 0.0122988, -0.0138362, 0.10249 )
+
 [node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 4 )]
 transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
 
 [node name="Cylinder" parent="MeshLocation/revolver" index="1"]
-transform = Transform( -7.81972e-08, 1.78895, 0, -1.36619, -5.97184e-08, -1.15492, -1.15492, -5.04832e-08, 1.36619, 4.0172, 4.30901, 0 )
+transform = Transform( -7.81972e-08, 1.78895, 0, -0.894471, -3.90987e-08, -1.54927, -1.54927, -6.7721e-08, 0.894471, 4.0172, 4.30901, 0 )
 
 [node name="MuzzleFlash" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.260041, -0.660193 )
