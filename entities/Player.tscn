@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -19,9 +19,90 @@
 [ext_resource path="res://audio/player/Grunt 2.wav" type="AudioStream" id=17]
 [ext_resource path="res://audio/player/Grunt 3.wav" type="AudioStream" id=18]
 [ext_resource path="res://audio/player/Grunt 1.wav" type="AudioStream" id=19]
+[ext_resource path="res://ui/damageoverlay.png" type="Texture" id=20]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ViewportContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Head/Camera:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -1.963, 0 ), Vector3( 0, -1.6, 0 ), Vector3( 0, -1.9, 0 ), Vector3( 0, -1.8, 0 ), Vector3( 0, -1.9, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head/Camera:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -70 ), Vector3( 0, 0, -55 ), Vector3( 0, 0, -80 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head/Camera/DeathOverlay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.772549, 0, 0, 0 ), Color( 0.772549, 0, 0, 0.388235 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hurt"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Head/Camera/OnDamageOverlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0498531, 0.2 ),
+"transitions": PoolRealArray( 1, 1.62451, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Player" type="KinematicBody" groups=[
 "Player",
@@ -66,6 +147,10 @@ wait_time = 0.2
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Death = SubResource( 2 )
+anims/Hurt = SubResource( 3 )
+
 [node name="Head" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0 )
 
@@ -87,6 +172,24 @@ cast_to = Vector3( 0, 0, -5 )
 collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="DeathOverlay" type="ColorRect" parent="Head/Camera"]
+modulate = Color( 0.772549, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnDamageOverlay" type="TextureRect" parent="Head/Camera"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Hand" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445279, -0.677 )
@@ -166,6 +269,7 @@ stream = ExtResource( 17 )
 
 [node name="Hurt3" parent="HurtAudio" instance=ExtResource( 16 )]
 stream = ExtResource( 18 )
+[connection signal="dead" from="." to="." method="_on_Player_dead"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]

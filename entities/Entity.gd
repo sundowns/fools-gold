@@ -16,6 +16,7 @@ onready var health = max_health
 var gravity_vector := Vector3.ZERO
 var velocity := Vector3.ZERO
 var knockback := Vector3.ZERO
+var is_dead := false
 
 
 signal hurt(new_health)
@@ -51,6 +52,8 @@ func handle_ceiling_bonk():
 		gravity_vector.y = 0
 
 func update_health(delta: float):
+	if is_dead:
+		return
 	health += delta
 	if delta < 0:
 		emit_signal("hurt", health)

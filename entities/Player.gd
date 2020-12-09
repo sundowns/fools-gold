@@ -9,6 +9,7 @@ onready var aim_cast: RayCast = $Head/Camera/AimCast
 onready var interact_cast: RayCast = $Head/Camera/InteractCast
 onready var state_machine: StateMachine = $MovementStateMachine
 onready var landing_audio: AudioStreamPlayer3D = $LandingAudio
+onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Player movement values
 export var ground_speed: float = 10
@@ -42,6 +43,8 @@ onready var weapon_list = {
 signal ammo_changed(new_ammo)
 
 func _input(event):
+	if is_dead:
+		return
 	if event is InputEventMouseMotion:
 		rotate_y(deg2rad(-event.relative.x * Global.mouse_sensitivity))
 		head.rotate_x(deg2rad(-event.relative.y * Global.mouse_sensitivity))
@@ -166,9 +169,10 @@ func handle_viewport_lean(delta):
 		strafe_viewport_rotation -= strafe_viewport_rotation_speed * delta
 	elif strafe_viewport_rotation != 0:
 		strafe_viewport_rotation = strafe_viewport_rotation * 0.975 * delta
-
+	
 	strafe_viewport_rotation = clamp(strafe_viewport_rotation, -max_strafe_viewport_rotation, max_strafe_viewport_rotation)
-	camera.rotation.z = strafe_viewport_rotation
+	if not is_dead:
+		camera.rotation.z = strafe_viewport_rotation
 
 func handle_weapon_switch():
 	if active_weapon and active_weapon.is_reloading:
@@ -197,7 +201,6 @@ func switch_to_next_weapon():
 	active_weapon.unholster()
 	emit_signal("ammo_changed", active_weapon.current_ammo)
 
-
 func _on_gun_holstered():
 	if weapon_list.has(next_weapon_index):
 		switch_to_next_weapon()
@@ -216,6 +219,10 @@ func _on_gun_reload(new_ammo_count):
 	emit_signal("ammo_changed", new_ammo_count)
 	
 func _on_player_hurt(_val):
+	animation_player.play("Hurt")
 	var n = rng.randi_range(0, $HurtAudio.get_child_count() -1)
 	$HurtAudio.get_child(n).play()
-		
+	
+func _on_Player_dead():
+	is_dead = true
+	animation_player.play("Death")
