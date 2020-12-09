@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/world_hit.wav-465c0aa86d8d5ab351aafe92b63c9a39.sample"
+
+[deps]
+
+source_file="res://audio/gun/world_hit.wav"
+dest_files=[ "res://.import/world_hit.wav-465c0aa86d8d5ab351aafe92b63c9a39.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
