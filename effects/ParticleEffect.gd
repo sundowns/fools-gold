@@ -6,6 +6,4 @@ onready var sound: AudioStreamPlayer3D = null
 
 func _ready():
 	particles.emitting = true
-	if has_node("Audio3D"):
-		$Audio3D.play()
 		
