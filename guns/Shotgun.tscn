@@ -370,6 +370,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976102, 0.094408, -0.12563
 [node name="FireAudio" parent="." index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143429, -0.0355088, -0.143536 )
 stream = ExtResource( 4 )
+max_db = -1.0
 
 [node name="PumpAudio" parent="." index="4" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )
@@ -386,7 +387,7 @@ stream = ExtResource( 9 )
 [node name="FleshHitAudio" parent="." index="8"]
 unit_db = 2.0
 unit_size = 2.0
-max_db = -2.0
+max_db = -10.0
 
 [node name="WorldHitAudio" parent="." index="9"]
 unit_db = 1.0
