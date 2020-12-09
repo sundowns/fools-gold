@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/components/PlayerDetectionPollingZone.gd" type="Script" id=1]
+
+[node name="PlayerDetectionPollingZone" type="Area"]
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="WakeUpTimer" type="Timer" parent="."]
+
+[node name="ActivationDelayTimer" type="Timer" parent="."]
+
+[node name="PollingTimer" type="Timer" parent="."]
+[connection signal="timeout" from="WakeUpTimer" to="." method="_on_WakeUpTimer_timeout"]
+[connection signal="timeout" from="ActivationDelayTimer" to="." method="_on_ActivationDelayTimer_timeout"]
+[connection signal="timeout" from="PollingTimer" to="." method="_on_PollingTimer_timeout"]
