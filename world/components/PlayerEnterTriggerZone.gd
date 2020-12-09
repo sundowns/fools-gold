@@ -52,3 +52,8 @@ func _on_PlayerEnterTriggerZone_body_entered(_body):
 
 func _on_WakeUpTimer_timeout():
 	activate()
+
+func _on_ActivationDelayTimer_timeout():
+	broadcast()
+	is_active = false
+	activation_delay_timer.stop()

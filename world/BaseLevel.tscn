@@ -28,3 +28,5 @@ depth = 8.0
 [node name="Entities" type="Node" parent="."]
 
 [node name="Effects" type="Node" parent="."]
+
+[node name="TriggersAndActors" type="Node" parent="."]

@@ -13,4 +13,4 @@ script = ExtResource( 1 )
 [node name="ActivationDelayTimer" type="Timer" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_PlayerEnterTriggerZone_body_entered"]
 [connection signal="timeout" from="WakeUpTimer" to="." method="_on_WakeUpTimer_timeout"]
-[connection signal="timeout" from="ActivationDelayTimer" to="." method="broadcast"]
+[connection signal="timeout" from="ActivationDelayTimer" to="." method="_on_ActivationDelayTimer_timeout"]
