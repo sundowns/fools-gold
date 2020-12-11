@@ -18,7 +18,7 @@ var velocity := Vector3.ZERO
 var knockback := Vector3.ZERO
 var is_dead := false
 
-
+signal heal(new_health)
 signal hurt(new_health)
 signal dead
 
@@ -55,8 +55,11 @@ func update_health(delta: float):
 	if is_dead:
 		return
 	health += delta
+	health = clamp(health, 0, max_health)
 	if delta < 0:
 		emit_signal("hurt", health)
+	if delta > 0:
+		emit_signal("heal", health)
 	if health <= 0:
 		emit_signal("dead")
 

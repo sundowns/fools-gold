@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/items/Item.tscn" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 0, 0.952941, 0.0156863, 0.529412 )
+
+[sub_resource type="SphereMesh" id=2]
+material = SubResource( 1 )
+radial_segments = 16
+rings = 8
+
+[node name="HealthPickup" instance=ExtResource( 1 )]
+item_key = "health"
+health_value = 50.0
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshLocation" index="0"]
+mesh = SubResource( 2 )
+material/0 = null

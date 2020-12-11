@@ -4,7 +4,7 @@
 [ext_resource path="res://models/revolver.tscn" type="PackedScene" id=2]
 
 [node name="Item" instance=ExtResource( 1 )]
-weapon_key = "dual_revolvers"
+item_key = "dual_revolvers"
 
 [node name="revolver" parent="MeshLocation" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, -0.7 )

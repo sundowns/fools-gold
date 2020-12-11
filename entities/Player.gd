@@ -74,6 +74,8 @@ func connect_ui():
 # warning-ignore:return_value_discarded
 	connect("hurt", ui_node, "_on_player_health_updated")
 # warning-ignore:return_value_discarded
+	connect("heal", ui_node, "_on_player_health_updated")
+# warning-ignore:return_value_discarded
 	connect("interactable_status_update", ui_node, "_on_interaction_highlight_update")
 # warning-ignore:return_value_discarded
 	connect("gun_swapped", ui_node, "_on_gun_update")
@@ -239,12 +241,12 @@ func hit_by_bandit(damage: float, knockback: Vector3):
 
 func _on_gun_reload(new_ammo_count):
 	emit_signal("ammo_changed", new_ammo_count)
-	
+
 func _on_player_hurt(_val):
 	animation_player.play("Hurt")
 	var n = rng.randi_range(0, $HurtAudio.get_child_count() -1)
 	$HurtAudio.get_child(n).play()
-	
+
 func _on_Player_dead():
 	is_dead = true
 	animation_player.play("Death")
@@ -258,6 +260,9 @@ func _on_weapon_unlock(weapon_key: String):
 		"dual_revolvers":
 			upgrade_revolvers()
 
+func _on_health_pickup(health_value: float):
+	update_health(health_value)
+
 func pickup_weapon(weapon: Gun, weapon_list_key: int):
 	weapon_list[weapon_list_key] = weapon
 	weapon_list[weapon_list_key].initialise()
@@ -265,5 +270,4 @@ func pickup_weapon(weapon: Gun, weapon_list_key: int):
 	begin_weapon_switch(weapon_list_key)
 
 func upgrade_revolvers():
-	# TODO: replace revolver in weapon list
 	pickup_weapon($Head/Hand/DualRevolvers, 1)
