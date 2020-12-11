@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/PalmTrunk.tres" type="Material" id=1]
+[ext_resource path="res://meshes/basket.glb" type="PackedScene" id=2]
+[ext_resource path="res://textures/rice.jpg" type="Texture" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+uv1_triplanar = true
+
+[node name="basket" instance=ExtResource( 2 )]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+material/0 = ExtResource( 1 )
+material/1 = SubResource( 1 )
