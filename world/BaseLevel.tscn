@@ -24,3 +24,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807961, 0 )
 [node name="Effects" type="Node" parent="."]
 
 [node name="TriggersAndActors" type="Node" parent="."]
+
+[node name="Lights" type="Node" parent="."]

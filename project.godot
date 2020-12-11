@@ -93,7 +93,7 @@ _global_script_class_icons={
 [application]
 
 config/name="7 Dfps"
-run/main_scene="res://ui/MainMenu.tscn"
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]

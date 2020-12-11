@@ -6,6 +6,8 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 export(float) var health_value := 0.0
 
+signal picked_up
+
 func _ready():
 	animation_player.play("Default")
 
@@ -14,6 +16,7 @@ func player_grabbed():
 		WeaponUnlocks.unlock(item_key)
 	elif Global.player_node:
 		Global.player_node._on_health_pickup(health_value)
+	emit_signal("picked_up")
 	queue_free()
 
 func _on_PlayerEnterTriggerZone_triggered():
