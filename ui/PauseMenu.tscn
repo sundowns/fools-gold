@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/MenuButtonLarge.tscn" type="PackedScene" id=3]
 
 [node name="PauseMenu" type="Control"]
 visible = false
@@ -15,41 +16,30 @@ __meta__ = {
 [node name="Main" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="Main"]
 margin_right = 1280.0
 margin_bottom = 720.0
 color = Color( 0.14902, 0.14902, 0.14902, 0.67451 )
-
-[node name="ResumeButton" type="Button" parent="Main"]
-margin_left = 524.0
-margin_top = 206.0
-margin_right = 780.0
-margin_bottom = 286.0
-text = "Resume Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsButton" type="Button" parent="Main"]
-margin_left = 524.0
+[node name="ResumeButton" parent="Main" instance=ExtResource( 3 )]
+text = "Resume Game"
+
+[node name="OptionsButton" parent="Main" instance=ExtResource( 3 )]
 margin_top = 326.0
-margin_right = 780.0
 margin_bottom = 406.0
 text = "Options"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ExitButton" type="Button" parent="Main"]
-margin_left = 524.0
+[node name="ExitButton" parent="Main" instance=ExtResource( 3 )]
 margin_top = 446.0
-margin_right = 780.0
 margin_bottom = 526.0
 text = "Exit Game"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 2 )]
 visible = false
