@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/fonts/MenuText20pt.tres" type="DynamicFont" id=1]
+
+[node name="HSplitContainer" type="HSplitContainer"]
+margin_right = 260.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="Label" parent="."]
+margin_right = 60.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0196078, 0.639216, 0.509804, 1 )
+text = "MOVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Keybinds" type="Label" parent="."]
+margin_left = 72.0
+margin_right = 260.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.945098, 0.713726, 0.101961, 1 )
+text = "[WASD]"
+align = 2

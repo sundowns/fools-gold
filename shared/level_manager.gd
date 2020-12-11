@@ -1,6 +1,9 @@
 extends Node
 
-var levels = ["res://world/levels/E1M1.tscn","res://world/levels/E1M1.tscn"]
+var levels = [
+	"res://world/levels/E1M1.tscn",
+	"res://world/levels/E1M1.tscn"
+]
 var level_index = -1
 
 signal level_complete

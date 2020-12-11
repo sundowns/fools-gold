@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/fonts/MenuButtonFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/ControlsTextRow.tscn" type="PackedScene" id=2]
+
+[node name="ControlsList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -960.0
+margin_bottom = 6.10352e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsHeader" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.0
+margin_right = 160.0
+margin_bottom = 720.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Controls"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 45.0
+margin_right = -30.0
+margin_bottom = -6.10352e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" parent="VBoxContainer" instance=ExtResource( 2 )]
+
+[node name="Keybinds" parent="VBoxContainer/HSplitContainer" index="1"]
+text = "[W,A,S,D]"
+
+[node name="HSplitContainer2" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 25.0
+margin_bottom = 46.0
+
+[node name="Action" parent="VBoxContainer/HSplitContainer2" index="0"]
+margin_right = 71.0
+text = "SHOOT"
+
+[node name="Keybinds" parent="VBoxContainer/HSplitContainer2" index="1"]
+margin_left = 83.0
+text = "[Mouse1]"
+
+[node name="HSplitContainer3" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 50.0
+margin_bottom = 71.0
+
+[node name="Action" parent="VBoxContainer/HSplitContainer3" index="0"]
+text = "jump"
+
+[node name="Keybinds" parent="VBoxContainer/HSplitContainer3" index="1"]
+text = "[space]"
+
+[node name="HSplitContainer4" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 75.0
+margin_bottom = 96.0
+
+[node name="Action" parent="VBoxContainer/HSplitContainer4" index="0"]
+margin_right = 132.0
+text = "switch gun"
+
+[node name="Keybinds" parent="VBoxContainer/HSplitContainer4" index="1"]
+margin_left = 144.0
+text = "[1,2]"
+
+[node name="HSplitContainer5" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 100.0
+margin_bottom = 121.0
+
+[node name="Action" parent="VBoxContainer/HSplitContainer5" index="0"]
+margin_right = 167.0
+text = "use / interact"
+
+[node name="Keybinds" parent="VBoxContainer/HSplitContainer5" index="1"]
+margin_left = 179.0
+text = "[e]"
+
+[node name="HSplitContainer6" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 125.0
+margin_bottom = 146.0
+
+[node name="Action" parent="VBoxContainer/HSplitContainer6" index="0"]
+margin_right = 87.0
+text = "reload"
+
+[node name="Keybinds" parent="VBoxContainer/HSplitContainer6" index="1"]
+margin_left = 99.0
+text = "[r]"
+
+[editable path="VBoxContainer/HSplitContainer"]
+
+[editable path="VBoxContainer/HSplitContainer2"]
+
+[editable path="VBoxContainer/HSplitContainer3"]
+
+[editable path="VBoxContainer/HSplitContainer4"]
+
+[editable path="VBoxContainer/HSplitContainer5"]
+
+[editable path="VBoxContainer/HSplitContainer6"]
