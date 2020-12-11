@@ -40,6 +40,7 @@ onready var weapon_list: Dictionary = {}
 
 signal ammo_changed(new_ammo)
 signal interactable_status_update(is_highlighted)
+signal gun_swapped(new_gun_key)
 
 func _input(event):
 	if is_dead:
@@ -74,6 +75,8 @@ func connect_ui():
 	connect("hurt", ui_node, "_on_player_health_updated")
 # warning-ignore:return_value_discarded
 	connect("interactable_status_update", ui_node, "_on_interaction_highlight_update")
+# warning-ignore:return_value_discarded
+	connect("gun_swapped", ui_node, "_on_gun_update")
 	if active_weapon:
 		call_deferred("_on_gun_reload", active_weapon.current_ammo)
 	else:
@@ -218,6 +221,7 @@ func switch_to_next_weapon():
 	active_weapon.show()
 	active_weapon.unholster()
 	emit_signal("ammo_changed", active_weapon.current_ammo)
+	emit_signal("gun_swapped", active_weapon.gun_name)
 
 func _on_gun_holstered():
 	if weapon_list.has(next_weapon_index):

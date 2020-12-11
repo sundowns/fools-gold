@@ -9,6 +9,7 @@ onready var fire_audio: AudioStreamPlayer = $FireAudio
 export(float) var cooldown: float = 0.5
 export(float) var damage: float = 1.0
 export(float) var knockback_magnitude: float = 1.0
+export(String) var gun_name: String = "gun"
 
 export(int) var ammo_per_reload = 6
 var current_ammo: int

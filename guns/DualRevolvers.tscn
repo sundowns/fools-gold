@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 cooldown = 0.25
 damage = 30.0
 knockback_magnitude = 7.0
+gun_name = "dual_revolvers"
 ammo_per_reload = 12
 
 [node name="AnimationPlayer" parent="." index="1"]
