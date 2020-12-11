@@ -6,6 +6,7 @@ onready var ammo_label: Label = $AmmoRect/AmmoLabel
 onready var health_label: Label = $HealthRect/HealthLabel
 onready var interact_prompt: Label = $InteractPrompt
 onready var crosshair: TextureRect = $CenterContainer/TextureRect
+onready var death_menu: Control = $DeathMenu
 
 onready var revolver_crosshair_image = preload("res://ui/crosshair.png")
 onready var shotgun_crosshair_image = preload("res://ui/crosshair_circle.png")
@@ -33,4 +34,6 @@ func _on_gun_update(current_gun_key: String):
 		crosshair.texture = revolver_crosshair_image
 	else:
 		crosshair.texture = shotgun_crosshair_image
-		
+
+func _on_player_dead():
+	death_menu.request_show()

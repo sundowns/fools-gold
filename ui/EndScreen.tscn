@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/fonts/Menu72pt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/fonts/MenuButtonFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/MenuBG.PNG" type="Texture" id=3]
+[ext_resource path="res://ui/EndScreen.gd" type="Script" id=4]
+
+[node name="EndScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tanks" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -438.5
+margin_top = 200.0
+margin_right = 438.5
+margin_bottom = 273.0
+custom_fonts/font = ExtResource( 1 )
+text = "Thanks for Playing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -125.0
+margin_top = -270.0
+margin_right = 125.0
+margin_bottom = -195.0
+custom_fonts/font = ExtResource( 2 )
+disabled = true
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Button"]
+wait_time = 1.5
+autostart = true
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Button/Timer" to="." method="_on_Timer_timeout"]

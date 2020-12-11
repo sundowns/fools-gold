@@ -1,6 +1,6 @@
 extends Control
 
-onready var menu = $Main
+onready var menu = $Buttons
 onready var options_menu = $OptionsMenu
 
 func _on_ExitButton_pressed():
@@ -14,4 +14,5 @@ func _on_OptionsButton_pressed():
 	options_menu.open_menu()
 	
 func _on_StartButton_pressed():
-	print("Start the dang game")
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Game.tscn")

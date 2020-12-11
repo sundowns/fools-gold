@@ -4,8 +4,13 @@ extends Spatial
 onready var current_world = $WorldScenePlaceHolder
 
 func _ready():
-	var starting_world = load("res://world/levels/E1M1.tscn")
-	load_world(starting_world)
+# warning-ignore:return_value_discarded
+	LevelManager.connect("level_complete", self, "on_level_complete")
+# warning-ignore:return_value_discarded
+	LevelManager.connect("all_levels_complete", self, "on_game_complete")
+# warning-ignore:return_value_discarded
+	LevelManager.connect("level_restarted", self, "on_level_restarted")
+	call_deferred("load_world", LevelManager.get_next_level())
 
 func load_world(new_world_scene: PackedScene):
 	# unload currently loaded world if it exists
@@ -15,3 +20,15 @@ func load_world(new_world_scene: PackedScene):
 		current_world = null
 	current_world = new_world_scene.instance()
 	add_child(current_world)
+
+func on_level_complete():
+	var next_world = LevelManager.get_next_level()
+	if next_world:
+		call_deferred("load_world", next_world)
+
+func on_level_restarted():
+	call_deferred("load_world", LevelManager.get_current_level())
+
+func on_game_complete():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://ui/EndScreen.tscn")

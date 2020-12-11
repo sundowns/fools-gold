@@ -62,6 +62,7 @@ func initialise():
 	call_deferred("switch_to_next_weapon")
 # warning-ignore:return_value_discarded
 	connect("hurt", self, "_on_player_hurt")
+# warning-ignore:return_value_discarded
 	WeaponUnlocks.connect("unlocked_weapon", self, "_on_weapon_unlock")
 	rng.randomize()
 
@@ -79,10 +80,13 @@ func connect_ui():
 	connect("interactable_status_update", ui_node, "_on_interaction_highlight_update")
 # warning-ignore:return_value_discarded
 	connect("gun_swapped", ui_node, "_on_gun_update")
+# warning-ignore:return_value_discarded
+	connect("dead", ui_node, "_on_player_dead")
 	if active_weapon:
 		call_deferred("_on_gun_reload", active_weapon.current_ammo)
 	else:
 		call_deferred("_on_gun_reload", 0)
+	call_deferred("emit_signal", "heal", health)
 	
 func _process(delta):
 	if is_dead:
@@ -107,16 +111,17 @@ func apply_movement():
 
 func grounded_movement(delta: float):
 	direction = Vector3.ZERO
-
-	if Input.is_action_pressed("move_forward"):
-		direction -= transform.basis.z
-	elif Input.is_action_pressed("move_backward"):
-		direction += transform.basis.z
 	
-	if Input.is_action_pressed("move_left"):
-		direction -= transform.basis.x
-	elif Input.is_action_pressed("move_right"):
-		direction += transform.basis.x
+	if not is_dead:
+		if Input.is_action_pressed("move_forward"):
+			direction -= transform.basis.z
+		elif Input.is_action_pressed("move_backward"):
+			direction += transform.basis.z
+		
+		if Input.is_action_pressed("move_left"):
+			direction -= transform.basis.x
+		elif Input.is_action_pressed("move_right"):
+			direction += transform.basis.x
 
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * ground_speed, ground_acceleration * delta)
@@ -127,15 +132,16 @@ func grounded_movement(delta: float):
 
 func aerial_movement(delta):
 	direction = Vector3.ZERO
-	if Input.is_action_pressed("move_forward"):
-		direction -= transform.basis.z
-	elif Input.is_action_pressed("move_backward"):
-		direction += transform.basis.z
-	
-	if Input.is_action_pressed("move_left"):
-		direction -= transform.basis.x
-	elif Input.is_action_pressed("move_right"):
-		direction += transform.basis.x
+	if not is_dead:
+		if Input.is_action_pressed("move_forward"):
+			direction -= transform.basis.z
+		elif Input.is_action_pressed("move_backward"):
+			direction += transform.basis.z
+		
+		if Input.is_action_pressed("move_left"):
+			direction -= transform.basis.x
+		elif Input.is_action_pressed("move_right"):
+			direction += transform.basis.x
 		
 	direction = direction.normalized()
 	if direction != Vector3.ZERO:
@@ -150,12 +156,16 @@ func handle_weapon_sway(delta):
 	hand.rotation.z = 0 # I don't know why this gets set to -180 on startup sometimes..but whatever
 
 func handle_jump():
+	if is_dead:
+		return
 	if Input.is_action_pressed("jump"):
 		if is_on_floor() or ground_check.is_grounded():
 			$JumpAudio.play()
 			jump()
 
 func handle_shooting():
+	if is_dead:
+		return
 	if not active_weapon or active_weapon.is_reloading or is_switching_weapons:
 		return
 	if Input.is_action_just_pressed("reload"):
@@ -167,6 +177,8 @@ func handle_shooting():
 			emit_signal("ammo_changed", active_weapon.current_ammo)
 
 func handle_interaction():
+	if is_dead:
+		return
 	if not interact_cast.is_colliding():
 		if is_highlighting_interactable:
 			is_highlighting_interactable = false
@@ -197,7 +209,9 @@ func handle_viewport_lean(delta):
 		camera.rotation.z = strafe_viewport_rotation
 
 func handle_weapon_switch():
-	if active_weapon and active_weapon.is_reloading:
+	if is_dead:
+		return
+	if active_weapon and (active_weapon.is_reloading or not active_weapon.is_ready):
 		return
 	for i in range(1,3):
 		if Input.is_action_just_pressed("weapon_%d" % i):
