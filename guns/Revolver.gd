@@ -27,7 +27,7 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		spawn_hit_particles(contact_position, false)
 		if entity_hit is Prop:
 			entity_hit.apply_impulse(entity_hit.to_local(contact_position), knockback_force)
-	.gun_fired()
+	.gun_fired("Fire")
 
 func handle_no_ammo():
 	# TODO: play clicking/no ammo sound

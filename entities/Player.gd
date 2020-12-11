@@ -166,13 +166,13 @@ func handle_jump():
 func handle_shooting():
 	if is_dead:
 		return
-	if not active_weapon or active_weapon.is_reloading or is_switching_weapons:
+	if not active_weapon or active_weapon.is_reloading or is_switching_weapons or not active_weapon.is_ready:
 		return
 	if Input.is_action_just_pressed("reload"):
 		active_weapon.start_reload()
 	
 	if Input.is_action_just_pressed("fire") or (Input.is_action_pressed("fire")):
-		if aim_cast.is_colliding() and active_weapon.is_ready:
+		if aim_cast.is_colliding() and active_weapon.is_ready and not active_weapon.is_holstered:
 			active_weapon.shoot(aim_cast, head.global_transform.origin)
 			emit_signal("ammo_changed", active_weapon.current_ammo)
 
@@ -280,7 +280,6 @@ func _on_health_pickup(health_value: float):
 func pickup_weapon(weapon: Gun, weapon_list_key: int):
 	weapon_list[weapon_list_key] = weapon
 	weapon_list[weapon_list_key].initialise()
-#	if not is_level_start:
 	begin_weapon_switch(weapon_list_key)
 
 func upgrade_revolvers():

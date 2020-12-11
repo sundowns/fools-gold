@@ -14,7 +14,7 @@ export(String) var gun_name: String = "gun"
 export(int) var ammo_per_reload = 6
 var current_ammo: int
 
-var is_ready := true
+var is_ready := false
 var is_reloading := false
 var is_holstered := true
 
@@ -31,13 +31,14 @@ func initialise():
 # warning-ignore:return_value_discarded
 	connect("gun_unholstered", Global.player_node, "_on_gun_unholstered")
 	call_deferred("holster")
+	is_ready = false
+	is_holstered = true
 
-func gun_fired():
-	animation_player.play("Fire")
+func gun_fired(animation_key: String = "Fire"):
+	animation_player.play(animation_key)
 	fire_audio.play()
 	is_ready = false
-	cooldown_timer.start()
-	# TODO: use a timer here for cooldown
+	cooldown_timer.start(cooldown)
 
 func shoot(_aim_cast: RayCast, _camera_origin: Vector3):
 	pass
@@ -75,6 +76,7 @@ func unholster():
 func emit_holster_status_update():
 	if is_holstered:
 		emit_signal("gun_holstered")
+		is_ready = false
 	else:
 		is_ready = true
 		emit_signal("gun_unholstered")

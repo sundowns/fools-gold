@@ -27,7 +27,10 @@ func shoot(aim_cast: RayCast, camera_origin: Vector3):
 		spawn_hit_particles(contact_position, false)
 		if entity_hit is Prop:
 			entity_hit.apply_impulse(entity_hit.to_local(contact_position), knockback_force)
-	.gun_fired()
+	var animation_name = "FireLeft"
+	if current_ammo % 2 == 0:
+		animation_name = "FireRight"
+	.gun_fired(animation_name)
 
 func handle_no_ammo():
 	# TODO: play clicking/no ammo sound

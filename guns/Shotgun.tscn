@@ -64,7 +64,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.03, 0.104, 0 ), Vector3( -0.03, 0.104, 0.563 ), Vector3( -0.03, 0.104, 0 ) ]
+"values": [ Vector3( -0.03, 0, 0 ), Vector3( -0.03, 0.104, 0.563 ), Vector3( -0.03, 0, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("MeshLocation:rotation_degrees")
@@ -105,7 +105,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.0300543, 0.104169, 0 ), Vector3( -0.03, 0.204, -0.1 ), Vector3( -0.03, -0.204, -0.1 ), Vector3( -0.03, 0.104, -0.1 ), Vector3( -0.0300543, 0.104169, 0 ) ]
+"values": [ Vector3( -0.03, 0, 0 ), Vector3( -0.03, 0.204, -0.1 ), Vector3( -0.03, -0.204, -0.1 ), Vector3( -0.03, 0, -0.1 ), Vector3( -0.0300543, 0.104169, 0 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -356,14 +356,14 @@ anims/Reload = SubResource( 3 )
 "anims/Reload One" = SubResource( 5 )
 
 [node name="MeshLocation" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.104, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="MuzzleFlash" parent="MeshLocation" index="0" instance=ExtResource( 5 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, -1.5 )
 visible = false
 
 [node name="Mesh" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( -1.74845e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
+transform = Transform( -1.74846e-09, 0, 0.04, 0, 0.04, 0, -0.04, 0, -1.74846e-09, -0.0300543, 0.104169, 0 )
 
 [node name="Cylinder" parent="MeshLocation/Mesh" index="1"]
 transform = Transform( 0, 1.99531, 0, -1.99386, 5.96046e-08, 0.0761758, 0.0761758, 3.55271e-15, 1.99386, 16.828, -6.3042, 0.0789626 )

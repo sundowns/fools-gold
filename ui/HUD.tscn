@@ -119,3 +119,4 @@ text = "PLAYER_STATE"
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 3 )]
+visible = false
