@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ui/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/MenuButtonLarge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/Controls.tscn" type="PackedScene" id=4]
 
 [node name="PauseMenu" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -41,9 +41,45 @@ margin_top = 446.0
 margin_bottom = 526.0
 text = "Exit Game"
 
+[node name="ControlsList" parent="Main" instance=ExtResource( 4 )]
+margin_left = 85.4363
+margin_top = 251.888
+margin_right = 85.4363
+margin_bottom = 251.888
+
+[node name="ControlsHeader" parent="Main/ControlsList" index="0"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -496.588
+margin_top = -23.6415
+margin_right = 688.412
+margin_bottom = 1092.36
+
+[node name="HSplitContainer" parent="Main/ControlsList/VBoxContainer" index="0"]
+margin_right = 210.0
+
+[node name="HSplitContainer2" parent="Main/ControlsList/VBoxContainer" index="1"]
+margin_right = 210.0
+
+[node name="HSplitContainer3" parent="Main/ControlsList/VBoxContainer" index="2"]
+margin_right = 210.0
+
+[node name="HSplitContainer4" parent="Main/ControlsList/VBoxContainer" index="3"]
+margin_right = 210.0
+
+[node name="HSplitContainer5" parent="Main/ControlsList/VBoxContainer" index="4"]
+margin_right = 210.0
+
+[node name="HSplitContainer6" parent="Main/ControlsList/VBoxContainer" index="5"]
+margin_right = 210.0
+
 [node name="OptionsMenu" parent="." instance=ExtResource( 2 )]
 visible = false
 [connection signal="pressed" from="Main/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Main/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="options_closed" from="OptionsMenu" to="." method="_on_OptionsMenu_options_closed"]
+
+[editable path="Main/ControlsList"]
