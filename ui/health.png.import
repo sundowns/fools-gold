@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammo and health.png-6615d182ac07bda1195ca6ebeb0a248b.stex"
+path="res://.import/health.png-ec59cd4aa189ad4a44905bdd463a073f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/ammo and health.png"
-dest_files=[ "res://.import/ammo and health.png-6615d182ac07bda1195ca6ebeb0a248b.stex" ]
+source_file="res://ui/health.png"
+dest_files=[ "res://.import/health.png-ec59cd4aa189ad4a44905bdd463a073f.stex" ]
 
 [params]
 

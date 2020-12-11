@@ -34,10 +34,12 @@ var sensitivity_multipler: float = 1
 var is_switching_weapons := false
 var next_weapon_index := 1
 var rng = RandomNumberGenerator.new()
+var is_highlighting_interactable := false
 
 onready var weapon_list: Dictionary = {}
 
 signal ammo_changed(new_ammo)
+signal interactable_status_update(is_highlighted)
 
 func _input(event):
 	if is_dead:
@@ -70,6 +72,8 @@ func connect_ui():
 	connect("ammo_changed", ui_node, "_on_player_ammo_updated")
 # warning-ignore:return_value_discarded
 	connect("hurt", ui_node, "_on_player_health_updated")
+# warning-ignore:return_value_discarded
+	connect("interactable_status_update", ui_node, "_on_interaction_highlight_update")
 	if active_weapon:
 		call_deferred("_on_gun_reload", active_weapon.current_ammo)
 	else:
@@ -159,7 +163,13 @@ func handle_shooting():
 
 func handle_interaction():
 	if not interact_cast.is_colliding():
+		if is_highlighting_interactable:
+			is_highlighting_interactable = false
+			emit_signal("interactable_status_update", false)
 		return
+	if not is_highlighting_interactable:
+		is_highlighting_interactable = true
+		emit_signal("interactable_status_update", true)
 	if Input.is_action_just_pressed("use"):
 		var collider = interact_cast.get_collider()
 		if collider is InteractableHitbox:

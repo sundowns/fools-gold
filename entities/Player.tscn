@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://audio/player/Grunt 1.wav" type="AudioStream" id=19]
 [ext_resource path="res://ui/damageoverlay.png" type="Texture" id=20]
 [ext_resource path="res://guns/DualRevolvers.tscn" type="PackedScene" id=21]
+[ext_resource path="res://entities/components/ShaderCache.tscn" type="PackedScene" id=22]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -191,6 +192,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ShaderCache" parent="Head/Camera" instance=ExtResource( 22 )]
 
 [node name="Hand" type="Spatial" parent="Head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.445279, -0.677 )
