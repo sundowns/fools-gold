@@ -344,9 +344,11 @@ tracks/3/keys = {
 [node name="Shotgun" instance=ExtResource( 1 )]
 visible = true
 script = ExtResource( 2 )
-damage = 8.0
+damage = 10.0
 knockback_magnitude = 1.4
 gun_name = "shotgun"
+num_pellets = 10
+spread_range = 55.0
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/Fire = SubResource( 1 )
