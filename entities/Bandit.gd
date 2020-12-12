@@ -12,6 +12,8 @@ onready var rng = RandomNumberGenerator.new()
 func _ready():
 	animation_player.play("Default")
 	rng.randomize()
+# warning-ignore:return_value_discarded
+	connect("hurt", self, "owie")
 
 func check_if_player_attackable() -> bool:
 	if not Global.player_node:
@@ -40,6 +42,12 @@ func swing_at_the_cunt():
 	
 	var n = rng.randi_range(0, $AttackSounds.get_child_count() -1)
 	$AttackSounds.get_child(n).play()
+
+func owie(_health):
+	state_machine.alert("has_been_hurt")
+
+func force_state(state_name: String):
+	state_machine.exit_and_change_to(state_name)
 
 func _on_AttackHitbox_body_entered(body):
 	var knockback_direction = (Global.player_node.global_transform.origin - global_transform.origin).normalized()

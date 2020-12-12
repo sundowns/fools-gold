@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://entities/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/enemymelee.PNG" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://audio/enemy/Slash 1.wav" type="AudioStream" id=14]
 [ext_resource path="res://audio/enemy/Slash 2.wav" type="AudioStream" id=15]
 [ext_resource path="res://audio/enemy/Slash 3.wav" type="AudioStream" id=16]
+[ext_resource path="res://entities/state-machines/bandit/FollowPath.gd" type="Script" id=17]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 16
@@ -68,6 +69,9 @@ wait_time = 2.0
 
 [node name="Attack" type="Node" parent="StateMachine" index="2"]
 script = ExtResource( 6 )
+
+[node name="FollowPath" type="Node" parent="StateMachine" index="3"]
+script = ExtResource( 17 )
 
 [node name="AnimatedSprite3D" parent="." index="1"]
 transform = Transform( 0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.0500918, 0, 0 )

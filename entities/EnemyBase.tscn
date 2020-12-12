@@ -13,7 +13,7 @@
 radius = 0.6
 
 [sub_resource type="SphereShape" id=2]
-radius = 100.0
+radius = 60.0
 
 [node name="Enemy" type="KinematicBody"]
 collision_layer = 16

@@ -8,4 +8,4 @@ item_key = "health"
 health_value = 50.0
 
 [node name="Heart" parent="MeshLocation" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.671 )
+transform = Transform( 1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, -0.671 )

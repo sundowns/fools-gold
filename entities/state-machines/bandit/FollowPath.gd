@@ -2,14 +2,18 @@ extends Node
 
 var fsm: StateMachine
 
+var path_node: PathFollow
+
 func enter(e):
-	e.velocity = Vector3.ZERO
-	var player_is_in_nav_range = e.check_if_player_in_PlayerChaseDetectionZone()
-	if player_is_in_nav_range:
-		exit(e, "NavigateToPlayer")
-		return
+	var enemy_parent = e.get_parent()
+	if enemy_parent is PathFollow:
+		path_node = enemy_parent
+		path_node.set_physics_process(true)
+	else:
+		exit(e, "Idle")
 
 func exit(_e, next_state):
+	path_node.set_physics_process(false)
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
