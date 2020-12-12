@@ -3,9 +3,10 @@ extends Node
 var fsm: StateMachine
 
 func enter(e):
-	print(e.velocity, e.gravity_vector)
+	pass
+#	print(e.velocity, e.gravity_vector)
 
-func exit(e, next_state):
+func exit(_e, next_state):
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
@@ -15,7 +16,7 @@ func process(_e, delta):
 
 func physics_process(e, delta):
 	e.apply_gravity(delta)
-	print(e.velocity, " , " , e.gravity_vector)
+#	print(e.velocity, " , " , e.gravity_vector)
 #	e.handle_jump()
 	e.grounded_movement(delta)
 	e.apply_movement()
