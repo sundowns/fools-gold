@@ -8,9 +8,7 @@ onready var just_fell_timer: Timer = $JustFellTimer
 var no_longer_just_jumped := false
 var no_longer_just_fell := false
 
-func enter(e):
-	e.angle_to_normal_from_up = 0.0
-	e.ground_collision_normal = Vector3.UP
+func enter(_e):
 	just_jumped_timer.start()
 	just_fell_timer.start()
 	no_longer_just_jumped = false
@@ -36,7 +34,7 @@ func physics_process(e, delta):
 		e.handle_jump()
 	e.apply_gravity(delta)
 	e.aerial_movement(delta)
-	e.apply_movement()
+	e.apply_movement(false)
 	if not e.just_jumped and (e.is_on_floor() or e.ground_check.is_grounded()):
 		exit(e, "Land")
 		return

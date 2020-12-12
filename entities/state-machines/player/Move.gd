@@ -25,9 +25,7 @@ func physics_process(e, delta):
 		return
 	e.apply_gravity(delta)
 	e.handle_jump()
-#	e.grounded_movement(delta)
-	e.grounded_movement(delta, e.angle_to_normal_from_up)
-#	e.apply_movement()
+	e.grounded_movement(delta)
 	e.apply_movement()
 
 func input(_e, event):

@@ -25,7 +25,7 @@ signal dead
 func _physics_process(delta):
 	apply_knockback_force(delta)
 
-func apply_gravity(delta: float, floor_normal: Vector3 = Vector3.UP):
+func apply_gravity(delta: float):
 	if not is_on_floor() and not ground_check.is_grounded():
 		var gravity_force = Vector3.DOWN * gravity * delta
 		if gravity_vector.y < 0:
@@ -34,13 +34,10 @@ func apply_gravity(delta: float, floor_normal: Vector3 = Vector3.UP):
 		gravity_vector.y = max(gravity_vector.y, terminal_fall_velocity)
 	# Just ignoring ground-based gravity vector if the entity has JUST been pushed (so it can leave the ground)
 	else:
-		if floor_normal == Vector3.UP:
-			floor_normal = get_floor_normal()
 		if is_on_floor() and ground_check.is_grounded():
-			print('this1')
-			gravity_vector = -floor_normal * gravity
+			gravity_vector = -get_floor_normal() * gravity
 		else:
-			gravity_vector = -floor_normal
+			gravity_vector = -get_floor_normal()
 
 func apply_knockback_force(delta):
 	if knockback.length() <= 0:
