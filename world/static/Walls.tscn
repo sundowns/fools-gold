@@ -2,7 +2,7 @@
 
 [ext_resource path="res://world/static/Heiroglyphic_tablet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=2]
-[ext_resource path="res://audio/world/stone_button.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/world/stone_button_long.wav" type="AudioStream" id=3]
 
 [node name="Walls" type="Spatial"]
 transform = Transform( 3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 19, 0 )
