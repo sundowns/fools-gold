@@ -4,17 +4,7 @@
 [ext_resource path="res://meshes/Rock2.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://effects/BaseEffect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://materials/BloodGib.tres" type="Material" id=4]
-
-[sub_resource type="ParticlesMaterial" id=1]
-lifetime_randomness = 0.5
-direction = Vector3( 0, 1, 0 )
-spread = 30.0
-flatness = 0.57
-gravity = Vector3( 0, -25, 0 )
-initial_velocity = 12.0
-initial_velocity_random = 0.5
-linear_accel = 3.0
-scale = 0.12
+[ext_resource path="res://effects/GibExplosionParticles.tres" type="Material" id=5]
 
 [node name="Effect" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
@@ -25,5 +15,5 @@ cast_shadow = 0
 amount = 20
 lifetime = 3.0
 explosiveness = 1.0
-process_material = SubResource( 1 )
+process_material = ExtResource( 5 )
 draw_pass_1 = ExtResource( 2 )
