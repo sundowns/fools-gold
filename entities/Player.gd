@@ -10,6 +10,7 @@ onready var interact_cast: RayCast = $Head/Camera/InteractCast
 onready var state_machine: StateMachine = $MovementStateMachine
 onready var landing_audio: AudioStreamPlayer3D = $LandingAudio
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var slope_cast: RayCast = $SlopeCheckCast
 
 # Player movement values
 export var ground_speed: float = 10
@@ -20,6 +21,7 @@ export var jump_force: float = 5 # Initial vertical impulse when jumping
 export var aerial_speed: float = 12
 export var aerial_acceleration: float = 4 # 4.5 juicy but quite high
 export var aerial_drag: float = 6
+export(float) var slope_snap_angle := 45.0
 
 const strafe_viewport_rotation_speed := deg2rad(25)
 const max_strafe_viewport_rotation := deg2rad(0.75)
@@ -35,6 +37,8 @@ var is_switching_weapons := false
 var next_weapon_index := 1
 var rng = RandomNumberGenerator.new()
 var is_highlighting_interactable := false
+var angle_to_normal_from_up: float = 0.0
+var ground_collision_normal: Vector3 = Vector3.UP
 
 onready var weapon_list: Dictionary = {}
 
@@ -101,16 +105,24 @@ func _physics_process(_delta):
 	handle_shooting()
 	handle_interaction()
 
-func apply_movement():
-	var movement = Vector3.ZERO
-	movement.z = velocity.z + gravity_vector.z
-	movement.x = velocity.x + gravity_vector.x
-	movement.y = gravity_vector.y
+func apply_movement(snap_to_ground: bool = false, ground_normal: Vector3 = Vector3.UP):
+#	var movement = Vector3.ZERO
+#	movement.z = velocity.z + gravity_vector.z
+#	movement.x = velocity.x + gravity_vector.x
+#	movement.y = gravity_vector.y
 # warning-ignore:return_value_discarded
-	move_and_slide(movement, Vector3.UP)
+	if snap_to_ground:
+		var snap_vector = -100 * ground_normal
+		move_and_slide_with_snap(gravity_vector, snap_vector, Vector3.UP, true, 10, deg2rad(slope_snap_angle), false)
+		velocity = move_and_slide_with_snap(velocity, snap_vector, Vector3.UP, true, 10, deg2rad(slope_snap_angle), false)
+#		up_direction: Vector3 = Vector3( 0, 0, 0 ), stop_on_slope: bool = false, max_slides: int = 4, floor_max_angle: float = 0.785398, infinite_inertia: bool = true)
+	else:
+		move_and_slide(gravity_vector, Vector3.UP)
+		velocity = move_and_slide(velocity, Vector3.UP)
 
-func grounded_movement(delta: float):
+func grounded_movement(delta: float, angle_to_rotate: float = 0.0):
 	direction = Vector3.ZERO
+
 	
 	if not is_dead:
 		if Input.is_action_pressed("move_forward"):
@@ -284,3 +296,7 @@ func pickup_weapon(weapon: Gun, weapon_list_key: int):
 
 func upgrade_revolvers():
 	pickup_weapon($Head/Hand/DualRevolvers, 1)
+
+func check_for_slope():
+	ground_collision_normal = slope_cast.get_collision_normal()
+	angle_to_normal_from_up = rad2deg(ground_collision_normal.angle_to(Vector3.UP))

@@ -8,7 +8,9 @@ onready var just_fell_timer: Timer = $JustFellTimer
 var no_longer_just_jumped := false
 var no_longer_just_fell := false
 
-func enter(_e):
+func enter(e):
+	e.angle_to_normal_from_up = 0.0
+	e.ground_collision_normal = Vector3.UP
 	just_jumped_timer.start()
 	just_fell_timer.start()
 	no_longer_just_jumped = false
