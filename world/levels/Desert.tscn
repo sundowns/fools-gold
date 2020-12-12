@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/static/Terrain1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/components/TempleWater.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/static/palm1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/ankh.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/static/Obelisk1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://world/static/stairs.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/Bandit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://textures/Brick Texture 1.jpg" type="Texture" id=9]
+[ext_resource path="res://world/static/csg/TempleBrickCylinder.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 9 )
+uv1_scale = Vector3( 0.3, 0.3, 0.3 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 50.2134
+
+[node name="World" instance=ExtResource( 1 )]
+
+[node name="PlayerSpawnPoint" parent="." index="0"]
+transform = Transform( -0.746615, 0, -0.665256, 0, 1, 0, 0.665256, 0, -0.746615, -135.1, -6.20059, -226.574 )
+
+[node name="Skybox" parent="Navigation/NavigationMeshInstance/Statics" index="0"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -88.1478 )
+
+[node name="Water" parent="Props" index="0" instance=ExtResource( 3 )]
+transform = Transform( 135.312, 0, 0, 0, 4.34309, 0, 0, 0, 100.171, -25.0482, -18.9357, -152.778 )
+
+[node name="Terrain1" parent="Props" index="1" instance=ExtResource( 2 )]
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, 0.212372, -26.0265, 1.79203 )
+
+[node name="palm1" parent="Props" index="2" instance=ExtResource( 4 )]
+transform = Transform( -0.794079, 0.281112, 0.716625, 0.0891713, 1.05623, -0.315522, -0.764607, -0.168765, -0.781045, -63.8753, -13.3589, -170.575 )
+
+[node name="palm2" parent="Props" index="3" instance=ExtResource( 4 )]
+transform = Transform( -0.718003, 0.25418, 0.647969, 0.0806283, 0.955043, -0.285293, -0.691354, -0.152597, -0.706218, -70.5351, -13.3589, -171.016 )
+
+[node name="palm3" parent="Props" index="4" instance=ExtResource( 4 )]
+transform = Transform( 0.372522, -0.251553, -0.736813, 0.0695904, 0.824299, -0.246237, 0.775454, 0.0468702, 0.376057, -29.5904, -13.3589, -168.673 )
+
+[node name="palm4" parent="Props" index="5" instance=ExtResource( 4 )]
+transform = Transform( -0.718003, 0.25418, 0.647969, 0.0806283, 0.955043, -0.285293, -0.691354, -0.152597, -0.706218, -61.8987, -13.3589, -165.763 )
+
+[node name="palm6" parent="Props" index="6" instance=ExtResource( 4 )]
+transform = Transform( 0.326614, 0.277024, 1.01967, 0.0891713, 1.05623, -0.315522, -1.05286, 0.175395, 0.289594, -25.1809, -15.3764, -108.857 )
+
+[node name="palm7" parent="Props" index="7" instance=ExtResource( 4 )]
+transform = Transform( 0.295323, 0.250484, 0.921977, 0.0806283, 0.955043, -0.285293, -0.951989, 0.158591, 0.26185, -27.7777, -15.3764, -115.006 )
+
+[node name="palm8" parent="Props" index="8" instance=ExtResource( 4 )]
+transform = Transform( 0.295323, 0.250484, 0.921977, 0.0806283, 0.955043, -0.285293, -0.951989, 0.158591, 0.26185, -28.5934, -15.3764, -104.93 )
+
+[node name="palm9" parent="Props" index="9" instance=ExtResource( 4 )]
+transform = Transform( 0.259458, -0.327769, -1.02391, 0.0891713, 1.05623, -0.315522, 1.07139, -0.0085343, 0.274221, 25.6467, -19.0362, -110.066 )
+
+[node name="palm10" parent="Props" index="10" instance=ExtResource( 4 )]
+transform = Transform( 0.234601, -0.296368, -0.925813, 0.0806283, 0.955043, -0.285293, 0.968742, -0.00771666, 0.247949, 31.0476, -12.7366, -106.074 )
+
+[node name="palm11" parent="Props" index="11" instance=ExtResource( 4 )]
+transform = Transform( -0.242379, -0.258848, -0.935014, 0.0806283, 0.955043, -0.285293, 0.966825, -0.144538, -0.210612, 29.9069, -12.1045, -110.788 )
+
+[node name="palm5" parent="Props" index="12" instance=ExtResource( 4 )]
+transform = Transform( -0.451786, -0.220143, -0.864538, 0.0805961, 0.955042, -0.285306, 0.888478, -0.198576, -0.413732, -27.2938, -13.3589, -168.848 )
+
+[node name="stairs" parent="Props" index="13" instance=ExtResource( 7 )]
+transform = Transform( 3.66052, 0, 0, 0, 1.5, 0, 0, 0, 4.277, 1.72965, -13.2289, -81.0319 )
+
+[node name="stairs2" parent="Props" index="14" instance=ExtResource( 7 )]
+transform = Transform( 3.66052, 0, 0, 0, 1.5, 0, 0, 0, 4.277, 1.72965, -8.91144, -57.6021 )
+
+[node name="Obelisk" parent="Props" index="15" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -11.732, -13.7699, -83.3534 )
+
+[node name="ankh" parent="Props" index="16" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -11.9331, -8.28793, -84.9019 )
+
+[node name="Obelisk2" parent="Props" index="17" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -20.2032, -13.7699, -83.3534 )
+
+[node name="ankh2" parent="Props" index="18" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -20.4044, -8.28793, -84.9019 )
+
+[node name="Obelisk3" parent="Props" index="19" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -28.6174, -13.7699, -83.3534 )
+
+[node name="ankh3" parent="Props" index="20" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -28.8185, -8.28793, -84.9019 )
+
+[node name="Obelisk4" parent="Props" index="21" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 28.303, -13.7699, -83.3534 )
+
+[node name="ankh4" parent="Props" index="22" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 28.1018, -8.28793, -84.9019 )
+
+[node name="Obelisk5" parent="Props" index="23" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 19.8317, -13.7699, -83.3534 )
+
+[node name="ankh5" parent="Props" index="24" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 19.6306, -8.28793, -84.9019 )
+
+[node name="Obelisk6" parent="Props" index="25" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 11.4176, -13.7699, -83.3534 )
+
+[node name="ankh6" parent="Props" index="26" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 11.2164, -8.28793, -84.9019 )
+
+[node name="CSGCylinder" parent="Props" index="27" instance=ExtResource( 10 )]
+transform = Transform( 0.39057, 0, -0.920573, 0, 1, 0, 0.920573, 0, 0.39057, -0.320146, -7.77597, -37.6529 )
+use_collision = true
+radius = 10.5465
+height = 2.55605
+material = SubResource( 1 )
+
+[node name="Bandit" parent="Entities" index="0" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64943, -11.5862, -81.5417 )
+
+[node name="Bandit2" parent="Entities" index="1" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32025, -11.5862, -81.5417 )
