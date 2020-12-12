@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
-
-[ext_resource path="res://shaders/water_shader.shader" type="Shader" id=4]
-
-[resource]
-render_priority = -1
-shader = ExtResource( 4 )
