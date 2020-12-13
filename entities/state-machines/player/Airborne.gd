@@ -34,7 +34,7 @@ func physics_process(e, delta):
 		e.handle_jump()
 	e.apply_gravity(delta)
 	e.aerial_movement(delta)
-	e.apply_movement(false)
+	e.apply_movement(true)
 	if not e.just_jumped and (e.is_on_floor() or e.ground_check.is_grounded()):
 		exit(e, "Land")
 		return

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/SlashCross.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.0386363 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+trail_divisor = 4
+trail_size_modifier = SubResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 0.25
+flag_rotate_y = true
+direction = Vector3( 0, 0, -5 )
+spread = 20.0
+flatness = 0.53
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+linear_accel = 2.0
+linear_accel_random = 0.5
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+params_billboard_mode = 3
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.62
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.466667, 0.0666667, 0, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=3]
+material = SubResource( 2 )
+size = Vector2( 0.4, 0.4 )
+
+[node name="BanditSlashParticles" type="Particles"]
+cast_shadow = 0
+amount = 16
+lifetime = 0.6
+speed_scale = 2.0
+explosiveness = 0.25
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 3 )
