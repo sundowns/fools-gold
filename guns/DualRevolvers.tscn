@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://guns/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://guns/DualRevolvers.gd" type="Script" id=2]
 [ext_resource path="res://models/revolver.tscn" type="PackedScene" id=3]
 [ext_resource path="res://effects/MuzzleFlash.tscn" type="PackedScene" id=4]
-[ext_resource path="res://animations/revolver_reload.tres" type="Animation" id=5]
+[ext_resource path="res://animations/dual_revolver_reload.tres" type="Animation" id=5]
 [ext_resource path="res://animations/revolver_fire_left.tres" type="Animation" id=6]
 [ext_resource path="res://animations/revolver_fire_right.tres" type="Animation" id=7]
 [ext_resource path="res://audio/gun/pistol.wav" type="AudioStream" id=8]
@@ -12,7 +12,6 @@
 [ext_resource path="res://audio/gun/flesh_hit.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/gun/world_hit.wav" type="AudioStream" id=11]
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=12]
-[ext_resource path="res://audio/Audio3D.gd" type="Script" id=13]
 [ext_resource path="res://audio/gun/pistol_reload.wav" type="AudioStream" id=14]
 
 [node name="DualRevolvers" instance=ExtResource( 1 )]
@@ -29,21 +28,18 @@ anims/FireLeft = ExtResource( 6 )
 anims/FireRight = ExtResource( 7 )
 anims/Reload = ExtResource( 5 )
 
-[node name="MeshLocation" parent="." index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-
 [node name="RevolverRight" parent="MeshLocation" index="0" instance=ExtResource( 3 )]
-transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, 0, 0, 0 )
+transform = Transform( -1.96701e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -1.96701e-09, 0, 0, 0 )
 
 [node name="Cylinder" parent="MeshLocation/RevolverRight" index="1"]
-transform = Transform( -7.81972e-08, 1.78895, 0, -1.78894, -7.81975e-08, 0, 0, 0, 1.78894, 4.0172, 4.30901, 0 )
+transform = Transform( -7.8197e-08, 1.78895, 0, -0.89447, -3.90987e-08, -1.54927, -1.54927, -6.7721e-08, 0.89447, 4.0172, 4.30901, 0 )
 
 [node name="MuzzleFlash" parent="MeshLocation/RevolverRight" index="3" instance=ExtResource( 4 )]
 transform = Transform( -7.24092e-07, 0, 4.44444, 0, 4.44444, 0, -4.44444, 0, -7.24092e-07, -14.671, 5.77869, 2.3902e-06 )
 visible = false
 
 [node name="RevolverLeft" parent="MeshLocation" index="1" instance=ExtResource( 3 )]
-transform = Transform( -7.33143e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -7.33143e-09, -0.8, 0, 0 )
+transform = Transform( -1.96701e-09, 0, -0.045, 0, 0.045, 0, 0.045, 0, -1.96701e-09, -0.8, 0, 0 )
 
 [node name="Cylinder" parent="MeshLocation/RevolverLeft" index="1"]
 transform = Transform( -7.81972e-08, 1.78895, 0, -0.894472, -3.90987e-08, -1.54927, -1.54927, -6.7721e-08, 0.894472, 4.0172, 4.30901, 0 )
@@ -72,9 +68,8 @@ unit_db = 5.0
 unit_size = 5.0
 max_db = -1.0
 
-[node name="ReloadAudio" type="AudioStreamPlayer3D" parent="." index="7" instance=ExtResource( 12 )]
+[node name="ReloadAudio" parent="." index="7" instance=ExtResource( 12 )]
 stream = ExtResource( 14 )
-script = ExtResource( 13 )
 
 [editable path="MeshLocation/RevolverRight"]
 

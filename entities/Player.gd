@@ -41,6 +41,8 @@ var is_highlighting_interactable := false
 var slope_normal: Vector3 = Vector3.UP
 var slope_angle: float = 0.0
 
+var first_time_equipping_new_gun: bool = false
+
 onready var weapon_list: Dictionary = {}
 
 signal ammo_changed(new_ammo)
@@ -172,6 +174,8 @@ func handle_shooting():
 		return
 	if not active_weapon or active_weapon.is_reloading or is_switching_weapons or not active_weapon.is_ready:
 		return
+	if first_time_equipping_new_gun:
+		return
 	if Input.is_action_just_pressed("reload"):
 		active_weapon.start_reload()
 	
@@ -270,6 +274,7 @@ func _on_Player_dead():
 	animation_player.play("Death")
 
 func _on_weapon_unlock(weapon_key: String):
+	first_time_equipping_new_gun = true
 	match weapon_key:
 		"revolver":
 			pickup_weapon($Head/Hand/Revolver, 1)
@@ -285,6 +290,7 @@ func pickup_weapon(weapon: Gun, weapon_list_key: int):
 	weapon_list[weapon_list_key] = weapon
 	weapon_list[weapon_list_key].initialise()
 	begin_weapon_switch(weapon_list_key)
+	$FirstEquipShittyHackTimer.start()
 
 func upgrade_revolvers():
 	pickup_weapon($Head/Hand/DualRevolvers, 1)
@@ -296,3 +302,6 @@ func calculate_slope_angle():
 	else:
 		slope_normal = Vector3.UP
 		slope_angle = 0.0
+
+func _on_FirstEquipShittyHackTimer_timeout():
+	first_time_equipping_new_gun = false
