@@ -2,8 +2,10 @@ extends Node
 
 var fsm: StateMachine
 
-func enter(_e):
-	pass
+
+func enter(e):
+	if not e.slope_cast.is_colliding():
+		exit(e, "Airborne")
 
 func exit(_e, next_state):
 	fsm._change_to(next_state)
@@ -14,16 +16,10 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
-	if not e.is_on_floor() and not e.ground_check.is_grounded():
-		exit(e, "Airborne")
-		return
-	if e.direction != Vector3.ZERO:
-		exit(e, "Move")
-		return
 	e.apply_gravity(delta)
-	e.handle_jump()
 	e.grounded_movement(delta)
 	e.apply_movement(true)
+	exit(e, "Move")
 
 func input(_e, event):
 	return event

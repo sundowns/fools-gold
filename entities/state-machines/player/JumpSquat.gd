@@ -26,7 +26,7 @@ func physics_process(e, delta):
 		exit(e, "Airborne")
 		return
 	e.aerial_movement(delta)
-	e.apply_movement()
+	e.apply_movement(false)
 
 func input(_e, event):
 	return event

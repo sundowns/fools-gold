@@ -25,7 +25,7 @@ signal dead
 func _physics_process(delta):
 	apply_knockback_force(delta)
 
-func apply_gravity(delta):
+func apply_gravity(delta: float):
 	if not is_on_floor() and not ground_check.is_grounded():
 		var gravity_force = Vector3.DOWN * gravity * delta
 		if gravity_vector.y < 0:

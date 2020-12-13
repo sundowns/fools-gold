@@ -10,6 +10,7 @@ onready var interact_cast: RayCast = $Head/Camera/InteractCast
 onready var state_machine: StateMachine = $MovementStateMachine
 onready var landing_audio: AudioStreamPlayer3D = $LandingAudio
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var slope_cast: RayCast = $SlopeCheckCast
 
 # Player movement values
 export var ground_speed: float = 10
@@ -20,6 +21,7 @@ export var jump_force: float = 5 # Initial vertical impulse when jumping
 export var aerial_speed: float = 12
 export var aerial_acceleration: float = 4 # 4.5 juicy but quite high
 export var aerial_drag: float = 6
+export(float) var slope_snap_angle := 45.0
 
 const strafe_viewport_rotation_speed := deg2rad(25)
 const max_strafe_viewport_rotation := deg2rad(0.75)
@@ -101,13 +103,12 @@ func _physics_process(_delta):
 	handle_shooting()
 	handle_interaction()
 
-func apply_movement():
-	var movement = Vector3.ZERO
-	movement.z = velocity.z + gravity_vector.z
-	movement.x = velocity.x + gravity_vector.x
-	movement.y = gravity_vector.y
-# warning-ignore:return_value_discarded
-	move_and_slide(movement, Vector3.UP)
+func apply_movement(snap_to_ground: bool = true):
+	var snap_vector = Vector3.ZERO
+	if snap_to_ground:
+		snap_vector = Vector3.DOWN * 5.0
+	move_and_slide_with_snap(gravity_vector, snap_vector, Vector3.UP, true)
+	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector3.UP, true)
 
 func grounded_movement(delta: float):
 	direction = Vector3.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://entities/components/Hand.gd" type="Script" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://ui/damageoverlay.png" type="Texture" id=20]
 [ext_resource path="res://guns/DualRevolvers.tscn" type="PackedScene" id=21]
 [ext_resource path="res://entities/components/ShaderCache.tscn" type="PackedScene" id=22]
+[ext_resource path="res://entities/state-machines/player/Land.gd" type="Script" id=23]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.7
@@ -145,6 +146,9 @@ script = ExtResource( 10 )
 process_mode = 0
 wait_time = 0.2
 
+[node name="Land" type="Node" parent="MovementStateMachine"]
+script = ExtResource( 23 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 1 )
@@ -229,6 +233,11 @@ enabled = true
 [node name="RayCast5" type="RayCast" parent="GroundCheck"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6 )
 enabled = true
+
+[node name="SlopeCheckCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.839152, 0 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 anchor_right = 1.0

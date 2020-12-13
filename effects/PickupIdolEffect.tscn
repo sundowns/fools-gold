@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/enemy/enemy_bark3.wav" type="AudioStream" id=2]
+[ext_resource path="res://meshes/Rock2.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://effects/PickupIdolEffect.gd" type="Script" id=4]
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+albedo_color = Color( 0.976471, 0, 0, 0.607843 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.5
+trail_divisor = 2
+emission_shape = 1
+emission_sphere_radius = 0.6
+direction = Vector3( 0, 1, 0 )
+spread = 30.0
+flatness = 0.57
+gravity = Vector3( 0, -25, 0 )
+initial_velocity = 12.0
+initial_velocity_random = 0.5
+linear_accel = 3.0
+scale = 0.12
+
+[node name="PickupIdolEffect" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Particles" type="Particles" parent="."]
+material_override = SubResource( 2 )
+cast_shadow = 0
+emitting = false
+amount = 100
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.2
+randomness = 0.5
+process_material = SubResource( 1 )
+draw_pass_1 = ExtResource( 3 )
+
+[node name="Audio3D" parent="." instance=ExtResource( 1 )]
+stream = ExtResource( 2 )
+pitch_scale = 0.68
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

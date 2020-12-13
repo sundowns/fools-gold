@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/idol.jpg-632bc0163fb4c861fb9b709f8644c252.s3tc.stex"
-path.etc2="res://.import/idol.jpg-632bc0163fb4c861fb9b709f8644c252.etc2.stex"
+path.s3tc="res://.import/ornate_objects_3439_4331_Small.jpg-4e8c3441a92b4acb712c932632b106ce.s3tc.stex"
+path.etc2="res://.import/ornate_objects_3439_4331_Small.jpg-4e8c3441a92b4acb712c932632b106ce.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/idol.jpg"
-dest_files=[ "res://.import/idol.jpg-632bc0163fb4c861fb9b709f8644c252.s3tc.stex", "res://.import/idol.jpg-632bc0163fb4c861fb9b709f8644c252.etc2.stex" ]
+source_file="res://textures/ornate_objects_3439_4331_Small.jpg"
+dest_files=[ "res://.import/ornate_objects_3439_4331_Small.jpg-4e8c3441a92b4acb712c932632b106ce.s3tc.stex", "res://.import/ornate_objects_3439_4331_Small.jpg-4e8c3441a92b4acb712c932632b106ce.etc2.stex" ]
 
 [params]
 
