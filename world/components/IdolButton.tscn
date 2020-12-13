@@ -42,6 +42,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "Pickup"
 length = 2.0
+step = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("idol:translation")
 tracks/0/interp = 1
@@ -49,10 +50,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 3.65232, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.08, 0.548, 0 ), Vector3( -0.08, 1.096, 0 ), Vector3( 0.08, 1.644, 0 ), Vector3( -0.08, 2.191, 0 ), Vector3( 0.08, 2.739, 0 ), Vector3( 0, 3.65232, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape:translation")
@@ -94,14 +95,13 @@ owning_entity_path = NodePath("../../Idol")
 shape = SubResource( 1 )
 
 [node name="idol" parent="." instance=ExtResource( 2 )]
-transform = Transform( -8.14603e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -8.14603e-08, 0, 0.06552, 0 )
+transform = Transform( -8.14603e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -8.14603e-08, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -8.14603e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -8.14603e-08, 0, 0.06552, 0 )
+transform = Transform( -8.14603e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -8.14603e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38085, 0 )
 light_color = Color( 1, 0.643137, 0.027451, 1 )
 omni_range = 10.0
 
