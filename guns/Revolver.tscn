@@ -9,7 +9,7 @@
 [ext_resource path="res://audio/gun/pistol_reload.wav" type="AudioStream" id=7]
 [ext_resource path="res://audio/gun/Shotgun Holster.wav" type="AudioStream" id=8]
 [ext_resource path="res://audio/gun/world_hit.wav" type="AudioStream" id=9]
-[ext_resource path="res://animations/dual_revolver_reload.tres" type="Animation" id=10]
+[ext_resource path="res://animations/single_revolver_reload.tres" type="Animation" id=10]
 [ext_resource path="res://audio/gun/flesh_hit.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]

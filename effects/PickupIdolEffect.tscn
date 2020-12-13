@@ -5,12 +5,12 @@
 [ext_resource path="res://meshes/Rock2.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://effects/PickupIdolEffect.gd" type="Script" id=4]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
 flags_unshaded = true
 albedo_color = Color( 0.976471, 0, 0, 0.607843 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=2]
 lifetime_randomness = 0.5
 trail_divisor = 2
 emission_shape = 1
@@ -28,7 +28,7 @@ scale = 0.12
 script = ExtResource( 4 )
 
 [node name="Particles" type="Particles" parent="."]
-material_override = SubResource( 2 )
+material_override = SubResource( 1 )
 cast_shadow = 0
 emitting = false
 amount = 100
@@ -36,11 +36,12 @@ lifetime = 4.0
 one_shot = true
 explosiveness = 0.2
 randomness = 0.5
-process_material = SubResource( 1 )
+process_material = SubResource( 2 )
 draw_pass_1 = ExtResource( 3 )
 
 [node name="Audio3D" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 2 )
+unit_db = 15.0
 pitch_scale = 0.68
 
 [node name="Timer" type="Timer" parent="."]

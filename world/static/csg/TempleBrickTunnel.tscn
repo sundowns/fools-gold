@@ -1,29 +1,30 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://materials/TempleStoneBrick.tres" type="Material" id=1]
+[ext_resource path="res://materials/GreenTempleStoneBrick.tres" type="Material" id=1]
 [ext_resource path="res://world/static/csg/TempleBrickBlock.tscn" type="PackedScene" id=2]
 
 [node name="Tunnel" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 3.85647, 63 )
 
-[node name="CSGBox9" type="CSGBox" parent="." instance=ExtResource( 2 )]
+[node name="CSGBox9" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142502, 0 )
 height = 12.0
 depth = 28.0
 material = ExtResource( 1 )
 
-[node name="CSGBox11" type="CSGBox" parent="." instance=ExtResource( 2 )]
+[node name="CSGBox11" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -5.85647, -1 )
 width = 12.0
 depth = 34.0
 material = ExtResource( 1 )
 
-[node name="CSGBox12" type="CSGBox" parent="." instance=ExtResource( 2 )]
+[node name="CSGBox12" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 6.32924, 0 )
 width = 12.0
 depth = 28.0
 material = ExtResource( 1 )
 
-[node name="CSGBox10" type="CSGBox" parent="." instance=ExtResource( 2 )]
+[node name="CSGBox10" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.143529, 0 )
 height = 12.0
 depth = 28.0
