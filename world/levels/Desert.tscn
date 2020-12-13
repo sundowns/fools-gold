@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/static/Terrain1.tscn" type="PackedScene" id=2]
@@ -10,11 +10,21 @@
 [ext_resource path="res://entities/Bandit.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/Brick Texture 1.jpg" type="Texture" id=9]
 [ext_resource path="res://world/static/csg/TempleBrickCylinder.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world/static/csg/TempleBrickBlock.tscn" type="PackedScene" id=11]
+[ext_resource path="res://models/door.tscn" type="PackedScene" id=12]
+[ext_resource path="res://world/static/HeiroglyphicWall.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
 albedo_texture = ExtResource( 9 )
 uv1_scale = Vector3( 0.3, 0.3, 0.3 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 50.2134
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 9 )
+uv1_scale = Vector3( 0.01, 0.01, 0.01 )
 uv1_triplanar = true
 uv1_triplanar_sharpness = 50.2134
 
@@ -24,13 +34,16 @@ uv1_triplanar_sharpness = 50.2134
 transform = Transform( -0.746615, 0, -0.665256, 0, 1, 0, 0.665256, 0, -0.746615, -135.1, -6.20059, -226.574 )
 
 [node name="Skybox" parent="Navigation/NavigationMeshInstance/Statics" index="0"]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -88.1478 )
+transform = Transform( -0.588333, -0.00959675, 0.251914, -0.0105778, -0.487105, -0.0269178, -0.386482, 0.0279407, -0.382747, -80.5538, 0, -185.506 )
+
+[node name="CollisionShape4" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="3"]
+shape = null
 
 [node name="Water" parent="Props" index="0" instance=ExtResource( 3 )]
 transform = Transform( 135.312, 0, 0, 0, 4.34309, 0, 0, 0, 100.171, -25.0482, -18.9357, -152.778 )
 
 [node name="Terrain1" parent="Props" index="1" instance=ExtResource( 2 )]
-transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, 0.212372, -26.0265, 1.79203 )
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, 0.191157, -26.0694, 1.79337 )
 
 [node name="palm1" parent="Props" index="2" instance=ExtResource( 4 )]
 transform = Transform( -0.794079, 0.281112, 0.716625, 0.0891713, 1.05623, -0.315522, -0.764607, -0.168765, -0.781045, -63.8753, -13.3589, -170.575 )
@@ -77,45 +90,130 @@ transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -11.732, -13.76
 [node name="ankh" parent="Props" index="16" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -11.9331, -8.28793, -84.9019 )
 
-[node name="Obelisk2" parent="Props" index="17" instance=ExtResource( 6 )]
+[node name="Obelisk7" parent="Props" index="17" instance=ExtResource( 6 )]
+transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 0.0569854, -6.7699, -36.3534 )
+
+[node name="ankh7" parent="Props" index="18" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -0.144114, -1.28793, -37.9019 )
+
+[node name="Obelisk2" parent="Props" index="19" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -20.2032, -13.7699, -83.3534 )
 
-[node name="ankh2" parent="Props" index="18" instance=ExtResource( 5 )]
+[node name="ankh2" parent="Props" index="20" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -20.4044, -8.28793, -84.9019 )
 
-[node name="Obelisk3" parent="Props" index="19" instance=ExtResource( 6 )]
+[node name="Obelisk3" parent="Props" index="21" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -28.6174, -13.7699, -83.3534 )
 
-[node name="ankh3" parent="Props" index="20" instance=ExtResource( 5 )]
+[node name="ankh3" parent="Props" index="22" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -28.8185, -8.28793, -84.9019 )
 
-[node name="Obelisk4" parent="Props" index="21" instance=ExtResource( 6 )]
+[node name="Obelisk4" parent="Props" index="23" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 28.303, -13.7699, -83.3534 )
 
-[node name="ankh4" parent="Props" index="22" instance=ExtResource( 5 )]
+[node name="ankh4" parent="Props" index="24" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 28.1018, -8.28793, -84.9019 )
 
-[node name="Obelisk5" parent="Props" index="23" instance=ExtResource( 6 )]
+[node name="Obelisk5" parent="Props" index="25" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 19.8317, -13.7699, -83.3534 )
 
-[node name="ankh5" parent="Props" index="24" instance=ExtResource( 5 )]
+[node name="ankh5" parent="Props" index="26" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 19.6306, -8.28793, -84.9019 )
 
-[node name="Obelisk6" parent="Props" index="25" instance=ExtResource( 6 )]
+[node name="Obelisk6" parent="Props" index="27" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 11.4176, -13.7699, -83.3534 )
 
-[node name="ankh6" parent="Props" index="26" instance=ExtResource( 5 )]
+[node name="ankh6" parent="Props" index="28" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 11.2164, -8.28793, -84.9019 )
 
-[node name="CSGCylinder" parent="Props" index="27" instance=ExtResource( 10 )]
-transform = Transform( 0.39057, 0, -0.920573, 0, 1, 0, 0.920573, 0, 0.39057, -0.320146, -7.77597, -37.6529 )
+[node name="CSGCombiner" type="CSGCombiner" parent="Props" index="29"]
+use_collision = true
+
+[node name="CSGCylinder" parent="Props/CSGCombiner" index="0" instance=ExtResource( 10 )]
+transform = Transform( 0.39057, 0, -0.920573, 0, 1, 0, 0.920573, 0, 0.39057, -0.320146, -8.77597, -37.6529 )
 use_collision = true
 radius = 10.5465
-height = 2.55605
+height = 4.0
 material = SubResource( 1 )
+
+[node name="CSGBox5" parent="Props/CSGCombiner" index="1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190167, -7.78606, -7.99363 )
+width = 9.14058
+depth = 42.209
+
+[node name="CSGCombiner2" type="CSGCombiner" parent="Props" index="30"]
+use_collision = true
+
+[node name="CSGBox4" parent="Props/CSGCombiner2" index="0" instance=ExtResource( 11 )]
+transform = Transform( 0.0106786, -1.20972, -1.23944, 0.858291, 1.08026, -1.04696, 1.50432, -0.607757, 0.606142, -2.20299, -88.5501, 97.2615 )
+width = 138.0
+height = 109.737
+depth = 112.0
+material = SubResource( 2 )
+
+[node name="CSGBox7" parent="Props/CSGCombiner2" index="1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -19.9986 )
+width = 14.0
+height = 15.9538
+depth = 14.0
+
+[node name="CSGBox6" parent="Props/CSGCombiner2" index="2" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -45.9936 )
+width = 14.0
+depth = 14.0
+
+[node name="CSGCylinder" parent="Props/CSGCombiner2" index="3" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5, 7.05692 )
+radius = 5.0
+height = 112.0
+
+[node name="CSGCombiner3" type="CSGCombiner" parent="Props" index="31"]
+transform = Transform( 2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 36, 0, -37 )
+use_collision = true
+
+[node name="CSGBox7" parent="Props/CSGCombiner3" index="0" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -26.9986 )
+width = 14.0
+depth = 14.0
+
+[node name="CSGBox6" parent="Props/CSGCombiner3" index="1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -45.9936 )
+width = 14.0
+depth = 14.0
+
+[node name="CSGCylinder" parent="Props/CSGCombiner3" index="2" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5, 7.05692 )
+radius = 5.0
+height = 112.0
+
+[node name="CSGBox8" parent="Props" index="32" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.379585, -7.78606, -36.9936 )
+use_collision = true
+width = 8.20539
+depth = 116.0
+
+[node name="door" parent="Props" index="33" instance=ExtResource( 12 )]
+transform = Transform( -6.11959e-08, 0, 1.4, 0, 1.4, 0, -1, 0, -4.37114e-08, 2.37822, -4.64057, -27.09 )
+
+[node name="door2" parent="Props" index="34" instance=ExtResource( 12 )]
+transform = Transform( 1.48619e-07, 0, -1.4, 0, 1.4, 0, 1, 0, 1.66103e-07, -2.35988, -4.64057, -27.09 )
+
+[node name="WallThing" parent="Props" index="35" instance=ExtResource( 13 )]
+transform = Transform( 0.282843, 0, 0.282843, 0, 0.4, 0, -0.282843, 0, 0.282843, 7.39433, -4.44856, -29.549 )
+
+[node name="WallThing2" parent="Props" index="36" instance=ExtResource( 13 )]
+transform = Transform( 0.282843, 0, -0.282843, 0, 0.4, 0, 0.282843, 0, 0.282843, -7.48857, -4.44856, -29.4535 )
+
+[node name="WallThing3" parent="Props" index="37" instance=ExtResource( 13 )]
+transform = Transform( -0.282843, 0, -0.282843, 0, 0.4, 0, 0.282843, 0, -0.282843, -8.05386, -4.44856, -44.2211 )
+
+[node name="WallThing4" parent="Props" index="38" instance=ExtResource( 13 )]
+transform = Transform( -0.282843, 0, 0.282843, 0, 0.4, 0, -0.282843, 0, -0.282843, 7.20463, -4.44856, -44.2986 )
 
 [node name="Bandit" parent="Entities" index="0" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64943, -11.5862, -81.5417 )
 
 [node name="Bandit2" parent="Entities" index="1" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32025, -11.5862, -81.5417 )
+
+[editable path="Navigation/NavigationMeshInstance/Statics/Skybox"]
