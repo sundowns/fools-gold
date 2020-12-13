@@ -8,6 +8,7 @@ func enter(_e):
 func exit(e, next_state):
 	if not e.just_jumped and next_state in ["Airborne"]:
 		e.gravity_vector.y = 0
+		e.just_fell = true
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
@@ -17,13 +18,13 @@ func process(_e, delta):
 
 func physics_process(e, delta):
 	if not e.is_on_floor() and not e.ground_check.is_grounded():
-		e.just_fell = true
 		exit(e, "Airborne")
 		return
 	if e.direction == Vector3.ZERO:
 		exit(e, "Idle")
 		return
-	e.apply_gravity(delta)
+	e.calculate_slope_angle()
+	e.apply_gravity(delta, e.slope_angle)
 	e.handle_jump()
 	e.grounded_movement(delta)
 	e.apply_movement()

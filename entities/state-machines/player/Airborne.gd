@@ -31,8 +31,9 @@ func physics_process(e, delta):
 	if no_longer_just_fell:
 		e.just_fell = false
 	if e.just_fell:
-		e.handle_jump()
-	e.apply_gravity(delta)
+		e.handle_jump(true)
+	e.calculate_slope_angle()
+	e.apply_gravity(delta, e.slope_angle)
 	e.aerial_movement(delta)
 	e.apply_movement(true)
 	if not e.just_jumped and (e.is_on_floor() or e.ground_check.is_grounded()):

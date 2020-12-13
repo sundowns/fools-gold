@@ -128,6 +128,13 @@ script = ExtResource( 3 )
 [node name="Idle" type="Node" parent="MovementStateMachine"]
 script = ExtResource( 4 )
 
+[node name="Jump" type="Node" parent="MovementStateMachine"]
+script = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="MovementStateMachine/Jump"]
+process_mode = 0
+wait_time = 0.2
+
 [node name="Airborne" type="Node" parent="MovementStateMachine"]
 script = ExtResource( 6 )
 
@@ -136,13 +143,6 @@ process_mode = 0
 wait_time = 0.5
 
 [node name="JustFellTimer" type="Timer" parent="MovementStateMachine/Airborne"]
-process_mode = 0
-wait_time = 0.2
-
-[node name="Jump" type="Node" parent="MovementStateMachine"]
-script = ExtResource( 10 )
-
-[node name="Timer" type="Timer" parent="MovementStateMachine/Jump"]
 process_mode = 0
 wait_time = 0.2
 
@@ -235,9 +235,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6 )
 enabled = true
 
 [node name="SlopeCheckCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.839152, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05307, 0 )
 enabled = true
-cast_to = Vector3( 0, -2, 0 )
+cast_to = Vector3( 0, -1.5, 0 )
+collide_with_areas = true
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 anchor_right = 1.0
@@ -287,9 +288,9 @@ stream = ExtResource( 17 )
 [node name="Hurt3" parent="HurtAudio" instance=ExtResource( 16 )]
 stream = ExtResource( 18 )
 [connection signal="dead" from="." to="." method="_on_Player_dead"]
+[connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JumpStartTimer" to="MovementStateMachine/Airborne" method="_on_JumpStartTimer_timeout"]
 [connection signal="timeout" from="MovementStateMachine/Airborne/JustFellTimer" to="MovementStateMachine/Airborne" method="_on_JustFellTimer_timeout"]
-[connection signal="timeout" from="MovementStateMachine/Jump/Timer" to="MovementStateMachine/Jump" method="_on_Timer_timeout"]
 [connection signal="reloaded" from="Head/Hand/Revolver" to="." method="_on_gun_reload"]
 [connection signal="reloaded" from="Head/Hand/Shotgun" to="." method="_on_gun_reload"]
 [connection signal="reloaded" from="Head/Hand/DualRevolvers" to="." method="_on_gun_reload"]

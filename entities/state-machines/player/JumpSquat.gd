@@ -6,6 +6,7 @@ onready var timer: Timer = $Timer
 var exit_to_airborne := false
 
 func enter(e):
+	e.just_fell = false
 	e.just_jumped = true
 	exit_to_airborne = false
 	timer.start()
@@ -25,6 +26,7 @@ func physics_process(e, delta):
 	if exit_to_airborne:
 		exit(e, "Airborne")
 		return
+	e.calculate_slope_angle()
 	e.aerial_movement(delta)
 	e.apply_movement(false)
 

@@ -18,6 +18,8 @@ var velocity := Vector3.ZERO
 var knockback := Vector3.ZERO
 var is_dead := false
 
+const maximum_walkable_slope_angle: float = 50.0
+
 signal heal(new_health)
 signal hurt(new_health)
 signal dead
@@ -25,7 +27,7 @@ signal dead
 func _physics_process(delta):
 	apply_knockback_force(delta)
 
-func apply_gravity(delta: float):
+func apply_gravity(delta: float, slope_angle: float = 0.0, force_push_into_floor_normal: bool = false):
 	if not is_on_floor() and not ground_check.is_grounded():
 		var gravity_force = Vector3.DOWN * gravity * delta
 		if gravity_vector.y < 0:
@@ -34,10 +36,19 @@ func apply_gravity(delta: float):
 		gravity_vector.y = max(gravity_vector.y, terminal_fall_velocity)
 	# Just ignoring ground-based gravity vector if the entity has JUST been pushed (so it can leave the ground)
 	else:
-		if is_on_floor() and ground_check.is_grounded():
-			gravity_vector = -get_floor_normal() * gravity
-		else:
+		if force_push_into_floor_normal:
 			gravity_vector = -get_floor_normal()
+		else:
+			if is_on_floor() and ground_check.is_grounded():
+				if slope_angle >= maximum_walkable_slope_angle:
+					gravity_vector = Vector3.DOWN * gravity
+				else:
+					gravity_vector = -get_floor_normal() * gravity
+			else:
+				if slope_angle >= maximum_walkable_slope_angle:
+					gravity_vector = Vector3.DOWN * gravity
+				else:
+					gravity_vector = -get_floor_normal()
 
 func apply_knockback_force(delta):
 	if knockback.length() <= 0:

@@ -20,7 +20,8 @@ func physics_process(e, delta):
 	if e.direction != Vector3.ZERO:
 		exit(e, "Move")
 		return
-	e.apply_gravity(delta)
+	e.calculate_slope_angle()
+	e.apply_gravity(delta, e.slope_angle, true)
 	e.handle_jump()
 	e.grounded_movement(delta)
 	e.apply_movement(true)

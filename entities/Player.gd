@@ -30,13 +30,16 @@ const weapon_sway := 35
 var strafe_viewport_rotation = 0
 var direction = Vector3.ZERO
 var just_jumped := false
-var just_fell := true
+var just_fell := false
 var active_weapon: Gun = null
 var sensitivity_multipler: float = 1
 var is_switching_weapons := false
 var next_weapon_index := 1
 var rng = RandomNumberGenerator.new()
 var is_highlighting_interactable := false
+
+var slope_normal: Vector3 = Vector3.UP
+var slope_angle: float = 0.0
 
 onready var weapon_list: Dictionary = {}
 
@@ -156,11 +159,11 @@ func handle_weapon_sway(delta):
 	hand.rotation.x = lerp_angle(hand.rotation.x, head.rotation.x, weapon_sway * delta)
 	hand.rotation.z = 0 # I don't know why this gets set to -180 on startup sometimes..but whatever
 
-func handle_jump():
+func handle_jump(force_allow: bool = false):
 	if is_dead:
 		return
 	if Input.is_action_pressed("jump"):
-		if is_on_floor() or ground_check.is_grounded():
+		if (is_on_floor() or ground_check.is_grounded() or force_allow) and slope_angle <= maximum_walkable_slope_angle:
 			$JumpAudio.play()
 			jump()
 
@@ -285,3 +288,11 @@ func pickup_weapon(weapon: Gun, weapon_list_key: int):
 
 func upgrade_revolvers():
 	pickup_weapon($Head/Hand/DualRevolvers, 1)
+
+func calculate_slope_angle():
+	if slope_cast.is_colliding():
+		slope_normal = slope_cast.get_collision_normal()
+		slope_angle = rad2deg(slope_normal.angle_to(Vector3.UP))
+	else:
+		slope_normal = Vector3.UP
+		slope_angle = 0.0

@@ -16,7 +16,8 @@ func process(_e, delta):
 	return delta
 
 func physics_process(e, delta):
-	e.apply_gravity(delta)
+	e.calculate_slope_angle()
+	e.apply_gravity(delta, e.slope_angle)
 	e.grounded_movement(delta)
 	e.apply_movement(true)
 	exit(e, "Move")

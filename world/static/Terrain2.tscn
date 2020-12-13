@@ -20,6 +20,7 @@ material/0 = ExtResource( 3 )
 material/1 = SubResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Plane" index="0"]
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Plane/StaticBody" index="0"]
 shape = SubResource( 2 )
