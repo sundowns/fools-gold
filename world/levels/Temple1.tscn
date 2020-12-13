@@ -267,15 +267,19 @@ depth = 12.0
 [node name="CSGBox9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Tunnel" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 use_collision = true
+material = ExtResource( 28 )
 
 [node name="CSGBox11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Tunnel" index="1"]
 use_collision = true
+material = ExtResource( 28 )
 
 [node name="CSGBox12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Tunnel" index="2"]
 use_collision = true
+material = ExtResource( 28 )
 
 [node name="CSGBox10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Tunnel" index="3"]
 use_collision = true
+material = ExtResource( 28 )
 
 [node name="CSGCylinder2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="9" instance=ExtResource( 3 )]
 transform = Transform( 0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 27, -0.81522, 70 )
