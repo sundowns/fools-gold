@@ -10,7 +10,6 @@
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
-is_debug = true
 
 [node name="InteractPrompt" type="Label" parent="."]
 visible = false
