@@ -26,3 +26,4 @@ anims/Unholster = ExtResource( 3 )
 [node name="FleshHitAudio" parent="." instance=ExtResource( 5 )]
 
 [node name="WorldHitAudio" parent="." instance=ExtResource( 5 )]
+max_db = 3.0

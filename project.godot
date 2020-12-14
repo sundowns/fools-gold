@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://world/props/Prop.gd"
 }, {
+"base": "Spatial",
+"class": "RandomSound",
+"language": "GDScript",
+"path": "res://audio/RandomSound.gd"
+}, {
+"base": "Spatial",
+"class": "Spawner",
+"language": "GDScript",
+"path": "res://world/components/Spawner.gd"
+}, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
@@ -87,6 +97,8 @@ _global_script_class_icons={
 "Player": "",
 "PlayerDetectionZone": "",
 "Prop": "",
+"RandomSound": "",
+"Spawner": "",
 "StateMachine": ""
 }
 

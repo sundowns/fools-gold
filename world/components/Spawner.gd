@@ -1,4 +1,5 @@
 extends Spatial
+class_name Spawner
 
 export(String) var scene_path
 export(NodePath) var parent_node_path
@@ -10,6 +11,7 @@ export(int) var max_spawn_count := -1
 export(float) var spawn_interval := 5.0
 export(bool) var is_active := true
 var spawn_count = 0
+onready var spawn_transform = global_transform
 
 onready var spawn_timer: Timer = $Timer
 
@@ -39,7 +41,7 @@ func spawn():
 		return
 	var new_thing: Node = spawner_scene.instance()
 	parent_node.add_child(new_thing)
-	new_thing.global_transform = global_transform
+	new_thing.global_transform = spawn_transform
 	spawn_count += 1
 
 func _on_Timer_timeout():

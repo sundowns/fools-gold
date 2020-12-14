@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/levels/MultiPositionSpawner.gd" type="Script" id=1]
+
+[node name="MultiPositionSpawner" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 25 )
+script = ExtResource( 1 )
+scene_path = "res://entities/Bandit.tscn"
+parent_node_path = NodePath("../../Entities")
+intermittently_spawn = true
+spawn_interval = 2.0
+is_active = false
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

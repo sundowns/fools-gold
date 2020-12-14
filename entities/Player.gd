@@ -112,6 +112,7 @@ func apply_movement(snap_to_ground: bool = true):
 	var snap_vector = Vector3.ZERO
 	if snap_to_ground:
 		snap_vector = Vector3.DOWN * 25.0
+# warning-ignore:return_value_discarded
 	move_and_slide_with_snap(gravity_vector, snap_vector, Vector3.UP, true)
 	velocity = move_and_slide_with_snap(velocity, snap_vector, Vector3.UP, true)
 

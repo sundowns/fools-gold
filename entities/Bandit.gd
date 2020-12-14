@@ -9,6 +9,8 @@ onready var bark_timer = $BarkTimer
 onready var barks = $Barks
 onready var rng = RandomNumberGenerator.new()
 
+var has_barked := false
+
 func _ready():
 	animation_player.play("Default")
 	rng.randomize()
@@ -27,9 +29,15 @@ func run_at_player():
 		return
 	var direction_to_player = (Global.player_node.global_transform.origin - global_transform.origin).normalized()
 	velocity = direction_to_player * move_speed
-	bark()
+	queue_bark()
 
-func bark():
+func queue_bark():
+	# Bark off rip once
+	if not has_barked:
+		bark()
+		has_barked = true
+		bark_timer.start(rng.randf_range(3.0, 4.0))
+	
 	if bark_timer.is_stopped():
 		bark_timer.start(rng.randf_range(1.0, 4.0))
 
@@ -53,8 +61,10 @@ func _on_AttackHitbox_body_entered(body):
 	var knockback_direction = (Global.player_node.global_transform.origin - global_transform.origin).normalized()
 	body.hit_by_bandit(attack_damage, knockback_force * knockback_direction)
 
-
 func _on_BarkTimer_timeout():
+	bark()
+
+func bark():
 	var n = rng.randi_range(0, barks.get_child_count() -1)
 	barks.get_child(n).play()
 	bark_timer.start(rng.randf_range(1.0, 4.0))

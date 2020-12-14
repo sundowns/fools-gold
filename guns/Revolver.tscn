@@ -99,9 +99,9 @@ max_db = -11.0
 
 [node name="WorldHitAudio" parent="." index="6"]
 stream = ExtResource( 9 )
-unit_db = 5.0
-unit_size = 5.0
-max_db = -1.0
+unit_db = -10.0
+unit_size = 3.0
+max_db = 1.0
 
 [node name="ReloadAudio" parent="." index="7" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )

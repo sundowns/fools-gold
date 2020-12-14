@@ -8,7 +8,7 @@ onready var state_machine: StateMachine = $StateMachine
 onready var player_navigate_detection_zone: Area = $PlayerNavigateToPlayerDetectionZone
 onready var attack_cooldown: Timer = $AttackCooldown
 onready var check_for_los_timer: Timer = $LosCheckTimer
-onready var hurt_sound: AudioStreamPlayer3D = $HurtSound
+onready var hurt_sounds: RandomSound = $HurtSounds
 onready var death_sound: AudioStreamPlayer3D = $DeathSound
 
 var can_attack := true
@@ -59,7 +59,7 @@ func _on_death():
 		queue_free()
 
 func _on_hurt(_val):
-	hurt_sound.play()
+	hurt_sounds.play()
 
 func play_death_sound():
 	remove_child(death_sound)

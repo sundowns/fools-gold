@@ -348,7 +348,7 @@ damage = 10.0
 knockback_magnitude = 1.4
 gun_name = "shotgun"
 num_pellets = 10
-spread_range = 55.0
+spread_range = 65.0
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/Fire = SubResource( 1 )
