@@ -4,7 +4,7 @@
 resource_name = "Hurt"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Bandit/AnimatedSprite3D:opacity")
+tracks/0/path = NodePath("AnimatedSprite3D:opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false

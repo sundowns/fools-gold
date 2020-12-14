@@ -69,9 +69,9 @@ __meta__ = {
 }
 
 [node name="AmmoRect" type="TextureRect" parent="."]
-anchor_left = 0.945894
+anchor_left = 0.942383
 anchor_top = 0.991569
-anchor_right = 0.949019
+anchor_right = 0.945508
 anchor_bottom = 0.994347
 margin_left = -57.0
 margin_top = -53.0

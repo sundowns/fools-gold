@@ -4,7 +4,7 @@
 resource_name = "Attack"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Bandit/Hand:translation")
+tracks/0/path = NodePath("Hand:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.763, 0.3, -0.308 ), Vector3( 0, 0, -0.937 ), Vector3( 0.768, -0.3, -0.308 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Bandit/Hand/AttackHitbox:monitoring")
+tracks/1/path = NodePath("Hand/AttackHitbox:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Bandit/Hand/BanditSlashParticles:emitting")
+tracks/2/path = NodePath("Hand/BanditSlashParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -40,7 +40,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath("../Bandit/Hand/BanditSlashParticles")
+tracks/3/path = NodePath("Hand/BanditSlashParticles")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -54,7 +54,7 @@ tracks/3/keys = {
 } ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../Bandit/Hand/SlashMeshInstance:visible")
+tracks/4/path = NodePath("Hand/SlashMeshInstance:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
