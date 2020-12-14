@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/static/Terrain1.tscn" type="PackedScene" id=2]
@@ -7,12 +7,24 @@
 [ext_resource path="res://models/ankh.tscn" type="PackedScene" id=5]
 [ext_resource path="res://world/static/Obelisk1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://world/static/stairs.tscn" type="PackedScene" id=7]
-[ext_resource path="res://entities/Bandit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://textures/door.png" type="Texture" id=8]
 [ext_resource path="res://textures/Brick Texture 1.jpg" type="Texture" id=9]
 [ext_resource path="res://world/static/csg/TempleBrickCylinder.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/static/csg/TempleBrickBlock.tscn" type="PackedScene" id=11]
 [ext_resource path="res://models/door.tscn" type="PackedScene" id=12]
 [ext_resource path="res://world/static/HeiroglyphicWall.tscn" type="PackedScene" id=13]
+[ext_resource path="res://world/static/wall1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://world/static/Obelisk2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://world/items/DualRevolversPickup.tscn" type="PackedScene" id=16]
+[ext_resource path="res://world/static/Log.tscn" type="PackedScene" id=17]
+[ext_resource path="res://world/static/Platform.tscn" type="PackedScene" id=18]
+[ext_resource path="res://world/static/supported_platform.tscn" type="PackedScene" id=19]
+[ext_resource path="res://world/static/crate2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://world/static/crate.tscn" type="PackedScene" id=21]
+[ext_resource path="res://world/items/HealthPickup.tscn" type="PackedScene" id=22]
+[ext_resource path="res://entities/BanditFollowingPath.tscn" type="PackedScene" id=23]
+[ext_resource path="res://world/components/button.tscn" type="PackedScene" id=24]
+[ext_resource path="res://world/components/FollowingMeleeEnemySpawner.tscn" type="PackedScene" id=25]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
@@ -28,111 +40,134 @@ uv1_scale = Vector3( 0.01, 0.01, 0.01 )
 uv1_triplanar = true
 uv1_triplanar_sharpness = 50.2134
 
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.717647, 0.317647, 0.317647, 1 )
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.317647, 0.341176, 0.717647, 1 )
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.717647, 0.317647, 0.317647, 1 )
+albedo_texture = ExtResource( 9 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.317647, 0.341176, 0.717647, 1 )
+albedo_texture = ExtResource( 9 )
+uv1_triplanar = true
+
 [node name="World" instance=ExtResource( 1 )]
 
 [node name="PlayerSpawnPoint" parent="." index="0"]
 transform = Transform( -0.746615, 0, -0.665256, 0, 1, 0, 0.665256, 0, -0.746615, -135.1, -6.20059, -226.574 )
 
 [node name="Skybox" parent="Navigation/NavigationMeshInstance/Statics" index="0"]
-transform = Transform( -0.588333, -0.00959675, 0.251914, -0.0105778, -0.487105, -0.0269178, -0.386482, 0.0279407, -0.382747, -80.5538, 0, -185.506 )
+transform = Transform( 0.0772613, 0.338153, 1.89702, 1.21683, 0.0737028, -0.032689, 0.633331, -4.66121, 0.7241, -6.4825, 0, -122.672 )
+
+[node name="CollisionShape" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -3.72529e-09, 0, -3.72529e-09, 1, 0, -100, -1.52588e-05 )
 
 [node name="CollisionShape4" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="3"]
 shape = null
 
-[node name="Water" parent="Props" index="0" instance=ExtResource( 3 )]
+[node name="Palms terrain and water" type="Spatial" parent="Props" index="0"]
+
+[node name="Water" parent="Props/Palms terrain and water" index="0" instance=ExtResource( 3 )]
 transform = Transform( 135.312, 0, 0, 0, 4.34309, 0, 0, 0, 100.171, -25.0482, -18.9357, -152.778 )
 
-[node name="Terrain1" parent="Props" index="1" instance=ExtResource( 2 )]
-transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, 0.191157, -26.0694, 1.79337 )
+[node name="Terrain1" parent="Props/Palms terrain and water" index="1" instance=ExtResource( 2 )]
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, 0.191157, -26.0694, 2.09175 )
 
-[node name="palm1" parent="Props" index="2" instance=ExtResource( 4 )]
+[node name="palm1" parent="Props/Palms terrain and water" index="2" instance=ExtResource( 4 )]
 transform = Transform( -0.794079, 0.281112, 0.716625, 0.0891713, 1.05623, -0.315522, -0.764607, -0.168765, -0.781045, -63.8753, -13.3589, -170.575 )
 
-[node name="palm2" parent="Props" index="3" instance=ExtResource( 4 )]
+[node name="palm2" parent="Props/Palms terrain and water" index="3" instance=ExtResource( 4 )]
 transform = Transform( -0.718003, 0.25418, 0.647969, 0.0806283, 0.955043, -0.285293, -0.691354, -0.152597, -0.706218, -70.5351, -13.3589, -171.016 )
 
-[node name="palm3" parent="Props" index="4" instance=ExtResource( 4 )]
+[node name="palm3" parent="Props/Palms terrain and water" index="4" instance=ExtResource( 4 )]
 transform = Transform( 0.372522, -0.251553, -0.736813, 0.0695904, 0.824299, -0.246237, 0.775454, 0.0468702, 0.376057, -29.5904, -13.3589, -168.673 )
 
-[node name="palm4" parent="Props" index="5" instance=ExtResource( 4 )]
+[node name="palm4" parent="Props/Palms terrain and water" index="5" instance=ExtResource( 4 )]
 transform = Transform( -0.718003, 0.25418, 0.647969, 0.0806283, 0.955043, -0.285293, -0.691354, -0.152597, -0.706218, -61.8987, -13.3589, -165.763 )
 
-[node name="palm6" parent="Props" index="6" instance=ExtResource( 4 )]
+[node name="palm6" parent="Props/Palms terrain and water" index="6" instance=ExtResource( 4 )]
 transform = Transform( 0.326614, 0.277024, 1.01967, 0.0891713, 1.05623, -0.315522, -1.05286, 0.175395, 0.289594, -25.1809, -15.3764, -108.857 )
 
-[node name="palm7" parent="Props" index="7" instance=ExtResource( 4 )]
+[node name="palm7" parent="Props/Palms terrain and water" index="7" instance=ExtResource( 4 )]
 transform = Transform( 0.295323, 0.250484, 0.921977, 0.0806283, 0.955043, -0.285293, -0.951989, 0.158591, 0.26185, -27.7777, -15.3764, -115.006 )
 
-[node name="palm8" parent="Props" index="8" instance=ExtResource( 4 )]
+[node name="palm8" parent="Props/Palms terrain and water" index="8" instance=ExtResource( 4 )]
 transform = Transform( 0.295323, 0.250484, 0.921977, 0.0806283, 0.955043, -0.285293, -0.951989, 0.158591, 0.26185, -28.5934, -15.3764, -104.93 )
 
-[node name="palm9" parent="Props" index="9" instance=ExtResource( 4 )]
+[node name="palm9" parent="Props/Palms terrain and water" index="9" instance=ExtResource( 4 )]
 transform = Transform( 0.259458, -0.327769, -1.02391, 0.0891713, 1.05623, -0.315522, 1.07139, -0.0085343, 0.274221, 25.6467, -19.0362, -110.066 )
 
-[node name="palm10" parent="Props" index="10" instance=ExtResource( 4 )]
+[node name="palm10" parent="Props/Palms terrain and water" index="10" instance=ExtResource( 4 )]
 transform = Transform( 0.234601, -0.296368, -0.925813, 0.0806283, 0.955043, -0.285293, 0.968742, -0.00771666, 0.247949, 31.0476, -12.7366, -106.074 )
 
-[node name="palm11" parent="Props" index="11" instance=ExtResource( 4 )]
+[node name="palm11" parent="Props/Palms terrain and water" index="11" instance=ExtResource( 4 )]
 transform = Transform( -0.242379, -0.258848, -0.935014, 0.0806283, 0.955043, -0.285293, 0.966825, -0.144538, -0.210612, 29.9069, -12.1045, -110.788 )
 
-[node name="palm5" parent="Props" index="12" instance=ExtResource( 4 )]
+[node name="palm5" parent="Props/Palms terrain and water" index="12" instance=ExtResource( 4 )]
 transform = Transform( -0.451786, -0.220143, -0.864538, 0.0805961, 0.955042, -0.285306, 0.888478, -0.198576, -0.413732, -27.2938, -13.3589, -168.848 )
 
-[node name="stairs" parent="Props" index="13" instance=ExtResource( 7 )]
+[node name="stairs" parent="Props" index="1" instance=ExtResource( 7 )]
 transform = Transform( 3.66052, 0, 0, 0, 1.5, 0, 0, 0, 4.277, 1.72965, -13.2289, -81.0319 )
 
-[node name="stairs2" parent="Props" index="14" instance=ExtResource( 7 )]
+[node name="stairs2" parent="Props" index="2" instance=ExtResource( 7 )]
 transform = Transform( 3.66052, 0, 0, 0, 1.5, 0, 0, 0, 4.277, 1.72965, -8.91144, -57.6021 )
 
-[node name="Obelisk" parent="Props" index="15" instance=ExtResource( 6 )]
+[node name="Obelisk" parent="Props" index="3" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -11.732, -13.7699, -83.3534 )
 
-[node name="ankh" parent="Props" index="16" instance=ExtResource( 5 )]
+[node name="ankh" parent="Props" index="4" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -11.9331, -8.28793, -84.9019 )
 
-[node name="Obelisk7" parent="Props" index="17" instance=ExtResource( 6 )]
+[node name="Obelisk7" parent="Props" index="5" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 0.0569854, -6.7699, -36.3534 )
 
-[node name="ankh7" parent="Props" index="18" instance=ExtResource( 5 )]
+[node name="ankh7" parent="Props" index="6" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -0.144114, -1.28793, -37.9019 )
 
-[node name="Obelisk2" parent="Props" index="19" instance=ExtResource( 6 )]
+[node name="Obelisk2" parent="Props" index="7" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -20.2032, -13.7699, -83.3534 )
 
-[node name="ankh2" parent="Props" index="20" instance=ExtResource( 5 )]
+[node name="ankh2" parent="Props" index="8" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -20.4044, -8.28793, -84.9019 )
 
-[node name="Obelisk3" parent="Props" index="21" instance=ExtResource( 6 )]
+[node name="Obelisk3" parent="Props" index="9" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, -28.6174, -13.7699, -83.3534 )
 
-[node name="ankh3" parent="Props" index="22" instance=ExtResource( 5 )]
+[node name="ankh3" parent="Props" index="10" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, -28.8185, -8.28793, -84.9019 )
 
-[node name="Obelisk4" parent="Props" index="23" instance=ExtResource( 6 )]
+[node name="Obelisk4" parent="Props" index="11" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 28.303, -13.7699, -83.3534 )
 
-[node name="ankh4" parent="Props" index="24" instance=ExtResource( 5 )]
+[node name="ankh4" parent="Props" index="12" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 28.1018, -8.28793, -84.9019 )
 
-[node name="Obelisk5" parent="Props" index="25" instance=ExtResource( 6 )]
+[node name="Obelisk5" parent="Props" index="13" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 19.8317, -13.7699, -83.3534 )
 
-[node name="ankh5" parent="Props" index="26" instance=ExtResource( 5 )]
+[node name="ankh5" parent="Props" index="14" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 19.6306, -8.28793, -84.9019 )
 
-[node name="Obelisk6" parent="Props" index="27" instance=ExtResource( 6 )]
+[node name="Obelisk6" parent="Props" index="15" instance=ExtResource( 6 )]
 transform = Transform( 3.4065, 0, 0, 0, 3.4065, 0, 0, 0, 3.4065, 11.4176, -13.7699, -83.3534 )
 
-[node name="ankh6" parent="Props" index="28" instance=ExtResource( 5 )]
+[node name="ankh6" parent="Props" index="16" instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, 1, 0.10314, 0.994667, 4.50838e-09, -0.994667, 0.10314, -4.34783e-08, 11.2164, -8.28793, -84.9019 )
 
-[node name="CSGCombiner" type="CSGCombiner" parent="Props" index="29"]
+[node name="CSGCombiner" type="CSGCombiner" parent="Props" index="17"]
 use_collision = true
 
 [node name="CSGCylinder" parent="Props/CSGCombiner" index="0" instance=ExtResource( 10 )]
-transform = Transform( 0.39057, 0, -0.920573, 0, 1, 0, 0.920573, 0, 0.39057, -0.320146, -8.77597, -37.6529 )
+transform = Transform( 0.39057, 0, -0.920573, 0, 1, 0, 0.920573, 0, 0.39057, -0.320146, -8.77597, -36.9439 )
 use_collision = true
-radius = 10.5465
+radius = 11.2071
 height = 4.0
 material = SubResource( 1 )
 
@@ -141,7 +176,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190167, -7.78606, -7.99363 
 width = 9.14058
 depth = 42.209
 
-[node name="CSGCombiner2" type="CSGCombiner" parent="Props" index="30"]
+[node name="CSGCombiner2" type="CSGCombiner" parent="Props" index="18"]
 use_collision = true
 
 [node name="CSGBox4" parent="Props/CSGCombiner2" index="0" instance=ExtResource( 11 )]
@@ -153,67 +188,462 @@ material = SubResource( 2 )
 
 [node name="CSGBox7" parent="Props/CSGCombiner2" index="1" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -19.9986 )
+visible = false
 width = 14.0
 height = 15.9538
 depth = 14.0
 
-[node name="CSGBox6" parent="Props/CSGCombiner2" index="2" instance=ExtResource( 11 )]
+[node name="CSGCylinder2" parent="Props/CSGCombiner2" index="2" instance=ExtResource( 10 )]
+transform = Transform( 0.067162, 1.34676e-07, 0.997742, 0.997742, -2.35619e-07, -0.067162, 2.26042e-07, 1, -1.50196e-07, -0.320146, -8.09099, -11.3593 )
+operation = 0
+use_collision = true
+radius = 10.5465
+height = 34.2216
+material = SubResource( 1 )
+
+[node name="CSGBox6" parent="Props/CSGCombiner2" index="3" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -45.9936 )
+visible = false
 width = 14.0
 depth = 14.0
 
-[node name="CSGCylinder" parent="Props/CSGCombiner2" index="3" instance=ExtResource( 10 )]
+[node name="CSGCylinder3" parent="Props/CSGCombiner2" index="4" instance=ExtResource( 10 )]
+transform = Transform( -0.387435, 2.26042e-07, 0.921897, 0.921897, -1.50196e-07, 0.387435, 2.26042e-07, 1, -1.50196e-07, -0.320146, -8.09099, -45.9498 )
+operation = 0
+use_collision = true
+radius = 10.5465
+height = 2.01096
+material = SubResource( 1 )
+
+[node name="CSGCylinder" parent="Props/CSGCombiner2" index="5" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5, 7.05692 )
 radius = 5.0
 height = 112.0
 
-[node name="CSGCombiner3" type="CSGCombiner" parent="Props" index="31"]
+[node name="CSGCombiner3" type="CSGCombiner" parent="Props" index="19"]
 transform = Transform( 2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 36, 0, -37 )
 use_collision = true
 
 [node name="CSGBox7" parent="Props/CSGCombiner3" index="0" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -26.9986 )
+visible = false
 width = 14.0
 depth = 14.0
 
 [node name="CSGBox6" parent="Props/CSGCombiner3" index="1" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -45.9936 )
+visible = false
 width = 14.0
 depth = 14.0
 
-[node name="CSGCylinder" parent="Props/CSGCombiner3" index="2" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5, 7.05692 )
-radius = 5.0
-height = 112.0
-
-[node name="CSGBox8" parent="Props" index="32" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.379585, -7.78606, -36.9936 )
+[node name="CSGCylinder4" parent="Props/CSGCombiner3" index="2" instance=ExtResource( 10 )]
+transform = Transform( 0.387435, -2.12133e-07, -0.921897, 0.921897, -1.50196e-07, 0.387435, -2.20653e-07, -1, 1.37373e-07, 0.0147743, -8.09099, -26.9882 )
+operation = 0
 use_collision = true
-width = 8.20539
-depth = 116.0
+radius = 10.5465
+height = 2.01096
+material = SubResource( 1 )
 
-[node name="door" parent="Props" index="33" instance=ExtResource( 12 )]
+[node name="CSGCylinder5" parent="Props/CSGCombiner3" index="3" instance=ExtResource( 10 )]
+transform = Transform( 0.387435, -2.12133e-07, -0.921897, 0.921897, -1.50196e-07, 0.387435, -2.20653e-07, -1, 1.37373e-07, 0.0147743, -8.09099, -46.0144 )
+operation = 0
+use_collision = true
+radius = 10.5465
+height = 2.01096
+material = SubResource( 1 )
+
+[node name="CSGCylinder" parent="Props/CSGCombiner3" index="4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5, -31.6769 )
+radius = 5.0
+height = 33.9442
+
+[node name="CSGCombiner4" type="CSGCombiner" parent="Props" index="20"]
+transform = Transform( 2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 65.5441, 0, -37 )
+use_collision = true
+
+[node name="CSGBox7" parent="Props/CSGCombiner4" index="0" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -26.9986 )
+visible = false
+width = 14.0
+depth = 14.0
+
+[node name="CSGBox6" parent="Props/CSGCombiner4" index="1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -45.9936 )
+visible = false
+width = 14.0
+depth = 14.0
+
+[node name="CSGCylinder4" parent="Props/CSGCombiner4" index="2" instance=ExtResource( 10 )]
+transform = Transform( 0.387435, -2.12133e-07, -0.921897, 0.921897, -1.50196e-07, 0.387435, -2.20653e-07, -1, 1.37373e-07, 0.563557, -8.09099, -6.57029 )
+operation = 0
+use_collision = true
+radius = 11.9491
+height = 2.01096
+material = SubResource( 1 )
+
+[node name="HealthPickup" parent="Props/CSGCombiner4/CSGCylinder4" index="0" instance=ExtResource( 22 )]
+transform = Transform( 0.196112, 0.920546, -0.337842, -0.920545, 0.0541311, -0.386867, -0.337841, 0.386868, 0.858019, 22.8377, 20.1037, 9.33559 )
+
+[node name="CSGCylinder5" parent="Props/CSGCombiner4" index="3" instance=ExtResource( 10 )]
+transform = Transform( 0.387435, -2.12133e-07, -0.921897, 0.921897, -1.50196e-07, 0.387435, -2.20653e-07, -1, 1.37373e-07, 0.0147743, -8.09099, -46.0144 )
+operation = 0
+use_collision = true
+radius = 10.5465
+height = 2.01096
+material = SubResource( 1 )
+
+[node name="CSGCylinder" parent="Props/CSGCombiner4" index="4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.52588e-05, -5, -45.6639 )
+radius = 5.0
+height = 3.65291
+
+[node name="CSGCylinder2" parent="Props/CSGCombiner4" index="5" instance=ExtResource( 10 )]
+transform = Transform( -0.920573, 0, -0.39057, 0, 1, 0, 0.39057, 0, -0.920573, 0.652874, -8.77597, -26.0949 )
+operation = 0
+use_collision = true
+radius = 21.0115
+height = 4.0
+material = SubResource( 1 )
+
+[node name="CSGCombiner5" type="CSGCombiner" parent="Props" index="21"]
+transform = Transform( 2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 5.65514, 0, -37 )
+use_collision = true
+
+[node name="CSGBox7" parent="Props/CSGCombiner5" index="0" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -26.9986 )
+visible = false
+width = 14.0
+depth = 14.0
+
+[node name="CSGBox6" parent="Props/CSGCombiner5" index="1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.379584, -5.51294, -45.9936 )
+visible = false
+width = 14.0
+depth = 14.0
+
+[node name="CSGCylinder4" parent="Props/CSGCombiner5" index="2" instance=ExtResource( 10 )]
+transform = Transform( 0.387435, -2.12133e-07, -0.921897, 0.921897, -1.50196e-07, 0.387435, -2.20653e-07, -1, 1.37373e-07, 0.0147743, -8.09099, -26.9882 )
+operation = 0
+use_collision = true
+radius = 10.5465
+height = 2.01096
+material = SubResource( 1 )
+
+[node name="CSGCylinder5" parent="Props/CSGCombiner5" index="3" instance=ExtResource( 10 )]
+transform = Transform( 0.387435, -2.12133e-07, -0.921897, 0.921897, -1.50196e-07, 0.387435, -2.20653e-07, -1, 1.37373e-07, 0.0147781, -8.09099, -65.4744 )
+operation = 0
+use_collision = true
+radius = 12.0
+height = 2.01096
+material = SubResource( 1 )
+
+[node name="CSGCylinder" parent="Props/CSGCombiner5" index="4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -5, -4.92727 )
+radius = 5.0
+height = 52.7382
+
+[node name="CSGCylinder3" parent="Props/CSGCombiner5" index="5" instance=ExtResource( 10 )]
+transform = Transform( -0.920573, 0, -0.39057, 0, 1, 0, 0.39057, 0, -0.920573, 0.652889, -8.77597, -46.0013 )
+operation = 0
+use_collision = true
+radius = 21.0115
+height = 4.0
+material = SubResource( 1 )
+
+[node name="CSGBox8" parent="Props" index="22" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.379585, -8.78606, -36.9936 )
+use_collision = true
+width = 14.0
+height = 4.0
+depth = 41.4213
+
+[node name="door" parent="Props" index="23" instance=ExtResource( 12 )]
 transform = Transform( -6.11959e-08, 0, 1.4, 0, 1.4, 0, -1, 0, -4.37114e-08, 2.37822, -4.64057, -27.09 )
 
-[node name="door2" parent="Props" index="34" instance=ExtResource( 12 )]
+[node name="Cube" parent="Props/door" index="0"]
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" parent="Props/door/Cube/StaticBody" index="0"]
+visible = false
+
+[node name="door2" parent="Props" index="24" instance=ExtResource( 12 )]
 transform = Transform( 1.48619e-07, 0, -1.4, 0, 1.4, 0, 1, 0, 1.66103e-07, -2.35988, -4.64057, -27.09 )
 
-[node name="WallThing" parent="Props" index="35" instance=ExtResource( 13 )]
+[node name="Cube" parent="Props/door2" index="0"]
+material/0 = SubResource( 4 )
+
+[node name="StaticBody" parent="Props/door2/Cube" index="0"]
+visible = false
+
+[node name="WallThing" parent="Props" index="25" instance=ExtResource( 13 )]
 transform = Transform( 0.282843, 0, 0.282843, 0, 0.4, 0, -0.282843, 0, 0.282843, 7.39433, -4.44856, -29.549 )
 
-[node name="WallThing2" parent="Props" index="36" instance=ExtResource( 13 )]
+[node name="WallThing2" parent="Props" index="26" instance=ExtResource( 13 )]
 transform = Transform( 0.282843, 0, -0.282843, 0, 0.4, 0, 0.282843, 0, 0.282843, -7.48857, -4.44856, -29.4535 )
 
-[node name="WallThing3" parent="Props" index="37" instance=ExtResource( 13 )]
+[node name="WallThing3" parent="Props" index="27" instance=ExtResource( 13 )]
 transform = Transform( -0.282843, 0, -0.282843, 0, 0.4, 0, 0.282843, 0, -0.282843, -8.05386, -4.44856, -44.2211 )
 
-[node name="WallThing4" parent="Props" index="38" instance=ExtResource( 13 )]
+[node name="WallThing4" parent="Props" index="28" instance=ExtResource( 13 )]
 transform = Transform( -0.282843, 0, 0.282843, 0, 0.4, 0, -0.282843, 0, -0.282843, 7.20463, -4.44856, -44.2986 )
 
-[node name="Bandit" parent="Entities" index="0" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64943, -11.5862, -81.5417 )
+[node name="wall1" parent="Props" index="29" instance=ExtResource( 14 )]
+transform = Transform( -6.11959e-08, 0, 1.4, 0, 1.5, 0, -1, 0, -4.37114e-08, 8.69437, -7.6922, -43.4671 )
 
-[node name="Bandit2" parent="Entities" index="1" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32025, -11.5862, -81.5417 )
+[node name="wall2" parent="Props" index="30" instance=ExtResource( 14 )]
+transform = Transform( -6.11959e-08, 0, 1.4, 0, 1.5, 0, -1, 0, -4.37114e-08, 8.69437, -7.6922, -32.4671 )
+
+[node name="wall3" parent="Props" index="31" instance=ExtResource( 14 )]
+transform = Transform( -6.11959e-08, 0, 1.4, 0, 1.5, 0, -1, 0, -4.37114e-08, -21.3056, -7.6922, -32.4671 )
+
+[node name="wall4" parent="Props" index="32" instance=ExtResource( 14 )]
+transform = Transform( -6.11959e-08, 0, 1.4, 0, 1.5, 0, -1, 0, -4.37114e-08, -21.3056, -7.6922, -43.4671 )
+
+[node name="octowall1" type="Spatial" parent="Props" index="33"]
+
+[node name="wall5" parent="Props/octowall1" index="0" instance=ExtResource( 14 )]
+transform = Transform( -1.04033e-07, 0, 2.38, 0, 1.5, 0, -1, 0, -4.37114e-08, -50.3056, -7.6922, -19.4671 )
+
+[node name="wall6" parent="Props/octowall1" index="1" instance=ExtResource( 14 )]
+transform = Transform( -1.04033e-07, 0, 2.38, 0, 1.5, 0, -1, 0, -4.37114e-08, -50.3056, -7.6922, -57.4671 )
+
+[node name="wall7" parent="Props/octowall1" index="2" instance=ExtResource( 14 )]
+transform = Transform( -0.707107, 0, 1.68291, 0, 1.5, 0, -0.707107, 0, -1.68291, -62.3056, -7.6922, -44.4671 )
+
+[node name="wall8" parent="Props/octowall1" index="3" instance=ExtResource( 14 )]
+transform = Transform( 0.707107, 0, 1.68291, 0, 1.5, 0, -0.707107, 0, 1.68291, -60.3056, -7.6922, -31.4671 )
+
+[node name="wall9" parent="Props/octowall1" index="4" instance=ExtResource( 14 )]
+transform = Transform( -0.707107, 0, 1.29584, 0, 1.5, 0, -0.707107, 0, -1.29584, -33.3056, -7.6922, -18.4671 )
+
+[node name="wall10" parent="Props/octowall1" index="5" instance=ExtResource( 14 )]
+transform = Transform( 0.707107, 0, 1.42543, 0, 1.5, 0, -0.707107, 0, 1.42543, -32.3056, -7.6922, -58.4671 )
+
+[node name="octowall2" type="Spatial" parent="Props" index="34"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 0, -75 )
+
+[node name="wall5" parent="Props/octowall2" index="0" instance=ExtResource( 14 )]
+transform = Transform( -1.04033e-07, 0, 2.38, 0, 1.5, 0, -1, 0, -4.37114e-08, -50.3056, -7.6922, -19.4671 )
+
+[node name="CollisionShape" parent="Props/octowall2/wall5" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 4.17724, 0, 0, 0, 0.5, -0.967762, -6.00819, 1.09566 )
+visible = false
+
+[node name="wall6" parent="Props/octowall2" index="1" instance=ExtResource( 14 )]
+transform = Transform( -1.04033e-07, 0, 2.38, 0, 1.5, 0, -1, 0, -4.37114e-08, -50.3056, -7.6922, -57.4671 )
+
+[node name="CollisionShape" parent="Props/octowall2/wall6" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 5.07153, 0, 0, 0, 0.5, -0.967762, -6.00819, 1.09566 )
+visible = false
+
+[node name="wall7" parent="Props/octowall2" index="2" instance=ExtResource( 14 )]
+transform = Transform( -0.707107, 0, 1.68291, 0, 1.5, 0, -0.707107, 0, -1.68291, -62.3056, -7.6922, -44.4671 )
+
+[node name="CollisionShape" parent="Props/octowall2/wall7" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 5.28569, 0, 7.45058e-09, 0, 0.5, -0.978149, -6.05372, 1.0963 )
+visible = false
+
+[node name="wall8" parent="Props/octowall2" index="3" instance=ExtResource( 14 )]
+transform = Transform( 0.707107, 0, 1.68291, 0, 1.5, 0, -0.707107, 0, 1.68291, -60.3056, -7.6922, -31.4671 )
+
+[node name="CollisionShape" parent="Props/octowall2/wall8" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 5.03263, 0, -7.45058e-09, 0, 0.5, -0.967766, -6.00819, 1.09566 )
+visible = false
+
+[node name="wall9" parent="Props/octowall2" index="4" instance=ExtResource( 14 )]
+transform = Transform( -0.707107, 0, 1.29584, 0, 1.5, 0, -0.707107, 0, -1.29584, -33.3056, -7.6922, -18.4671 )
+
+[node name="CollisionShape" parent="Props/octowall2/wall9" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 5.40154, 0, 0, 0, 0.5, -0.967762, -6.00819, 1.09565 )
+visible = false
+
+[node name="wall10" parent="Props/octowall2" index="5" instance=ExtResource( 14 )]
+transform = Transform( 0.707107, 0, 1.42543, 0, 1.5, 0, -0.707107, 0, 1.42543, -33.3056, -7.6922, -58.4671 )
+
+[node name="CollisionShape" parent="Props/octowall2/wall10" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 3.46539, 0, 0, 0, 0.5, -0.967762, -3.71372, 1.09566 )
+visible = false
+
+[node name="Obelisk8" parent="Props" index="35" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8398, -5.95633, -36.3008 )
+
+[node name="Platform" parent="Props/Obelisk8" index="2" instance=ExtResource( 18 )]
+transform = Transform( -1.34202e-08, -0.449143, 0.654534, 0, 0.424752, 0.291466, -0.284068, 1.81651e-08, -2.64719e-08, 0.667652, 4.07942, -6.78359 )
+
+[node name="Spatial" parent="Props/Obelisk8" index="3" instance=ExtResource( 19 )]
+transform = Transform( 0.368684, 0, 0, 0, 0.368684, 0, 0, 0, 0.368684, -3.03714, 3.26392, -5.05853 )
+
+[node name="Platform2" parent="Props/Obelisk8" index="4" instance=ExtResource( 18 )]
+transform = Transform( -0.284068, 3.77978e-08, -5.50825e-08, 0, 0.424752, 0.291466, 2.58372e-08, 0.449143, -0.654534, -6.39286, 9.42127, -2.21577 )
+
+[node name="Platform3" parent="Props/Obelisk8" index="5" instance=ExtResource( 18 )]
+transform = Transform( -1.34202e-08, -0.449143, 0.654534, 0, 0.424752, 0.291466, -0.284068, 1.81651e-08, -2.64719e-08, -2.36679, 11.7589, -6.08835 )
+
+[node name="Platform4" parent="Props/Obelisk8" index="6" instance=ExtResource( 18 )]
+transform = Transform( -4.66525e-09, -0.0793704, 0.280211, 5.46454e-09, 0.570679, -0.000413402, -0.284068, 1.81651e-08, -2.64719e-08, -6.28041, 10.5633, -6.08835 )
+
+[node name="Platform5" parent="Props/Obelisk8" index="7" instance=ExtResource( 18 )]
+transform = Transform( -6.42391e-09, -0.109291, 0.385843, 5.46454e-09, 0.570679, -0.000413402, -0.284068, 1.81651e-08, -2.64719e-08, 1.79685, 12.9243, -6.07244 )
+
+[node name="Platform6" parent="Props/Obelisk8" index="8" instance=ExtResource( 18 )]
+transform = Transform( 3.82542e-08, 0.449143, -0.654534, 0, 0.424752, 0.291466, 0.284068, -5.74304e-08, 8.36931e-08, 1.53424, 17.7589, 4.19627 )
+
+[node name="Platform7" parent="Props/Obelisk8" index="9" instance=ExtResource( 18 )]
+transform = Transform( 3.1258e-08, 0.109291, -0.385843, 5.46454e-09, 0.570679, -0.000413402, 0.284068, -2.77196e-08, 6.02034e-08, -2.6294, 18.9243, 4.18036 )
+
+[node name="Spatial4" parent="Props/Obelisk8" index="10" instance=ExtResource( 19 )]
+transform = Transform( -1.61157e-08, 0, 0.368684, 0, 0.368684, 0, -0.368684, 0, -1.61157e-08, -4.6678, 8.60577, 1.48902 )
+
+[node name="Spatial2" parent="Props/Obelisk8" index="11" instance=ExtResource( 19 )]
+transform = Transform( -1.61157e-08, 0, -0.368684, 0, 0.368684, 0, 0.368684, 0, -1.61157e-08, 3.43472, 5.97361, -0.482849 )
+
+[node name="Spatial5" parent="Props/Obelisk8" index="12" instance=ExtResource( 19 )]
+transform = Transform( -1.61157e-08, 0, -0.368684, 0, 0.368684, 0, 0.368684, 0, -1.61157e-08, 2.868, 14.5124, 0.103642 )
+
+[node name="Spatial3" parent="Props/Obelisk8" index="13" instance=ExtResource( 19 )]
+transform = Transform( -0.368684, 0, 3.22313e-08, 0, 0.368684, 0, -3.22313e-08, 0, -0.368684, 1.32295, 8.57854, 3.3908 )
+
+[node name="Log" parent="Props/Obelisk8" index="14" instance=ExtResource( 17 )]
+transform = Transform( 0.5, 0, 0, 0, 0.05216, 3.11434, 0, -0.497272, 0.32667, 3.26206, 12.1183, -7.38728 )
+collision_layer = 0
+
+[node name="Log3" parent="Props/Obelisk8" index="15" instance=ExtResource( 17 )]
+transform = Transform( 0.5, 0, 0, 0, -3.86941e-07, 8.85217, 0, -0.5, -2.18557e-08, -7.77791, 7.18282, -5.04588 )
+collision_layer = 0
+
+[node name="Log2" parent="Props/Obelisk8" index="16" instance=ExtResource( 17 )]
+transform = Transform( 0.5, 0, 0, 0, -4.37114e-08, 1, 0, -0.5, -2.18557e-08, 3.03752, 7.88434, 6.97508 )
+
+[node name="Log4" parent="Props/Obelisk8" index="17" instance=ExtResource( 17 )]
+transform = Transform( 0.5, 0, 0, 0, -0.0860248, 0.985088, 0, -0.492544, -0.172049, 3.03752, 18.9701, 5.20208 )
+collision_layer = 0
+
+[node name="crate2" parent="Props/Obelisk8" index="18" instance=ExtResource( 21 )]
+transform = Transform( 1.92472, 0, -1.73869, 0, 2.59376, 0, 1.73869, 0, 1.92472, -7.1058, -0.0129266, -7.03569 )
+
+[node name="crate" parent="Props/Obelisk8" index="19" instance=ExtResource( 21 )]
+transform = Transform( 2.59376, 0, 0, 0, 2.59376, 0, 0, 0, 2.59376, -7.397, -0.042326, -3.75278 )
+
+[node name="crate3" parent="Props/Obelisk8" index="20" instance=ExtResource( 20 )]
+transform = Transform( 3.18346, 0, 2.4219, 0, 4, 0, -2.4219, 0, 3.18346, -8.3489, -0.524137, 4.58008 )
+
+[node name="crate4" parent="Props/Obelisk8" index="21" instance=ExtResource( 21 )]
+transform = Transform( -1.23915, 0, -2.27862, 0, 2.59376, 0, 2.27862, 0, -1.23915, 4.20675, -0.0129247, -18.7444 )
+
+[node name="crate5" parent="Props/Obelisk8" index="22" instance=ExtResource( 21 )]
+transform = Transform( 0.607922, 0, -2.52151, 0, 2.59376, 0, 2.52151, 0, 0.607922, 0.947033, -0.0423241, -18.258 )
+
+[node name="crate6" parent="Props/Obelisk8" index="23" instance=ExtResource( 20 )]
+transform = Transform( 3.10057, 0, -2.52714, 0, 4, 0, 2.52714, 0, 3.10057, -7.37683, -0.524135, -17.2304 )
+
+[node name="crate7" parent="Props/Obelisk8" index="24" instance=ExtResource( 21 )]
+transform = Transform( -1.23915, 0, -2.27862, 0, 2.59376, 0, 2.27862, 0, -1.23915, 7.97422, -0.0129247, 5.79088 )
+
+[node name="crate8" parent="Props/Obelisk8" index="25" instance=ExtResource( 21 )]
+transform = Transform( 0.607922, 0, -2.52151, 0, 2.59376, 0, 2.52151, 0, 0.607922, 4.7145, -0.0423241, 6.27723 )
+
+[node name="crate9" parent="Props/Obelisk8" index="26" instance=ExtResource( 20 )]
+transform = Transform( 3.10057, 0, -2.52714, 0, 4, 0, 2.52714, 0, 3.10057, -3.60937, -0.524135, 7.30489 )
+
+[node name="crate10" parent="Props/Obelisk8" index="27" instance=ExtResource( 20 )]
+transform = Transform( -2.25872, 0, -3.30124, 0, 4, 0, 3.30124, 0, -2.25872, -6.21283, 0.390199, 6.72434 )
+
+[node name="Obelisk9" parent="Props" index="36" instance=ExtResource( 6 )]
+transform = Transform( 10, 0, 0, 0, 9, 0, 0, 0, 10, -39.263, -5.8534, -36.3567 )
+
+[node name="CSGCylinder2" parent="." index="3" instance=ExtResource( 10 )]
+transform = Transform( 0.156228, 0, -0.368229, 0, 0.4, 0, 0.368229, 0, 0.156228, -0.320146, -16.776, -95.6529 )
+use_collision = true
+radius = 17.0
+height = 12.0
+material = SubResource( 1 )
+
+[node name="Item" parent="Entities" index="0" instance=ExtResource( 16 )]
+transform = Transform( 0.156228, 0, -0.368229, 0, 0.4, 0, 0.368229, 0, 0.156228, -0.230942, -13.2385, -95.934 )
+
+[node name="Button" parent="Entities" index="1" instance=ExtResource( 24 )]
+transform = Transform( -8.57812e-08, 0, 1.96245, 0, 1.96245, 0, -1.96245, 0, -8.57812e-08, 57.2815, -3.5032, -37.6752 )
+
+[node name="ankh" parent="Entities" index="2" instance=ExtResource( 5 )]
+transform = Transform( 2.67103, 0, 0, 0, 2.67103, 0, 0, 0, 2.67103, 57.9376, -1.6626, -37.59 )
+
+[node name="Cube" parent="Entities/ankh" index="0"]
+material/0 = SubResource( 5 )
+
+[node name="Button2" parent="Entities" index="3" instance=ExtResource( 24 )]
+transform = Transform( 2.57344e-07, 0, -1.96245, 0, 1.96245, 0, 1.96245, 0, 2.57344e-07, -58.1504, -3.5032, -37.59 )
+
+[node name="ankh2" parent="Entities" index="4" instance=ExtResource( 5 )]
+transform = Transform( -2.67103, 0, -2.33509e-07, 0, 2.67103, 0, 2.33509e-07, 0, -2.67103, -58.8893, -1.6626, -37.6752 )
+
+[node name="Cube" parent="Entities/ankh2" index="0"]
+material/0 = SubResource( 6 )
+
+[node name="BanditPathFollow" parent="Entities" index="5" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 70.6583, 6.01386, -137.712 )
+
+[node name="BanditPathFollow2" parent="Entities" index="6" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.6307, 15.0054, -199.212 )
+
+[node name="BanditPathFollow3" parent="Entities" index="7" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5837, 12.8924, -246.666 )
+
+[node name="BanditPathFollow4" parent="Entities" index="8" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7082, 3.45677, -110.09 )
+
+[node name="BanditPathFollow5" parent="Entities" index="9" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -94.1406, 1.73469, -110.09 )
+
+[node name="BanditPathFollow6" parent="Entities" index="10" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0169, -5.33271, -34.9077 )
+
+[node name="BanditPathFollow7" parent="Entities" index="11" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0169, -5.33271, -37.5729 )
+
+[node name="BanditPathFollow8" parent="Entities" index="12" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7822, -5.33271, -34.9077 )
+
+[node name="BanditPathFollow9" parent="Entities" index="13" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7822, -5.33271, -37.5729 )
+
+[node name="FollowMeleeSpawner" parent="TriggersAndActors" index="0" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3322, -4.84718, -37.7544 )
+max_spawn_count = 3
+spawn_interval = 0.0
+is_active = false
+
+[node name="FollowMeleeSpawner2" parent="TriggersAndActors" index="1" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3137, -4.84718, -37.7544 )
+max_spawn_count = 3
+spawn_interval = 0.0
+is_active = false
+[connection signal="activated" from="Entities/Button" to="TriggersAndActors/FollowMeleeSpawner" method="_on_Button_activated"]
+[connection signal="activated" from="Entities/Button2" to="TriggersAndActors/FollowMeleeSpawner2" method="_on_Button2_activated"]
 
 [editable path="Navigation/NavigationMeshInstance/Statics/Skybox"]
+
+[editable path="Props/CSGCombiner4/CSGCylinder4"]
+
+[editable path="Props/door"]
+
+[editable path="Props/door2"]
+
+[editable path="Props/octowall2/wall5"]
+
+[editable path="Props/octowall2/wall6"]
+
+[editable path="Props/octowall2/wall7"]
+
+[editable path="Props/octowall2/wall8"]
+
+[editable path="Props/octowall2/wall9"]
+
+[editable path="Props/octowall2/wall10"]
+
+[editable path="Entities/ankh"]
+
+[editable path="Entities/ankh2"]
+
+[editable path="Entities/BanditPathFollow4"]
+
+[editable path="TriggersAndActors/FollowMeleeSpawner2"]
