@@ -15,6 +15,9 @@ onready var spawn_transform = global_transform
 
 onready var spawn_timer: Timer = $Timer
 
+var is_finished := false
+signal finished
+
 func _ready():
 	assert(scene_path != null, "Spawner missing scene_path..")
 	assert(parent_node_path != null, "Spawner missing parent node path")
@@ -37,8 +40,13 @@ func deactivate():
 func spawn():
 	if not is_active:
 		return
-	if max_spawn_count != -1 and spawn_count >= max_spawn_count:
-		return
+	if max_spawn_count != -1:
+		if is_finished:
+			return
+		if spawn_count >= max_spawn_count:
+			is_finished = true
+			emit_signal("finished")
+			return
 	var new_thing: Node = spawner_scene.instance()
 	parent_node.add_child(new_thing)
 	new_thing.global_transform = spawn_transform

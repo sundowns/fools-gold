@@ -65,6 +65,7 @@ radius = 0.5
 collision_mask = 17
 script = ExtResource( 4 )
 los_collision_mask = 3
+start_attacking_distance = 35.0
 
 [node name="Idle" type="Node" parent="StateMachine" index="0"]
 script = ExtResource( 3 )
