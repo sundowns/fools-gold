@@ -15,8 +15,10 @@ onready var spawn_transform = global_transform
 
 onready var spawn_timer: Timer = $Timer
 
+var spawned_enemy_death_count := 0
 var is_finished := false
 signal finished
+signal all_spawned_enemies_dead
 
 func _ready():
 	assert(scene_path != null, "Spawner missing scene_path..")
@@ -48,6 +50,9 @@ func spawn():
 			emit_signal("finished")
 			return
 	var new_thing: Node = spawner_scene.instance()
+	if new_thing is Enemy:
+# warning-ignore:return_value_discarded
+		new_thing.connect("dead", self, "_on_spawned_enemy_death")
 	parent_node.add_child(new_thing)
 	new_thing.global_transform = spawn_transform
 	spawn_count += 1
@@ -56,3 +61,9 @@ func _on_Timer_timeout():
 	spawn()
 	if spawn_count < max_spawn_count:
 		spawn_timer.start(spawn_interval)
+
+func _on_spawned_enemy_death():
+	spawned_enemy_death_count += 1
+	if max_spawn_count != -1 and spawned_enemy_death_count >= max_spawn_count:
+		emit_signal("all_spawned_enemies_dead")
+	print('hes dead %d' % spawned_enemy_death_count)

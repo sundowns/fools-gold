@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://audio/world/stone_button_long.wav" type="AudioStream" id=1]
+[ext_resource path="res://audio/Audio3D.gd" type="Script" id=2]
+
+[node name="WallRaiseSound" type="AudioStreamPlayer3D"]
+transform = Transform( 1.42857, 0, 0, 0, 1.42857, 0, 0, 0, 1.42857, 0, 8.78074, -5.88042 )
+stream = ExtResource( 1 )
+unit_db = 11.214
+pitch_scale = 0.7
+script = ExtResource( 2 )

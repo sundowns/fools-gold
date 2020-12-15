@@ -2,7 +2,7 @@ extends Node
 
 var unlocks: Dictionary = {
 	"revolver": true,
-	"shotgun": true,
+	"shotgun": false,
 	"dual_revolvers": false
 }
 
