@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/Red Dirt.tres" type="Material" id=1]
+[ext_resource path="res://meshes/sandterrain.glb" type="PackedScene" id=2]
+
+[node name="sandterrain" instance=ExtResource( 2 )]
+
+[node name="Plane" parent="." index="0"]
+material/0 = ExtResource( 1 )

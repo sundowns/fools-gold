@@ -40,4 +40,4 @@ func entered_sight_range(e: Bandit, _params: Dictionary = {}):
 	exit(e, "NavigateToPlayer")
 
 func has_been_hurt(e: Bandit, _params: Dictionary = {}):
-	exit(e, "NavigateToPlayer")
+	exit(e, "Attack")

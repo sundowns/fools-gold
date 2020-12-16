@@ -73,8 +73,20 @@ transform = Transform( 0.0772613, 0.338153, 1.89702, 1.21683, 0.0737028, -0.0326
 [node name="CollisionShape" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -3.72529e-09, 0, -3.72529e-09, 1, 0, -100, -1.52588e-05 )
 
+[node name="CollisionShape2" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="1"]
+transform = Transform( 1.00047, -0.00491311, -0.00240447, 0.00861745, 0.957823, 0.0522308, 0.036827, -0.277983, 1.02826, 0.680851, 89.5714, 1.83121 )
+
+[node name="CollisionShape3" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="2"]
+transform = Transform( -1.63913e-07, -1, 1.86265e-09, 1, -1.63913e-07, 1.49012e-08, -2.98023e-08, 3.72529e-09, 1, 100, -1.90735e-06, 0 )
+
 [node name="CollisionShape4" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="3"]
 shape = null
+
+[node name="CollisionShape5" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="4"]
+transform = Transform( 1, 2.79397e-09, 7.45058e-09, 0, -1.49012e-07, -1, -1.86265e-09, 1, -1.19209e-07, 0, 0, 100 )
+
+[node name="CollisionShape6" parent="Navigation/NavigationMeshInstance/Statics/Skybox" index="5"]
+transform = Transform( 1, 2.79397e-09, 7.45058e-09, 0, -1.49012e-07, -1, -1.86265e-09, 1, -1.19209e-07, -1.19209e-07, 0, -100 )
 
 [node name="Palms terrain and water" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics" index="1"]
 

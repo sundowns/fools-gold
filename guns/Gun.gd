@@ -67,10 +67,12 @@ func show():
 	
 func holster():
 	is_holstered = true
+	is_reloading = false
 	animation_player.play("Holster")
 
 func unholster():
 	is_holstered = false
+	is_reloading = false
 	animation_player.play("Unholster")
 
 func emit_holster_status_update():
