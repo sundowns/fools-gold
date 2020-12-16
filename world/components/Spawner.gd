@@ -69,3 +69,12 @@ func _on_spawned_enemy_death():
 
 func _on_Item_picked_up():
 	activate()
+
+func reset():
+	spawn_count=0
+	is_finished = false
+	spawned_enemy_death_count = 0
+	is_active = false
+	if intermittently_spawn:
+		spawn_timer.start(spawn_interval)
+	
