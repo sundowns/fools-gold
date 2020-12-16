@@ -66,7 +66,6 @@ func _on_spawned_enemy_death():
 	spawned_enemy_death_count += 1
 	if max_spawn_count != -1 and spawned_enemy_death_count >= max_spawn_count:
 		emit_signal("all_spawned_enemies_dead")
-	print('hes dead %d' % spawned_enemy_death_count)
 
 func _on_Item_picked_up():
 	activate()
