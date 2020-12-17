@@ -29,8 +29,8 @@ func _ready():
 	sens_slider.value = Global.sens_multiplier
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
-	fullscreen_menubutton.get_popup().add_item("Windowed")
 	fullscreen_menubutton.get_popup().add_item("Full Screen")
+	fullscreen_menubutton.get_popup().add_item("Windowed")
 	fullscreen_menubutton.get_popup().connect("id_pressed", self, "_on_item_pressed")
 
 func _process(_delta):

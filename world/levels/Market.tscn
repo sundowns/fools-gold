@@ -48,47 +48,47 @@ albedo_color = Color( 0.407843, 0.2, 0.427451, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.427451, 0.2, 0.2, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0.603922, 0.207843, 0.207843, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.443137, 0.12549, 0.12549, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0.207843, 0.596078, 0.603922, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_color = Color( 0.764706, 0.784314, 0.129412, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.121569, 0.396078, 0.866667, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 0.831373, 0.819608, 0.105882, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=12]
 albedo_color = Color( 0.121569, 0.396078, 0.866667, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_triplanar = true
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0.376471, 0.337255, 0.329412, 1 )
 albedo_texture = ExtResource( 18 )
 uv1_scale = Vector3( 0.23, 0.23, 0.23 )
@@ -453,6 +453,9 @@ material/1 = SubResource( 3 )
 [node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="1" instance=ExtResource( 19 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.56747, 0, 0.829626 )
 
+[node name="Cube002" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1/kiosk2" index="2"]
+visible = true
+
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1/kiosk2" index="3"]
 material/1 = SubResource( 4 )
 
@@ -583,7 +586,7 @@ material/1 = SubResource( 3 )
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.56747, 0, 0.829626 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12/kiosk2" index="3"]
-material/1 = SubResource( 11 )
+material/1 = SubResource( 5 )
 
 [node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="2" instance=ExtResource( 19 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.41565, 0, -5.32169 )
@@ -807,7 +810,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="6"]
-material/1 = SubResource( 5 )
+material/1 = SubResource( 6 )
 
 [node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="7" instance=ExtResource( 19 )]
 transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -3.71655, -0.561554, 0.690448 )
@@ -840,7 +843,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="6"]
-material/1 = SubResource( 5 )
+material/1 = SubResource( 6 )
 
 [node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="7" instance=ExtResource( 19 )]
 transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -3.71655, -0.561554, 0.690448 )
@@ -879,13 +882,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02625, 2.35283, 0.133147 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="8"]
-material/1 = SubResource( 5 )
+material/1 = SubResource( 6 )
 
 [node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="9" instance=ExtResource( 19 )]
 transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -3.71655, -0.561554, 0.690448 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7/kiosk4" index="3"]
-material/1 = SubResource( 10 )
+material/1 = SubResource( 7 )
 
 [node name="kiosk8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="31" instance=ExtResource( 19 )]
 transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -15.4076, 0.977816, -0.195824 )
@@ -915,7 +918,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk5" index="2"]
-material/1 = SubResource( 5 )
+material/1 = SubResource( 6 )
 
 [node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="33" instance=ExtResource( 11 )]
 transform = Transform( -0.987919, 0, 0.154969, 0, 1, 0, -0.154969, 0, -0.987919, -2.55713, 1.14397, 19.3696 )
@@ -954,13 +957,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2315, 0.406277, -12.2532 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75822, 0.406277, -6.98854 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="11"]
-material/1 = SubResource( 6 )
+material/1 = SubResource( 8 )
 
 [node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="12" instance=ExtResource( 19 )]
 transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -6.06199, -0.150568, -0.694311 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk2" index="3"]
-material/1 = SubResource( 7 )
+material/1 = SubResource( 9 )
 
 [node name="Cube003" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk2" index="4"]
 transform = Transform( -0.00120629, -0.0359831, -4.3828e-06, 0.259498, -0.000167203, -0.0413806, 0.00513636, -3.38504e-06, 2.09062, 0.121793, 1.8641, -1.87323 )
@@ -969,7 +972,7 @@ transform = Transform( -0.00120629, -0.0359831, -4.3828e-06, 0.259498, -0.000167
 transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -0.825372, -0.150568, -1.16972 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk3" index="3"]
-material/1 = SubResource( 7 )
+material/1 = SubResource( 9 )
 
 [node name="Cube003" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk3" index="4"]
 transform = Transform( -0.00120629, -0.0359831, -4.3828e-06, 0.259498, -0.000167203, -0.0413806, 0.00513636, -3.38504e-06, 2.09062, 0.121793, 1.8641, -1.87323 )
@@ -1011,19 +1014,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2315, 0.406277, -12.2532 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75822, 0.406277, -6.98854 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="11"]
-material/1 = SubResource( 6 )
+material/1 = SubResource( 8 )
 
 [node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="12" instance=ExtResource( 19 )]
 transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -6.06199, -0.150568, -0.694311 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4/kiosk2" index="3"]
-material/1 = SubResource( 8 )
+material/1 = SubResource( 10 )
 
 [node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="13" instance=ExtResource( 19 )]
 transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -0.825372, -0.150568, -1.16972 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4/kiosk3" index="3"]
-material/1 = SubResource( 9 )
+material/1 = SubResource( 11 )
 
 [node name="kiosk9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="35" instance=ExtResource( 11 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -29.1589, 0.728957, 8.07641 )
@@ -1062,19 +1065,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2315, 0.406277, -10.4583 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75822, 0.406277, -6.98854 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="8"]
-material/1 = SubResource( 6 )
+material/1 = SubResource( 8 )
 
 [node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="9" instance=ExtResource( 19 )]
 transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -6.06199, -0.150568, -0.694311 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/kiosk2" index="3"]
-material/1 = SubResource( 13 )
+material/1 = SubResource( 12 )
 
 [node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="10" instance=ExtResource( 19 )]
 transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -0.825372, -0.150568, -1.16972 )
 
 [node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/kiosk3" index="3"]
-material/1 = SubResource( 9 )
+material/1 = SubResource( 11 )
 
 [node name="CSGMarketEntranceHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="3" instance=ExtResource( 13 )]
 transform = Transform( 2, 0, 0, 0, 1.8, 0, 0, 0, 3.6, -70.1237, -1.21105, 66.3999 )
@@ -1083,7 +1086,7 @@ transform = Transform( 2, 0, 0, 0, 1.8, 0, 0, 0, 3.6, -70.1237, -1.21105, 66.399
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71.3007, 0, 42.2513 )
 
 [node name="Cube" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Obelisk2" index="0"]
-material/0 = SubResource( 12 )
+material/0 = SubResource( 13 )
 
 [node name="wall1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="5" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 2.3, 0, 0, 0, 4, -62.3965, 0, 31.6625 )
