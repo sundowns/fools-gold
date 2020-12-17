@@ -160,7 +160,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.4 ),
+"times": PoolRealArray( 3.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0.0 ],
@@ -384,7 +384,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7307, 3.77137, 38.485 )
 curve = SubResource( 4 )
 
 [node name="Walls" parent="." index="6" instance=ExtResource( 6 )]
-transform = Transform( 3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 9, 0 )
 
 [node name="Item" parent="TriggersAndActors" index="0" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0 )

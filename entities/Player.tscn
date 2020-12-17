@@ -273,6 +273,7 @@ max_db = 1.0
 
 [node name="JumpAudio" parent="." instance=ExtResource( 11 )]
 stream = ExtResource( 14 )
+unit_db = -2.5
 max_db = -2.0
 
 [node name="LandingAudio" parent="." instance=ExtResource( 11 )]
