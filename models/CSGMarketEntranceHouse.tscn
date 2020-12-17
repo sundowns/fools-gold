@@ -1,0 +1,258 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://world/static/Log.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/static/stairs.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/crate2.jpg" type="Texture" id=3]
+[ext_resource path="res://materials/PalmTrunk.tres" type="Material" id=4]
+[ext_resource path="res://materials/StoneBrickObelisk.tres" type="Material" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_world_triplanar = true
+albedo_color = Color( 0.858824, 0.717647, 0.584314, 1 )
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 0.3, 0.3, 0.3 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 50.2134
+
+[sub_resource type="StreamTexture" id=2]
+flags = 18
+load_path = "res://.import/Brick Texture 1.jpg-bb43eec7c206b9a9b36e406f59e15746.stex"
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.345098, 0.235294, 0.235294, 1 )
+albedo_texture = SubResource( 2 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.341176, 0.227451, 0.227451, 1 )
+albedo_texture = SubResource( 2 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.490196, 0.478431, 0.478431, 1 )
+albedo_texture = SubResource( 2 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.341176, 0.247059, 0.113725, 1 )
+albedo_texture = SubResource( 2 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[node name="CSGMarketEntranceHouse" type="Spatial"]
+transform = Transform( 2, 0, 0, 0, 1.8, 0, 0, 0, 3.6, 0, 0, 0 )
+
+[node name="stairs" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.5, 0, -6.42534e-07, 0, 1.5, 0, 5.84122e-07, 0, -1.65, 0.85, 1.854, -1.06693 )
+
+[node name="Cube" parent="stairs" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="Log" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, -3.25841e-08, -0.2, 0, 0.2, -3.25841e-08, 0.0110661, 5.58595, 2.85972 )
+collision_mask = 0
+
+[node name="Log2" parent="Log" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 4.26326e-14, 1, 0, -2.21465, 0 )
+
+[node name="Log3" parent="Log" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 7.10543e-14, 1, 0, -12.7327, 1.90735e-06 )
+
+[node name="Log4" parent="Log" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 7.10543e-14, 1, 0, -15.508, 1.90735e-06 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 2.8, 0, 0, 0, 2.2, 0, 2.45, 1 )
+use_collision = true
+height = 1.75014
+material = ExtResource( 5 )
+
+[node name="CSGBox8" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -6.99382e-08, -1.5, 0, 1.6, -6.55671e-08, 0, 6.5, 1.4 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 5 )
+
+[node name="CSGBox15" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -6.99382e-08, -1.5, 0, 1.6, -6.55671e-08, 0, 1.78435, -4.10997 )
+use_collision = true
+height = 0.88383
+depth = 2.56129
+material = ExtResource( 5 )
+
+[node name="CSGBox14" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -6.99382e-08, -1.5, 0, 1.6, -6.55671e-08, 0, 6.70391, -4.45039 )
+use_collision = true
+height = 0.88383
+depth = 0.604116
+material = ExtResource( 5 )
+
+[node name="StairRailing" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.96, 0, 0, 0, 1, 0, -0.0782993, 0 )
+
+[node name="Log5" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -0.811878, 4.12527, 2.4971 )
+
+[node name="Log6" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -1.6626, 4.12527, 2.4971 )
+
+[node name="Log7" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -2.46322, 4.12527, 2.4971 )
+
+[node name="Log8" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -3.27411, 4.12527, 2.4971 )
+
+[node name="Log9" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -4.16474, 4.12527, 2.4971 )
+
+[node name="Log10" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -5.07268, 4.12527, 2.4971 )
+
+[node name="Log11" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -6.01642, 4.12527, 2.4971 )
+
+[node name="Log12" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 6.47904e-08, -1.41604e-15, 0, -8.74228e-09, -0.1, -5.54309e-09, 0.095, -2.07629e-09, -6.92646, 4.12527, 2.4971 )
+
+[node name="Log13" parent="StairRailing" instance=ExtResource( 1 )]
+transform = Transform( -1.54775e-08, 0, -0.62, 0, 0.2, 0, 0.095, 0, -1.01011e-07, -7.0969, 5.19887, 2.4971 )
+
+[node name="stairs2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.54775e-07, 0, -1.5, 0, 1.5, 0, 0.950002, 0, -2.44381e-07, -6.04653, 1.285, 4.37349 )
+
+[node name="Cube" parent="stairs2" index="0"]
+transform = Transform( 1.5, 0, -5.68434e-14, 0, 1.5, 0, 0, 0, 1.5, 0.00689459, 0.375105, 0.0928248 )
+material/0 = SubResource( 3 )
+
+[node name="CSGBox13" type="CSGBox" parent="."]
+transform = Transform( -3.25841e-08, -1.6, 0, 0.2, -2.60673e-07, 0, 0, 0, 1.5, -4.86835, 3.9, -0.988001 )
+use_collision = true
+height = 6.30942
+depth = 5.12566
+material = SubResource( 4 )
+
+[node name="CSGBox17" type="CSGBox" parent="."]
+transform = Transform( -3.25839e-08, -1.59999, 0, 0.2, -2.60673e-07, 0, 0, 0, 1.5, -4.86833, 0.913341, 0.0155393 )
+use_collision = true
+height = 6.30942
+depth = 6.9
+material = SubResource( 5 )
+
+[node name="CSGBox18" type="CSGBox" parent="."]
+transform = Transform( -3.25839e-08, -1.59999, 0, 0.2, -2.60673e-07, 0, 0, 0, 1.5, -8.98386, 3.06822, -4.99234 )
+use_collision = true
+width = 1.89992
+height = 1.03068
+depth = 0.303786
+material = SubResource( 6 )
+
+[node name="CSGBox20" type="CSGBox" parent="CSGBox18"]
+transform = Transform( -1.62922e-07, 7.99995, 0, -0.125001, -1.6292e-07, 0, 0, 0, 1, -5.16407, 0.39721, 0 )
+use_collision = true
+width = 1.89992
+height = 1.23852
+depth = 0.303786
+material = SubResource( 6 )
+
+[node name="CSGBox19" type="CSGBox" parent="CSGBox18"]
+transform = Transform( -1.62922e-07, 7.99995, 0, -0.125001, -1.6292e-07, 0, 0, 0, 1, -5.16407, -0.39598, 0 )
+use_collision = true
+width = 1.89992
+height = 1.23852
+depth = 0.303786
+material = SubResource( 6 )
+
+[node name="CSGBox19" type="CSGBox" parent="."]
+transform = Transform( 5.30863e-15, 1.17303e-07, 1.8, 0.2, -1.17303e-07, -1.54954e-20, 3.25841e-08, 0.72, -2.93257e-07, -0.0591715, 6.10461, -4.44249 )
+use_collision = true
+width = 1.89992
+height = 1.03028
+depth = 0.303786
+material = SubResource( 6 )
+
+[node name="CSGBox20" type="CSGBox" parent="CSGBox19"]
+transform = Transform( -1.62922e-07, 7.99995, 0, -0.125001, -1.6292e-07, 0, 0, 0, 1, -5.16407, 0.39721, 0 )
+use_collision = true
+width = 1.89992
+height = 1.23852
+depth = 0.303786
+material = SubResource( 6 )
+
+[node name="CSGBox19" type="CSGBox" parent="CSGBox19"]
+transform = Transform( -1.62922e-07, 7.99995, 0, -0.125001, -1.6292e-07, 0, 0, 0, 1, -5.16407, -0.39598, 0 )
+use_collision = true
+width = 1.89992
+height = 1.23852
+depth = 0.303786
+material = SubResource( 6 )
+
+[node name="CSGBox11" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -6.99382e-08, -1.5, 0, 1.6, -6.55671e-08, 0, 6.5, -1.4 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 5 )
+
+[node name="CSGBox10" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 5, 0, 7.5, 0 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 5 )
+
+[node name="CSGBox12" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 5, 0, 5.31131, 0 )
+use_collision = true
+height = 0.88383
+depth = 1.43212
+material = ExtResource( 5 )
+
+[node name="CSGBox7" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 2.8, 0, 0, 0, 1, 0, 2.8, -2.2 )
+use_collision = true
+material = ExtResource( 5 )
+
+[node name="CSGBox5" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 1, 0, 4, 4.2 )
+use_collision = true
+material = ExtResource( 5 )
+
+[node name="CSGBox6" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 1, 0, 4, -2.75882 )
+use_collision = true
+depth = 2.70301
+material = ExtResource( 5 )
+
+[node name="CSGBox4" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 5, -10, 4, -0.011 )
+use_collision = true
+depth = 2.07579
+material = ExtResource( 5 )
+
+[node name="CSGBox9" type="CSGBox" parent="."]
+transform = Transform( -4.88762e-08, -5.75, 0, 0.3, -9.36794e-07, 0, 0, 0, 5.75, -5, 8, 0 )
+use_collision = true
+material = ExtResource( 4 )
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( -3.25841e-08, 0, 5, 0, 4, 0, -0.2, 0, -8.14603e-07, -5, 4, 5 )
+use_collision = true
+material = ExtResource( 5 )
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( -3.25841e-08, 0, 5, 0, 4, 0, -0.2, 0, -8.14603e-07, -4.093, 4, -5 )
+use_collision = true
+depth = 1.71753
+material = ExtResource( 5 )
+
+[node name="CSGBox16" type="CSGBox" parent="."]
+transform = Transform( -3.25841e-08, 0, 5, 0, 4, 0, -0.2, 0, -8.14603e-07, -8.57892, 5.3149, -5 )
+use_collision = true
+height = 1.21581
+depth = 0.645011
+material = ExtResource( 5 )
+
+[editable path="stairs"]
+
+[editable path="stairs2"]

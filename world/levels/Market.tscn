@@ -1,0 +1,1320 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://world/BaseLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://materials/Grid.tres" type="Material" id=2]
+[ext_resource path="res://models/CSGMarketHouse.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/static/palm1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/static/wall1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/static/Log.tscn" type="PackedScene" id=6]
+[ext_resource path="res://world/props/Vase2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/props/Ankh.tscn" type="PackedScene" id=8]
+[ext_resource path="res://world/props/basket.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/static/Obelisk2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world/static/kiosk1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://world/static/crate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://models/CSGMarketEntranceHouse.tscn" type="PackedScene" id=13]
+[ext_resource path="res://world/static/crate2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://world/props/CrateFlat.tscn" type="PackedScene" id=15]
+[ext_resource path="res://world/static/Terrain1.tscn" type="PackedScene" id=16]
+[ext_resource path="res://textures/GroundSand.jpg" type="Texture" id=17]
+[ext_resource path="res://textures/Brick Texture 1.jpg" type="Texture" id=18]
+[ext_resource path="res://world/static/kiosk2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://world/static/Platform.tscn" type="PackedScene" id=20]
+[ext_resource path="res://world/static/wall1_heiroglyphics.tscn" type="PackedScene" id=21]
+[ext_resource path="res://materials/StoneBrickObelisk.tres" type="Material" id=22]
+[ext_resource path="res://entities/Bandit.tscn" type="PackedScene" id=23]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.8, 0.678431, 0.580392, 1 )
+albedo_texture = ExtResource( 17 )
+uv1_scale = Vector3( 0.2, 0.2, 0.2 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 7.46426
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.501961, 0.466667, 0.466667, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_scale = Vector3( 0.23, 0.23, 0.23 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.840894
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.556863, 0.596078, 0.278431, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.407843, 0.2, 0.427451, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.427451, 0.2, 0.2, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.603922, 0.207843, 0.207843, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.443137, 0.12549, 0.12549, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.207843, 0.596078, 0.603922, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.764706, 0.784314, 0.129412, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.121569, 0.396078, 0.866667, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.831373, 0.819608, 0.105882, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.121569, 0.396078, 0.866667, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_triplanar = true
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.376471, 0.337255, 0.329412, 1 )
+albedo_texture = ExtResource( 18 )
+uv1_scale = Vector3( 0.23, 0.23, 0.23 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.840894
+
+[node name="World" instance=ExtResource( 1 )]
+
+[node name="PlayerSpawnPoint" parent="." index="0"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 52.2826, 3.7492, -56.9114 )
+
+[node name="Terrain1" parent="Navigation/NavigationMeshInstance/Statics" index="1" instance=ExtResource( 16 )]
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 10.5507, 0.51, 168.473 )
+
+[node name="Plane" parent="Navigation/NavigationMeshInstance/Statics/Terrain1" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="Navigation/NavigationMeshInstance/Statics" index="2"]
+use_collision = true
+collision_mask = 0
+
+[node name="floor" type="CSGBox" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="0"]
+transform = Transform( 50, 0, 0, 0, 1, 0, 0, 0, 50, 20, 0, -10 )
+material = ExtResource( 2 )
+
+[node name="entrance" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="1"]
+
+[node name="palm4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="0" instance=ExtResource( 4 )]
+transform = Transform( -0.9, 0, -3.11531e-07, 0, 0.9, 0, 3.50473e-07, 0, -0.8, 65.6647, -0.0789814, -43.7704 )
+
+[node name="Log4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="2" instance=ExtResource( 6 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.1, 1.20641, 1.04254, 0.498878 )
+
+[node name="Log5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="3" instance=ExtResource( 6 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.1, -1.30188, 1.04254, 0.498878 )
+
+[node name="Log6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="4" instance=ExtResource( 6 )]
+transform = Transform( -4.88762e-08, 0, 0.1, 0, 0.3, 0, -0.3, 0, -1.62921e-08, 0.505703, 1.04254, 1.32041 )
+
+[node name="Log7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="5" instance=ExtResource( 6 )]
+transform = Transform( -4.88762e-08, 0, 0.1, 0, 0.3, 0, -0.3, 0, -1.62921e-08, 0.417677, 1.04254, -1.30234 )
+
+[node name="Log8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="6" instance=ExtResource( 6 )]
+transform = Transform( 0.212132, 0, 0.0707107, 0, 0.3, 0, -0.212132, 0, 0.0707107, 1.17701, 1.04254, -0.618236 )
+
+[node name="Log10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="7" instance=ExtResource( 6 )]
+transform = Transform( 0.212132, 0, 0.0707107, 0, 0.3, 0, -0.212132, 0, 0.0707107, -0.500093, 1.04254, 1.3383 )
+
+[node name="Log9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="8" instance=ExtResource( 6 )]
+transform = Transform( -0.212132, 0, 0.0707107, 0, 0.3, 0, -0.212132, 0, -0.0707107, 1.1807, 0.990962, 0.606277 )
+
+[node name="Log11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="9" instance=ExtResource( 6 )]
+transform = Transform( -0.212132, 0, 0.0707107, 0, 0.3, 0, -0.212132, 0, -0.0707107, -0.542726, 0.990962, -1.29845 )
+
+[node name="palm11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="10" instance=ExtResource( 4 )]
+transform = Transform( 0.200917, -0.032847, -0.0576285, 0.0290085, 0.196577, -0.0292486, 0.0537652, 0.0166859, 0.231135, -1.61158, -0.698799, -4.5238 )
+
+[node name="palm10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="11" instance=ExtResource( 4 )]
+transform = Transform( -0.150454, -0.0194658, -0.237805, 0, 0.198509, -0.0365608, 0.199659, -0.0146686, -0.179199, -1.91936, -0.698799, 1.53226 )
+
+[node name="palm9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="12" instance=ExtResource( 4 )]
+transform = Transform( 0.184101, 0, -0.0781462, 0, 0.23, 0, 0.0781462, 0, 0.184101, -2.76218, -1.13919, -0.613474 )
+
+[node name="palm8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="13" instance=ExtResource( 4 )]
+transform = Transform( -0.159727, 0, 0.120363, 0, 0.23, 0, -0.120363, 0, -0.159727, -2.6358, -1.13919, -2.51052 )
+
+[node name="palm5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="14" instance=ExtResource( 4 )]
+transform = Transform( -0.159727, 0, 0.120363, 0, 0.23, 0, -0.120363, 0, -0.159727, -0.105279, -1.41288, -5.80435 )
+
+[node name="palm7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="15" instance=ExtResource( 4 )]
+transform = Transform( 0.199878, 0, -0.00523492, 0, 0.2, 0, 0.0069799, 0, 0.149909, -2.04684, -0.605271, 3.15713 )
+
+[node name="palm6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="16" instance=ExtResource( 4 )]
+transform = Transform( 0.499695, 0, -0.0104698, 0, 0.3, 0, 0.0174497, 0, 0.299817, -1.30422, -2.01033, 4.94435 )
+
+[node name="palm13" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="17" instance=ExtResource( 4 )]
+transform = Transform( 0.141421, 0, 0.141421, 0, 0.25, 0, -0.141421, 0, 0.141421, 1.49474, -1.33776, -5.82053 )
+
+[node name="palm12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="18" instance=ExtResource( 4 )]
+transform = Transform( 0.141421, 0, 0.141421, 0, 0.25, 0, -0.141421, 0, 0.141421, 1.49474, -1.33776, 5.11369 )
+
+[node name="palm4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm4" index="19" instance=ExtResource( 4 )]
+transform = Transform( 0.212132, 0, 0.212132, 0, 0.3, 0, -0.212132, 0, 0.212132, -1.65917, -2.01033, -5.42756 )
+
+[node name="Log" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="1" instance=ExtResource( 6 )]
+transform = Transform( -1.14044e-07, 0, 0.4, 0, 0.7, 0, -0.7, 0, -6.51683e-08, 40, 1.306, -41.146 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/Log" index="2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.941429, 0, 0 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/Log" index="3" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.461426, 0.767143, 0 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/Log" index="4" instance=ExtResource( 8 )]
+transform = Transform( -2.32744e-07, 0, -1.42857, 0, 1.42857, 0, 2.5, 0, -4.07302e-07, -2.52, 5.33, -14.4085 )
+mode = 1
+
+[node name="palm1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.255, 1.063, -38.4071 )
+
+[node name="palm2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/palm1" index="2" instance=ExtResource( 4 )]
+transform = Transform( 0.122944, -0.172752, -0.843766, 0.148779, 0.843766, -0.151074, 0.848322, -0.122944, 0.148779, -1.04617, 0, -3.41707 )
+
+[node name="wall1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="3" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 3, 35, 0.202, -60.4456 )
+
+[node name="wall2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="4" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 8, 70.6602, 0.202, -62.6231 )
+
+[node name="Obelisk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="5" instance=ExtResource( 10 )]
+transform = Transform( -0.006539, 0.0930548, -0.017101, -0.0495134, -0.0139173, 0, -0.00238, 0.0338692, 0.0469846, 35, 1.338, -38.1579 )
+
+[node name="CSGMarketHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -47 )
+
+[node name="CSGMarketHouse3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="7" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 59, 0, -54 )
+
+[node name="CSGMarketHouse4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="8" instance=ExtResource( 3 )]
+transform = Transform( -0.9, 0, -3.89414e-07, 0, 1.3, 0, 3.50473e-07, 0, -1, 60, 0, -33 )
+
+[node name="CSGMarketHouse2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="9" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.2, 44.5325, 0, -30.3701 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="10" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3672, 1.10677, -51.2422 )
+
+[node name="Prop3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="11" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.2637, 1.10677, -50.8141 )
+
+[node name="Prop2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="12" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.2731, 1.09686, -51.884 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="13" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.663, 1.6, -43.804 )
+
+[node name="CSGMarketEntranceHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="14" instance=ExtResource( 13 )]
+transform = Transform( -3.25841e-07, 0, 3.5, 0, 1.8, 0, -2, 0, -5.70222e-07, 52, 0, 1.72451 )
+
+[node name="wall1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/CSGMarketEntranceHouse" index="14" instance=ExtResource( 5 )]
+transform = Transform( -4.88762e-08, 0, 1, 0, 1.5, 0, -0.3, 0, -1.62921e-07, -0.464067, -0.249332, -5.54174 )
+
+[node name="wall2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/CSGMarketEntranceHouse" index="15" instance=ExtResource( 5 )]
+transform = Transform( -4.88762e-08, 0, 1, 0, 1.3, 0, -0.3, 0, -1.62921e-07, 4.158, -0.098, -5.542 )
+
+[node name="wall3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/CSGMarketEntranceHouse" index="16" instance=ExtResource( 5 )]
+transform = Transform( -4.88762e-08, 0, 1, 0, 1.15, 0, -0.3, 0, -1.62921e-07, 7.571, -0.132, -5.542 )
+
+[node name="wall5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/CSGMarketEntranceHouse" index="17" instance=ExtResource( 5 )]
+transform = Transform( 0.3, 0, -4.22773e-14, 0, 1.3, 0, 3.01981e-14, 0, 0.42, 12.058, 3.123, -5.542 )
+visible = false
+
+[node name="wall4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/CSGMarketEntranceHouse" index="18" instance=ExtResource( 5 )]
+transform = Transform( -4.88762e-08, 0, 1, 0, 0.95, 0, -0.3, 0, -1.62921e-07, 10.259, 0.089, -5.542 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="15" instance=ExtResource( 14 )]
+transform = Transform( 2, 0, 3.4641, 0, 4, 0, -3.4641, 0, 2, 65.9697, 1.41107, -14.256 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="16" instance=ExtResource( 14 )]
+transform = Transform( -0.139599, 0, 3.99756, 0, 4, 0, -3.99756, 0, -0.139599, 65.6216, 1.39814, -17.1694 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="17" instance=ExtResource( 12 )]
+transform = Transform( 2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 41.5384, 1.65603, -5.98602 )
+
+[node name="crate7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="18" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 36.2695, 2.21287, -22.7736 )
+
+[node name="crate8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="19" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 38.9254, 2.21287, -22.7736 )
+
+[node name="crate11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="20" instance=ExtResource( 12 )]
+transform = Transform( 2.99589, 0, -0.157008, 0, 3, 0, 0.157008, 0, 2.99589, 36.2295, 1.88962, -20.5091 )
+
+[node name="crate12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="21" instance=ExtResource( 12 )]
+transform = Transform( 2.99589, 0, 0.157008, 0, 3, 0, -0.157008, 0, 2.99589, 38.2418, 1.90125, -20.5091 )
+
+[node name="crate9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="22" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 38.9183, 4.61625, -22.7736 )
+
+[node name="crate10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="23" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 36.2725, 4.61625, -22.7736 )
+
+[node name="crate13" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="24" instance=ExtResource( 12 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 36.2725, 2.52557, -6.76279 )
+
+[node name="crate14" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="25" instance=ExtResource( 12 )]
+transform = Transform( 4.99924, 0, 0.087262, 0, 5, 0, -0.087262, 0, 4.99924, 36.2725, 5.54661, -6.86092 )
+
+[node name="crate16" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="26" instance=ExtResource( 12 )]
+transform = Transform( 4.99695, 0, -0.174497, 0, 5, 0, 0.174497, 0, 4.99695, 36.1528, 2.49481, -10.1462 )
+
+[node name="crate15" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="27" instance=ExtResource( 12 )]
+transform = Transform( 4.99924, 0, 0.087262, 0, 5, 0, -0.087262, 0, 4.99924, 39.3424, 2.50539, -6.63402 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="28" instance=ExtResource( 12 )]
+transform = Transform( 1.29313, 0, 1.77984, 0, 2.2, 0, -1.77984, 0, 1.29313, 43.5501, 1.68501, -5.85753 )
+
+[node name="crate6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="29" instance=ExtResource( 12 )]
+transform = Transform( 2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 35.8399, 1.68163, -12.782 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="30" instance=ExtResource( 12 )]
+transform = Transform( 2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, 42.3856, 1.92178, -7.65817 )
+
+[node name="Prop4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="31" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9932, 1.19286, -5.54787 )
+
+[node name="Prop5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="32" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.9232, 1.19286, -5.21656 )
+
+[node name="Prop6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="33" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.8174, 1.19286, -26.3902 )
+
+[node name="Prop7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="34" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4999, 1.19286, -26.7126 )
+
+[node name="Prop8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="35" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.825, 1.19286, -25.7595 )
+
+[node name="Prop9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="36" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67.1464, 1.19286, -26.8679 )
+
+[node name="Basket2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="37" instance=ExtResource( 9 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 42.4435, 3.25401, -7.69277 )
+
+[node name="Prop10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="38" instance=ExtResource( 15 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 35.6354, 1.22205, -14.9413 )
+
+[node name="Prop11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="39" instance=ExtResource( 15 )]
+transform = Transform( 0.499695, 0, 0.0174497, 0, 0.5, 0, -0.0174497, 0, 0.499695, 40.4071, 1.22205, -9.9603 )
+
+[node name="Prop12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="40" instance=ExtResource( 15 )]
+transform = Transform( -0.0868242, 0, 0.492404, 0, 0.5, 0, -0.492404, 0, -0.0868242, 37.9445, 1.22205, -12.5891 )
+
+[node name="Prop13" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="41" instance=ExtResource( 15 )]
+transform = Transform( 0.433013, 0, 0.25, 0, 0.5, 0, -0.25, 0, 0.433013, 38.8592, 1.22205, -10.4731 )
+
+[node name="kiosk1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance" index="42" instance=ExtResource( 11 )]
+transform = Transform( -0.7, 0, -2.7259e-07, 0, 0.7, 0, 2.7259e-07, 0, -0.7, 60.7932, 1.12983, -26.0753 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1" index="1" instance=ExtResource( 6 )]
+transform = Transform( 3.77489e-07, 0, 0.571429, 0, 1, 0, -1, 0, 2.15708e-07, -4.05272, 0.251677, -7.50461 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log2" index="2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.941429, 0, 0 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log2" index="3" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.461426, 0.767143, 0 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log2" index="4" instance=ExtResource( 8 )]
+transform = Transform( -2.32744e-07, 0, -1.42857, 0, 1.42857, 0, 2.5, 0, -4.07302e-07, -2.52, 5.33, -14.4085 )
+mode = 1
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1" index="2" instance=ExtResource( 6 )]
+transform = Transform( 3.77489e-07, 0, 0.571429, 0, 1, 0, -1, 0, 2.15708e-07, -4.05272, 0.251677, -5.61371 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log3" index="2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.941429, 0, 0 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log3" index="3" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.461426, 0.767143, 0 )
+
+[node name="Log4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1" index="3" instance=ExtResource( 6 )]
+transform = Transform( -1.62921e-07, -3.25841e-07, -0.571429, 0, -1, 1.86195e-07, -1, 5.30864e-14, 9.30975e-08, -9.89123, 1.89687, -6.55922 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log4" index="2" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.941429, 0, 0 )
+
+[node name="Log4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log4" index="3" instance=ExtResource( 6 )]
+transform = Transform( 0.984808, -4.06576e-20, -0.173648, -3.15781e-14, 1, -1.13804e-14, 0.173648, -6.82121e-13, 0.984807, -5.49823, 1.67478, 0.445328 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/entrance/kiosk1/Log4" index="4" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, 0, 0, 1, -0.461426, 0.767143, 0 )
+
+[node name="market" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="2"]
+
+[node name="Platform" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="0" instance=ExtResource( 20 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -26.1844, 0.788352, 33.7895 )
+
+[node name="Cube" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/Platform" index="0"]
+material/0 = ExtResource( 22 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="1" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.595028, 2.77444, -34.1461 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="2" instance=ExtResource( 19 )]
+transform = Transform( -0.0772543, 0, 0.237764, 0, 0.25, 0, -0.237764, 0, -0.0772543, 3.43947, -0.588519, 0.146351 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="3" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624468, 0, 0 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="4" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624468, 0, 0.658955 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="5" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24632, 0, 0.658955 )
+
+[node name="crate6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="6" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24632, 0, 0.000699997 )
+
+[node name="crate7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="7" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86377, 0, 0.000699997 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/crate" index="8" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.624468, 0.582221, 0 )
+
+[node name="palm5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="2" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6807, 0, -29.9452 )
+
+[node name="wall1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="3" instance=ExtResource( 21 )]
+transform = Transform( -1.62921e-07, 0, 3.2, 0, 1.5, 0, -1, 0, -5.21346e-07, 0.539545, 1.9044, -36.0006 )
+
+[node name="wall2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="4" instance=ExtResource( 21 )]
+transform = Transform( -1.62921e-07, 0, 3.2, 0, 1.5, 0, -1, 0, -5.21346e-07, 0.539545, 9.05543, -36.0006 )
+visible = false
+
+[node name="wall3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="5" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 5, 22.3488, 9.05543, -36.0006 )
+visible = false
+
+[node name="Log" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="6" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 32.1197, 2.42394, 16.5476 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="7" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 33.1031, 2.42394, 16.5476 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="8" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 32.6364, 3.2254, 16.5476 )
+
+[node name="Platform" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/Log3" index="2" instance=ExtResource( 20 )]
+transform = Transform( 0.5, 0, 0, 0, -0.17101, -0.469846, 0, 0.469846, -0.17101, -3.34289, 0, 11.4607 )
+
+[node name="palm1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="9" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1175, 0, 20.8194 )
+
+[node name="palm2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="10" instance=ExtResource( 4 )]
+transform = Transform( 0.0528414, 0, 0.998603, 0, 1, 0, -0.998603, 0, 0.0528414, 12.643, 0, 20.8194 )
+
+[node name="palm6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="11" instance=ExtResource( 4 )]
+transform = Transform( 0.0528414, 0, 0.998603, 0, 1, 0, -0.998603, 0, 0.0528414, -8.4577, 1.0192, 34.0184 )
+
+[node name="palm7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="12" instance=ExtResource( 4 )]
+transform = Transform( 0.0528414, 0, 0.998603, 0, 1, 0, -0.998603, 0, 0.0528414, -11.4561, -1.99123, 36.8006 )
+
+[node name="palm3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="13" instance=ExtResource( 4 )]
+transform = Transform( 0.0528414, 0, 0.998603, 0, 1, 0, -0.998603, 0, 0.0528414, -3.01065, 0.595705, -11.2112 )
+
+[node name="palm4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="14" instance=ExtResource( 4 )]
+transform = Transform( 0.0528414, 0, 0.998603, 0, 1, 0, -0.998603, 0, 0.0528414, -3.67793, 0.877646, 39.7657 )
+
+[node name="Obelisk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="15" instance=ExtResource( 10 )]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -8.81533, 0, 26.5007 )
+
+[node name="Cube" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/Obelisk2" index="0"]
+material/0 = SubResource( 2 )
+
+[node name="kiosk1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="16" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21108, 0 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="0"]
+material/1 = SubResource( 3 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="1" instance=ExtResource( 19 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.56747, 0, 0.829626 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1/kiosk2" index="3"]
+material/1 = SubResource( 4 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="2" instance=ExtResource( 19 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.41565, 0, -5.32169 )
+
+[node name="Log" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="3" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -1.70962 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="4" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -0.693167 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="5" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.6233, 1.13824, -1.15588 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="6" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.76728, 0.948068, -2.06508 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="7" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.06382, 0.948068, -3.629 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="8" instance=ExtResource( 12 )]
+transform = Transform( 2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, -7.47714, 1.1909, -9.34896 )
+
+[node name="crate6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="9" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -5.9227, 1.1909, -7.61739 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="10" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.90632, 1.1909, -8.65492 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1" index="11" instance=ExtResource( 12 )]
+transform = Transform( 2.99954, 0, 0.0523572, 0, 3, 0, -0.0523572, 0, 2.99954, -1.98335, 1.1909, -8.65492 )
+
+[node name="kiosk10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="17" instance=ExtResource( 11 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -31.0526, 1.21108, 75.5521 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="0"]
+material/1 = SubResource( 3 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="1" instance=ExtResource( 19 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.56747, 0, 0.829626 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="2" instance=ExtResource( 19 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.41565, 0, -5.32169 )
+
+[node name="Log" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="3" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -1.70962 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="4" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -0.693167 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="5" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.6233, 1.13824, -1.15588 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="6" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.76728, 0.948068, -2.06508 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="7" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.06382, 0.948068, -3.629 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="8" instance=ExtResource( 12 )]
+transform = Transform( 2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, -7.47714, 1.1909, -9.34896 )
+
+[node name="crate6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="9" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -5.9227, 1.1909, -7.61739 )
+
+[node name="crate7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="10" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -11.2398, 1.1909, 6.8173 )
+
+[node name="crate8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="11" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -11.2398, 1.1909, -0.202751 )
+
+[node name="crate9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="12" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -11.2398, 3.0192, -0.202751 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="13" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.90632, 1.1909, -8.65492 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10" index="14" instance=ExtResource( 12 )]
+transform = Transform( 2.99954, 0, 0.0523572, 0, 3, 0, -0.0523572, 0, 2.99954, -1.98335, 1.1909, -8.65492 )
+
+[node name="kiosk6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="18" instance=ExtResource( 11 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -20.5269, 0.745124, 43.4012 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="0"]
+material/1 = SubResource( 3 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="1" instance=ExtResource( 19 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.56747, 0, 0.829626 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="2" instance=ExtResource( 19 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.41565, 0, -5.32169 )
+
+[node name="Log" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="3" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -1.70962 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="4" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -0.693167 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="5" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.6233, 1.13824, -1.15588 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="6" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.76728, 0.948068, -2.06508 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="7" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.06382, 0.948068, -3.629 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="8" instance=ExtResource( 12 )]
+transform = Transform( 2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, -7.47714, 1.1909, -9.34896 )
+
+[node name="crate6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="9" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -5.9227, 1.1909, -7.61739 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="10" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.90632, 1.1909, -8.65492 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6" index="11" instance=ExtResource( 12 )]
+transform = Transform( 2.99954, 0, 0.0523572, 0, 3, 0, -0.0523572, 0, 2.99954, -1.98335, 1.1909, -8.65492 )
+
+[node name="kiosk12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="19" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1183, 1.21108, 5.78123 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="0"]
+material/1 = SubResource( 3 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="1" instance=ExtResource( 19 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.56747, 0, 0.829626 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12/kiosk2" index="3"]
+material/1 = SubResource( 11 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="2" instance=ExtResource( 19 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.41565, 0, -5.32169 )
+
+[node name="Log" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="3" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -1.70962 )
+
+[node name="Log2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="4" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.65441, 0.584783, -0.693167 )
+
+[node name="Log3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="5" instance=ExtResource( 6 )]
+transform = Transform( -8.06416e-08, -0.494975, 0.353553, 0.7, -1.14044e-07, 3.55271e-15, 8.06416e-08, 0.494975, 0.353553, -1.6233, 1.13824, -1.15588 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="6" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.76728, 0.948068, -2.06508 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="7" instance=ExtResource( 12 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -1.06382, 0.948068, -3.629 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="8" instance=ExtResource( 12 )]
+transform = Transform( 2.59808, 0, -1.5, 0, 3, 0, 1.5, 0, 2.59808, -7.47714, 1.1909, -9.34896 )
+
+[node name="crate6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="9" instance=ExtResource( 12 )]
+transform = Transform( 2.89778, 0, 0.776457, 0, 3, 0, -0.776457, 0, 2.89778, -5.9227, 1.1909, -7.61739 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="10" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -3.90632, 1.1909, -8.65492 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12" index="11" instance=ExtResource( 12 )]
+transform = Transform( 2.99954, 0, 0.0523572, 0, 3, 0, -0.0523572, 0, 2.99954, -1.98335, 1.1909, -8.65492 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="20" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -40.0985, 2.66815, -2.01997 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="21" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -40.0985, 2.66815, 0.900482 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="22" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -37.0631, 2.66815, -0.966367 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="23" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -38.9484, 5.15991, -0.966367 )
+
+[node name="houses" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="24"]
+
+[node name="CSGMarketHouse3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="0" instance=ExtResource( 3 )]
+transform = Transform( -0.0166497, 0, -0.999861, 0, 1.3, 0, 0.999861, 0, -0.0166497, 28.3825, 0, 32.9045 )
+
+[node name="CSGMarketHouse2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="1" instance=ExtResource( 3 )]
+transform = Transform( -0.0166497, 0, -0.999861, 0, 1.1, 0, 0.999861, 0, -0.0166497, 39.435, 0, 32.9045 )
+
+[node name="CSGMarketHouse5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="2" instance=ExtResource( 3 )]
+transform = Transform( 0.999386, 0, -0.035039, 0, 1.3, 0, 0.035039, 0, 0.999386, 8.69872, 0, 38.8657 )
+
+[node name="CSGMarketHouse6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="3" instance=ExtResource( 3 )]
+transform = Transform( 0.0758488, 0, 0.997119, 0, 1.3, 0, -0.997119, 0, 0.0758488, 11.2046, 0.945199, 48.234 )
+
+[node name="CSGMarketHouse7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="4" instance=ExtResource( 3 )]
+transform = Transform( 0.0366785, 0, 0.999327, 0, 1.3, 0, -0.999327, 0, 0.0366785, 22.5094, -0.793859, 47.6529 )
+
+[node name="CSGMarketHouse8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="5" instance=ExtResource( 3 )]
+transform = Transform( 0.0366785, 0, 0.999327, 0, 1.3, 0, -0.999327, 0, 0.0366785, 34.0971, 0.468809, 48.6758 )
+
+[node name="CSGMarketHouse4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="6" instance=ExtResource( 3 )]
+transform = Transform( -0.0166497, 0, -1.29982, 0, 1.1, 0, 0.999861, 0, -0.0216446, 15.6391, 0, 32.9045 )
+
+[node name="CSGMarketHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses" index="7" instance=ExtResource( 3 )]
+transform = Transform( -0.999901, 0, 0.0140671, 0, 1.1, 0, -0.0140671, 0, -0.999901, 22.6809, 0, -7.48618 )
+
+[node name="houses2" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="25"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -68.1856, 0, -8.74583 )
+
+[node name="CSGMarketHouse9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.3, 0, 0, 0, 1, 39.6527, 0, 73.8521 )
+
+[node name="CSGMarketHouse5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="1" instance=ExtResource( 3 )]
+transform = Transform( 0.999386, 0, -0.035039, 0, 1.3, 0, 0.035039, 0, 0.999386, 8.69872, 0, 38.8657 )
+
+[node name="CSGMarketHouse6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="2" instance=ExtResource( 3 )]
+transform = Transform( 0.0758488, 0, 0.997119, 0, 1.3, 0, -0.997119, 0, 0.0758488, 11.2046, 0.945199, 48.234 )
+
+[node name="CSGMarketHouse7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="3" instance=ExtResource( 3 )]
+transform = Transform( 0.0366785, 0, 0.999327, 0, 1.3, 0, -0.999327, 0, 0.0366785, 22.5094, -0.793859, 57.0096 )
+
+[node name="CSGMarketHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="4" instance=ExtResource( 3 )]
+transform = Transform( 0.0145034, 0, 0.999895, 0, 1.1, 0, -0.999895, 0, 0.0145034, 22.6809, 0, 91.014 )
+
+[node name="CSGMarketHouse10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="5" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 39.2854, 0, 85.1021 )
+
+[node name="CSGMarketHouse11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 39.1495, 0, 62.7254 )
+
+[node name="Platform" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="7" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, 20.1206, 4.47001, 55.5941 )
+
+[node name="Platform2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses2" index="8" instance=ExtResource( 20 )]
+transform = Transform( -1.61681e-07, -0.996195, 0.0871556, -2.83989e-08, -0.0871556, -0.996195, 1, -1.63541e-07, -1.41994e-08, 9.46134, 4.47001, 43.5934 )
+
+[node name="houses3" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="26"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.2177, 0, -38.0122 )
+
+[node name="CSGMarketHouse3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="0" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1.3, 0, 3.25841e-07, 0, -1, 34.0656, 0, 29.0189 )
+
+[node name="CSGMarketHouse9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.3, 0, 0, 0, 1, 39.6527, 0, 73.8521 )
+
+[node name="CSGMarketHouse2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="2" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1.1, 0, 3.25841e-07, 0, -1, 28.0835, 0, 40.2214 )
+
+[node name="CSGMarketHouse8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="3" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1.3, 0, 3.25841e-07, 0, -1, 28.324, 0.468809, 51.3951 )
+
+[node name="CSGMarketHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="4" instance=ExtResource( 3 )]
+transform = Transform( 0.0145034, 0, 0.999895, 0, 1.1, 0, -0.999895, 0, 0.0145034, 22.6809, 0, 91.014 )
+
+[node name="CSGMarketHouse10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="5" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 39.2854, 0, 85.1021 )
+
+[node name="CSGMarketHouse11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 39.1495, 0, 62.7254 )
+
+[node name="Platform3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="7" instance=ExtResource( 20 )]
+transform = Transform( 4.87522e-07, -0.996195, -0.0871559, -2.8399e-08, 0.0871559, -0.996195, 1, 4.88142e-07, 1.41995e-08, 33.2329, 4.47001, 30.9143 )
+
+[node name="Platform6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="8" instance=ExtResource( 20 )]
+transform = Transform( 4.87522e-07, -0.996195, -0.0871559, -2.8399e-08, 0.0871559, -0.996195, 1, 4.88142e-07, 1.41995e-08, 27.2893, 4.47001, 45.9341 )
+
+[node name="Platform7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="9" instance=ExtResource( 20 )]
+transform = Transform( 4.87522e-07, -0.996195, -0.0871559, -2.8399e-08, 0.0871559, -0.996195, 1, 4.88142e-07, 1.41995e-08, 27.9877, 4.47001, 58.343 )
+
+[node name="Platform8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses3" index="10" instance=ExtResource( 20 )]
+transform = Transform( 4.87522e-07, -0.996195, -0.0871559, -2.8399e-08, 0.0871559, -0.996195, 1, 4.88142e-07, 1.41995e-08, 28.1666, 4.47001, 68.6186 )
+
+[node name="houses4" type="Spatial" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="27"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 18.9942, 0, 145.738 )
+
+[node name="CSGMarketHouse3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="0" instance=ExtResource( 3 )]
+transform = Transform( -0.0166497, 0, -0.999861, 0, 1.3, 0, 0.999861, 0, -0.0166497, 52.0398, 0, 32.9045 )
+
+[node name="CSGMarketHouse9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.3, 0, 0, 0, 1, 39.6527, 0, 73.8521 )
+
+[node name="CSGMarketHouse2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="2" instance=ExtResource( 3 )]
+transform = Transform( -0.0166497, 0, -0.999861, 0, 1.1, 0, 0.999861, 0, -0.0166497, 65.0533, 0, 32.9045 )
+
+[node name="CSGMarketHouse5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="3" instance=ExtResource( 3 )]
+transform = Transform( 0.999386, 0, -0.035039, 0, 1.3, 0, 0.035039, 0, 0.999386, 98.4048, 0, 55.1494 )
+
+[node name="CSGMarketHouse6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="4" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1.3, 0, -1, 0, -1.62921e-07, 45.8323, 0.945199, 46.9291 )
+
+[node name="CSGMarketHouse7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="5" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1.3, 0, -1, 0, -1.62921e-07, 56.8022, -0.793859, 49.1336 )
+
+[node name="CSGMarketHouse8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="6" instance=ExtResource( 3 )]
+transform = Transform( 0.0366785, 0, 0.999327, 0, 1.3, 0, -0.999327, 0, 0.0366785, 67.5488, 0.468809, 58.4051 )
+
+[node name="CSGMarketHouse4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="7" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 0, 1.3, 0, 1.1, 0, -1, 0, -2.11797e-07, 80.9237, 0, 47.0938 )
+
+[node name="CSGMarketHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="8" instance=ExtResource( 3 )]
+transform = Transform( 0.0145034, 0, 0.999895, 0, 1.1, 0, -0.999895, 0, 0.0145034, 22.6809, 0, 91.014 )
+
+[node name="CSGMarketHouse10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="9" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 39.2854, 0, 85.1021 )
+
+[node name="CSGMarketHouse11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="10" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 39.1495, 0, 62.7254 )
+
+[node name="Platform" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="11" instance=ExtResource( 20 )]
+transform = Transform( 0.866026, 0.5, 8.14603e-08, 5.30863e-14, 1.62921e-07, -1, -0.5, 0.866026, 1.41093e-07, 25.4413, 4.47001, 91.9234 )
+
+[node name="Platform8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="12" instance=ExtResource( 20 )]
+transform = Transform( 0.866026, 0.5, 8.14603e-08, 5.30863e-14, 1.62921e-07, -1, -0.5, 0.866026, 1.41093e-07, 22.3166, 4.47001, 100.556 )
+
+[node name="Platform9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="13" instance=ExtResource( 20 )]
+transform = Transform( 0.866026, 0.5, 8.14603e-08, 5.30863e-14, 1.62921e-07, -1, -0.5, 0.866026, 1.41093e-07, 10.1524, 4.47001, 112.435 )
+
+[node name="Platform5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="14" instance=ExtResource( 20 )]
+transform = Transform( -1.62921e-07, 0.984808, -0.173648, 0, -0.173648, -0.984808, -1, -1.60446e-07, 2.82909e-08, 27.6596, 4.47001, 68.3094 )
+
+[node name="Platform6" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="15" instance=ExtResource( 20 )]
+transform = Transform( -1.62921e-07, 0.984808, -0.173648, 0, -0.173648, -0.984808, -1, -1.60446e-07, 2.82909e-08, 27.6596, 4.47001, 79.0085 )
+
+[node name="Platform2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="16" instance=ExtResource( 20 )]
+transform = Transform( -0.5, -0.866025, 1.62921e-07, -8.14603e-08, -1.41093e-07, -1, 0.866025, -0.5, 2.65431e-14, 38.4091, 4.47001, 53.1462 )
+
+[node name="Platform3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="17" instance=ExtResource( 20 )]
+transform = Transform( -1.5797e-07, -0.984808, 0.173648, -5.65817e-08, -0.173648, -0.984808, 1, -1.65396e-07, -2.82909e-08, 71.5462, 4.47001, 97.0978 )
+
+[node name="Platform4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="18" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, 69.9025, 4.47001, 57.2031 )
+
+[node name="Platform7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="19" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, -0.173648, -0.984808, 0, 0.984808, -0.173648, 86.9721, 4.47001, 49.422 )
+
+[node name="palm1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/houses4" index="20" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6106, 0, 65.0171 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="28" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0317, 1.53937, 9.84583 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="0" instance=ExtResource( 12 )]
+transform = Transform( 3.6, 0, 0, 0, 3.6, 0, 0, 0, 3.6, -0.742561, 1.34124, -3.5735 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="1" instance=ExtResource( 12 )]
+transform = Transform( 3.6, 0, 0, 0, 3.6, 0, 0, 0, 3.6, -0.742561, 1.34124, -1.25846 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="2" instance=ExtResource( 12 )]
+transform = Transform( 4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -6.39549, 1.62949, -9.41522 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="3" instance=ExtResource( 12 )]
+transform = Transform( 4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -6.39549, 4.36885, -9.41522 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="4" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="5" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="6"]
+material/1 = SubResource( 5 )
+
+[node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2" index="7" instance=ExtResource( 19 )]
+transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -3.71655, -0.561554, 0.690448 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2/kiosk4" index="5" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.737432, 2.65517, -2.80364 )
+
+[node name="Basket2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2/kiosk4" index="6" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.764155, 2.65517, -1.45359 )
+
+[node name="kiosk11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="29" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.0259, 0.793288, 64.3098 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="0" instance=ExtResource( 12 )]
+transform = Transform( 3.6, 0, 0, 0, 3.6, 0, 0, 0, 3.6, -0.742561, 1.34124, -3.5735 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="1" instance=ExtResource( 12 )]
+transform = Transform( 3.6, 0, 0, 0, 3.6, 0, 0, 0, 3.6, -0.742561, 1.34124, -1.25846 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="2" instance=ExtResource( 12 )]
+transform = Transform( 4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -6.39549, 1.62949, -9.41522 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="3" instance=ExtResource( 12 )]
+transform = Transform( 4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -6.39549, 4.36885, -9.41522 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="4" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="5" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="6"]
+material/1 = SubResource( 5 )
+
+[node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11" index="7" instance=ExtResource( 19 )]
+transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -3.71655, -0.561554, 0.690448 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11/kiosk4" index="5" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.737432, 2.65517, -2.80364 )
+
+[node name="Basket2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11/kiosk4" index="6" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.764155, 2.65517, -1.45359 )
+
+[node name="kiosk7" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="30" instance=ExtResource( 11 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 1.62745, 1.53937, -22.9407 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="0" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.25746, -4.3313 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="1" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.25746, -1.83429 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="2" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -9.84793, 1.25746, -5.66264 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="3" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -7.3213, 1.25746, -5.66264 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="4" instance=ExtResource( 12 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -8.72899, 3.71464, -5.66264 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="5" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
+
+[node name="Basket2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="6" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02625, 2.35283, 0.133147 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="7" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="8"]
+material/1 = SubResource( 5 )
+
+[node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7" index="9" instance=ExtResource( 19 )]
+transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -3.71655, -0.561554, 0.690448 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7/kiosk4" index="3"]
+material/1 = SubResource( 10 )
+
+[node name="kiosk8" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="31" instance=ExtResource( 19 )]
+transform = Transform( 0.016493, 0, 1.19984, 0, 1, 0, -0.999864, 0, 0.0197916, -15.4076, 0.977816, -0.195824 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk8" index="5" instance=ExtResource( 12 )]
+transform = Transform( 4.4, 0, 0, 0, 4.4, 0, 7.45058e-09, 0, 4.4, 3.86212, 1.71168, 1.85158 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk8" index="6" instance=ExtResource( 12 )]
+transform = Transform( 4.40001, 0, 0, 0, 4.4, 0, 3.72529e-09, 0, 4.4, 7.56148, 1.71168, -5.81335 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk8" index="7" instance=ExtResource( 12 )]
+transform = Transform( 4.40001, 0, 0, 0, 4.4, 0, 1.49012e-08, 0, 4.4, 10.9399, 1.71168, -2.96852 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk8" index="8" instance=ExtResource( 12 )]
+transform = Transform( 4.40001, 0, 0, 0, 4.4, 0, 1.11759e-08, 0, 4.4, 10.9374, 4.31804, -3.09248 )
+
+[node name="crate5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk8" index="9" instance=ExtResource( 12 )]
+transform = Transform( 4.40001, 0, 0, 0, 4.4, 0, 7.45058e-09, 0, 4.4, 7.77116, 4.31804, -6.13649 )
+
+[node name="kiosk5" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="32" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6911, 1.53937, -0.886272 )
+
+[node name="Basket" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk5" index="0" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.913948, 3.09507, -3.25705 )
+
+[node name="Prop" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk5" index="1" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5565, 0.355195, -10.356 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk5" index="2"]
+material/1 = SubResource( 5 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="33" instance=ExtResource( 11 )]
+transform = Transform( -0.987919, 0, 0.154969, 0, 1, 0, -0.154969, 0, -0.987919, -2.55713, 1.14397, 19.3696 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="0" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -1.78814e-07, 0, 3, 0, 1.78814e-07, 0, 3, -11.2022, 1.32732, -11.0707 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="1" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -2.38419e-07, 0, 3, 0, 2.38419e-07, 0, 3, -10.8895, 1.32732, -9.07732 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="2" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -2.98023e-07, 0, 3, 0, 2.98023e-07, 0, 3, -8.64015, 1.32732, -10.5037 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="3" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -2.98023e-07, 0, 3, 0, 2.98023e-07, 0, 3, -10.968, 3.14751, -10.1385 )
+
+[node name="Prop9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="4" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38154, 0.406277, -8.80725 )
+
+[node name="Prop10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="5" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14273, 0.406277, -7.28482 )
+
+[node name="Prop11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="6" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19577, 0.406277, -7.88596 )
+
+[node name="Prop12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="7" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44842, 0.406277, -9.08447 )
+
+[node name="Prop13" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="8" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78321, 0.406277, -12.4804 )
+
+[node name="Prop14" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="9" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2315, 0.406277, -12.2532 )
+
+[node name="Prop15" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="10" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75822, 0.406277, -6.98854 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="11"]
+material/1 = SubResource( 6 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="12" instance=ExtResource( 19 )]
+transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -6.06199, -0.150568, -0.694311 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk2" index="3"]
+material/1 = SubResource( 7 )
+
+[node name="Cube003" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk2" index="4"]
+transform = Transform( -0.00120629, -0.0359831, -4.3828e-06, 0.259498, -0.000167203, -0.0413806, 0.00513636, -3.38504e-06, 2.09062, 0.121793, 1.8641, -1.87323 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3" index="13" instance=ExtResource( 19 )]
+transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -0.825372, -0.150568, -1.16972 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk3" index="3"]
+material/1 = SubResource( 7 )
+
+[node name="Cube003" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk3" index="4"]
+transform = Transform( -0.00120629, -0.0359831, -4.3828e-06, 0.259498, -0.000167203, -0.0413806, 0.00513636, -3.38504e-06, 2.09062, 0.121793, 1.8641, -1.87323 )
+
+[node name="kiosk4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="34" instance=ExtResource( 11 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 21.0229, 1.14397, -14.5312 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="0" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -1.78814e-07, 0, 3, 0, 1.78814e-07, 0, 3, -11.2022, 1.32732, -11.0707 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="1" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -2.38419e-07, 0, 3, 0, 2.38419e-07, 0, 3, -10.8895, 1.32732, -9.07732 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="2" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -2.98023e-07, 0, 3, 0, 2.98023e-07, 0, 3, -8.64015, 1.32732, -10.5037 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="3" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -2.98023e-07, 0, 3, 0, 2.98023e-07, 0, 3, -10.968, 3.14751, -10.1385 )
+
+[node name="Prop9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="4" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38154, 0.406277, -8.80725 )
+
+[node name="Prop10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="5" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14273, 0.406277, -7.28482 )
+
+[node name="Prop11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="6" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19577, 0.406277, -7.88596 )
+
+[node name="Prop12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="7" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44842, 0.406277, -9.08447 )
+
+[node name="Prop13" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="8" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78321, 0.406277, -12.4804 )
+
+[node name="Prop14" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="9" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2315, 0.406277, -12.2532 )
+
+[node name="Prop15" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="10" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75822, 0.406277, -6.98854 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="11"]
+material/1 = SubResource( 6 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="12" instance=ExtResource( 19 )]
+transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -6.06199, -0.150568, -0.694311 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4/kiosk2" index="3"]
+material/1 = SubResource( 8 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4" index="13" instance=ExtResource( 19 )]
+transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -0.825372, -0.150568, -1.16972 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4/kiosk3" index="3"]
+material/1 = SubResource( 9 )
+
+[node name="kiosk9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market" index="35" instance=ExtResource( 11 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -29.1589, 0.728957, 8.07641 )
+
+[node name="crate" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="0" instance=ExtResource( 12 )]
+transform = Transform( 3, 0, -1.78814e-07, 0, 3, 0, 1.78814e-07, 0, 3, -11.2022, 1.32732, -9.12142 )
+
+[node name="crate4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/crate" index="2" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, -3.97363e-08, 0, 1, 0, 3.97363e-08, 0, 1, 0.0780663, 0.60673, 0.310732 )
+
+[node name="crate3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/crate" index="3" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, -3.97363e-08, 0, 1, 0, 3.97363e-08, 0, 1, 0.854016, 0, 0.188999 )
+
+[node name="crate2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/crate" index="4" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, -1.98683e-08, 0, 1, 0, 1.98683e-08, 0, 1, 0.104233, 0, 0.664459 )
+
+[node name="Prop9" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="1" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38154, 0.406277, -8.80725 )
+
+[node name="Prop10" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="2" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14273, 0.406277, -7.28482 )
+
+[node name="Prop11" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="3" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.19577, 0.406277, -7.88596 )
+
+[node name="Prop12" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="4" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44842, 0.406277, -9.08447 )
+
+[node name="Prop13" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="5" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78321, 0.406277, -10.3968 )
+
+[node name="Prop14" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="6" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2315, 0.406277, -10.4583 )
+
+[node name="Prop15" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="7" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75822, 0.406277, -6.98854 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="8"]
+material/1 = SubResource( 6 )
+
+[node name="kiosk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="9" instance=ExtResource( 19 )]
+transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -6.06199, -0.150568, -0.694311 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/kiosk2" index="3"]
+material/1 = SubResource( 13 )
+
+[node name="kiosk3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9" index="10" instance=ExtResource( 19 )]
+transform = Transform( -0.159157, 0, 0.987253, 0, 1, 0, -0.987253, 0, -0.159157, -0.825372, -0.150568, -1.16972 )
+
+[node name="Cylinder" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/kiosk3" index="3"]
+material/1 = SubResource( 9 )
+
+[node name="CSGMarketEntranceHouse" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="3" instance=ExtResource( 13 )]
+transform = Transform( 2, 0, 0, 0, 1.8, 0, 0, 0, 3.6, -70.1237, -1.21105, 66.3999 )
+
+[node name="Obelisk2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="4" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71.3007, 0, 42.2513 )
+
+[node name="Cube" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Obelisk2" index="0"]
+material/0 = SubResource( 12 )
+
+[node name="wall1" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="5" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 2.3, 0, 0, 0, 4, -62.3965, 0, 31.6625 )
+
+[node name="wall4" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="6" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 2.3, 0, 0, 0, 4, -104.44, 0, 31.6625 )
+
+[node name="wall2" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="7" instance=ExtResource( 5 )]
+transform = Transform( -1.62921e-07, 0, 7.3, 0, 2.3, 0, -1, 0, -1.18932e-06, -109.747, 0, 33.0609 )
+
+[node name="wall3" parent="Navigation/NavigationMeshInstance/Statics/CSGCombiner" index="8" instance=ExtResource( 5 )]
+transform = Transform( -1.62921e-07, 0, 3, 0, 2.3, 0, -1, 0, -4.88762e-07, -87.411, 0, 46.816 )
+
+[node name="Bandit" parent="Entities" index="0" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0602, 2.99763, -23.2337 )
+
+[node name="Bandit2" parent="Entities" index="1" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3262, 2.99763, -10.305 )
+
+[node name="Bandit3" parent="Entities" index="2" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8663, 8.523, 18.0098 )
+
+[node name="Bandit4" parent="Entities" index="3" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8314, 8.523, 16.5618 )
+
+[node name="Bandit5" parent="Entities" index="4" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.946, 8.523, 16.2773 )
+
+[node name="Bandit57" parent="Entities" index="5" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 57.1565, 8.523, 3.81389 )
+
+[node name="Bandit58" parent="Entities" index="6" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.6272, 8.523, 3.73138 )
+
+[node name="Bandit6" parent="Entities" index="7" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.974, 3.3291, 12.1504 )
+
+[node name="Bandit7" parent="Entities" index="8" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.974, 3.3291, 10.5458 )
+
+[node name="Bandit8" parent="Entities" index="9" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.974, 3.3291, 8.96778 )
+
+[node name="Bandit9" parent="Entities" index="10" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.857, 3.3291, 11.031 )
+
+[node name="Bandit10" parent="Entities" index="11" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7218, 3.3291, 8.07429 )
+
+[node name="Bandit11" parent="Entities" index="12" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.883058, 2.8847, 0.423836 )
+
+[node name="Bandit13" parent="Entities" index="13" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.402476, 3.35478, 23.4184 )
+
+[node name="Bandit14" parent="Entities" index="14" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.04303, 3.35478, 23.4184 )
+
+[node name="Bandit15" parent="Entities" index="15" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51236, 3.35478, -17.6371 )
+
+[node name="Bandit16" parent="Entities" index="16" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12065, 3.35478, -19.0096 )
+
+[node name="Bandit17" parent="Entities" index="17" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9184, 3.35478, -19.0096 )
+
+[node name="Bandit18" parent="Entities" index="18" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9184, 3.35478, -13.9953 )
+
+[node name="Bandit19" parent="Entities" index="19" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.514, 3.35478, -32.3877 )
+
+[node name="Bandit20" parent="Entities" index="20" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0161, 3.35478, 20.3286 )
+
+[node name="Bandit21" parent="Entities" index="21" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57128, 3.35478, -2.98115 )
+
+[node name="Bandit22" parent="Entities" index="22" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6677, 3.35478, -3.88317 )
+
+[node name="Bandit23" parent="Entities" index="23" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5207, 3.35478, -13.4688 )
+
+[node name="Bandit24" parent="Entities" index="24" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2649, 3.35478, 0.53124 )
+
+[node name="Bandit25" parent="Entities" index="25" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2649, 3.35478, 12.3587 )
+
+[node name="Bandit26" parent="Entities" index="26" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2649, 3.35478, 15.3587 )
+
+[node name="Bandit27" parent="Entities" index="27" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3404, 3.35478, 31.2339 )
+
+[node name="Bandit28" parent="Entities" index="28" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2321, 3.35478, 31.2339 )
+
+[node name="Bandit40" parent="Entities" index="29" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7178, 2.69484, 48.1848 )
+
+[node name="Bandit41" parent="Entities" index="30" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9935, 2.69484, 53.7674 )
+
+[node name="Bandit42" parent="Entities" index="31" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2018, 2.69484, 53.7674 )
+
+[node name="Bandit43" parent="Entities" index="32" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8055, 2.69484, 53.7674 )
+
+[node name="Bandit44" parent="Entities" index="33" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8055, 2.69484, 68.9079 )
+
+[node name="Bandit45" parent="Entities" index="34" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.9551, 2.69484, 82.4622 )
+
+[node name="Bandit46" parent="Entities" index="35" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9551, 2.69484, 82.4622 )
+
+[node name="Bandit47" parent="Entities" index="36" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.998, 2.69522, 57.3271 )
+
+[node name="Bandit48" parent="Entities" index="37" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -41.998, 2.69522, 58.7975 )
+
+[node name="Bandit49" parent="Entities" index="38" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.7609, 2.69522, 62.6447 )
+
+[node name="Bandit50" parent="Entities" index="39" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50.8894, 2.69522, 62.6447 )
+
+[node name="Bandit51" parent="Entities" index="40" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.7623, 2.69522, 75.6062 )
+
+[node name="Bandit52" parent="Entities" index="41" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.7623, 2.69522, 72.238 )
+
+[node name="Bandit53" parent="Entities" index="42" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.7623, 2.69522, 68.6494 )
+
+[node name="Bandit54" parent="Entities" index="43" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.8623, 2.69522, 68.6494 )
+
+[node name="Bandit55" parent="Entities" index="44" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.8623, 2.69522, 72.4044 )
+
+[node name="Bandit56" parent="Entities" index="45" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -60.8623, 2.69522, 76.0006 )
+
+[node name="Bandit29" parent="Entities" index="46" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.678, 3.35478, 31.2339 )
+
+[node name="Bandit30" parent="Entities" index="47" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.678, 3.35478, 32.9144 )
+
+[node name="Bandit31" parent="Entities" index="48" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.678, 3.35478, 32.9144 )
+
+[node name="Bandit32" parent="Entities" index="49" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93858, 3.35478, 32.0413 )
+
+[node name="Bandit33" parent="Entities" index="50" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93858, 3.35478, 35.5353 )
+
+[node name="Bandit34" parent="Entities" index="51" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9386, 3.35478, 37.4203 )
+
+[node name="Bandit35" parent="Entities" index="52" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70528, 3.35478, 37.4203 )
+
+[node name="Bandit36" parent="Entities" index="53" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85362, 3.35478, 15.0145 )
+
+[node name="Bandit37" parent="Entities" index="54" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.58801, 3.35478, 10.2464 )
+
+[node name="Bandit38" parent="Entities" index="55" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0549, 3.35478, 2.34998 )
+
+[node name="Bandit39" parent="Entities" index="56" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55261, 3.35478, 6.83709 )
+
+[node name="Bandit12" parent="Entities" index="57" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45609, 2.8329, -4.3462 )
+
+[editable path="Navigation/NavigationMeshInstance/Statics/Terrain1"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/Platform"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/Obelisk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk1/kiosk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk10"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk6"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk12/kiosk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk11"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk7/kiosk4"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk5"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk3/kiosk3"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4/kiosk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk4/kiosk3"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/kiosk2"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/market/kiosk9/kiosk3"]
+
+[editable path="Navigation/NavigationMeshInstance/Statics/CSGCombiner/Obelisk2"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://materials/StoneBrickObelisk.tres" type="Material" id=2]
+[ext_resource path="res://world/static/Log.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/static/Platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/wood.png" type="Texture" id=6]
+[ext_resource path="res://materials/PalmTrunk.tres" type="Material" id=7]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.427451, 0.427451, 0.427451, 1 )
+albedo_texture = ExtResource( 6 )
+uv1_scale = Vector3( 0.1, 0.1, 0.1 )
+uv1_triplanar = true
+
+[node name="CSGMarketHouse" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Log" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.2, 0, 0, 0, -3.25841e-08, -0.2, 0, 0.2, -3.25841e-08, 0.0110661, 5.58595, 2.85972 )
+collision_mask = 0
+
+[node name="Log2" parent="Log" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 4.26326e-14, 1, 0, -2.21465, 0 )
+
+[node name="Log3" parent="Log" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 7.10543e-14, 1, 0, -12.7327, 1.90735e-06 )
+
+[node name="Log4" parent="Log" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 7.10543e-14, 1, 0, -15.508, 1.90735e-06 )
+
+[node name="Log5" parent="Log" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 4.26326e-14, 1, 0, -26.4065, 3.8147e-06 )
+
+[node name="Log6" parent="Log" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 4.26326e-14, 1, 0, -28.6297, 3.8147e-06 )
+
+[node name="Platform" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.492404, 0.0868241, 0, -0.0868241, 0.492404, 0, 0, 0, 0.4, 0.445107, 4.92174, 0 )
+collision_mask = 0
+
+[node name="Log7" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 0.590884, 6.91828e-09, 0.138919, 0.104189, -7.9076e-08, -0.787846, 6.91827e-09, 0.6, -1.05435e-07, 4.6556, -8.76262, -3.42223 )
+
+[node name="Log8" parent="Platform" instance=ExtResource( 4 )]
+transform = Transform( 0.590884, 6.91828e-09, 0.138919, 0.104189, -7.9076e-08, -0.787846, 6.91827e-09, 0.6, -1.05435e-07, 4.6556, -8.76262, 3.34657 )
+
+[node name="Platform2" parent="." instance=ExtResource( 5 )]
+transform = Transform( -9.77524e-08, -0.5, 0, 0.6, -8.14603e-08, 0, 0, 0, 0.4, -0.33207, 2.42736, 0 )
+
+[node name="Cube" parent="Platform2" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 2.8, 0, 0, 0, 1, 0, 2.8, 2.2 )
+use_collision = true
+material = ExtResource( 2 )
+
+[node name="CSGBox8" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -6.99382e-08, -1.5, 0, 1.6, -6.55671e-08, 0, 6.5, 1.4 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 2 )
+
+[node name="CSGBox11" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -6.99382e-08, -1.5, 0, 1.6, -6.55671e-08, 0, 6.5, -1.4 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 2 )
+
+[node name="CSGBox10" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 5, 0, 7.5, 0 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 2 )
+
+[node name="CSGBox12" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 5, 0, 5.31131, 0 )
+use_collision = true
+height = 0.88383
+material = ExtResource( 2 )
+
+[node name="CSGBox7" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 2.8, 0, 0, 0, 1, 0, 2.8, -2.2 )
+use_collision = true
+material = ExtResource( 2 )
+
+[node name="CSGBox5" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 1, 0, 4, 4.2 )
+use_collision = true
+material = ExtResource( 2 )
+
+[node name="CSGBox6" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 1, 0, 4, -4.2 )
+use_collision = true
+material = ExtResource( 2 )
+
+[node name="CSGBox4" type="CSGBox" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 4, 0, 0, 0, 5, -10, 4, 0 )
+use_collision = true
+material = ExtResource( 2 )
+
+[node name="CSGBox9" type="CSGBox" parent="."]
+transform = Transform( -4.88762e-08, -5.75, 0, 0.3, -9.36794e-07, 0, 0, 0, 5.75, -5, 8, 0 )
+use_collision = true
+material = ExtResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( -3.25841e-08, 0, 5, 0, 4, 0, -0.2, 0, -8.14603e-07, -5, 4, 5 )
+use_collision = true
+material = ExtResource( 2 )
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( -3.25841e-08, 0, 5, 0, 4, 0, -0.2, 0, -8.14603e-07, -5, 4, -5 )
+use_collision = true
+material = ExtResource( 2 )
+
+[editable path="Platform2"]

@@ -1,9 +1,11 @@
 [gd_resource type="SpatialMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://textures/Brick Texture 1.jpg" type="Texture" id=1]
+[sub_resource type="StreamTexture" id=1]
+flags = 18
+load_path = "res://.import/Brick Texture 1.jpg-bb43eec7c206b9a9b36e406f59e15746.stex"
 
 [resource]
-albedo_color = Color( 0.286275, 0.129412, 0.129412, 1 )
-albedo_texture = ExtResource( 1 )
+albedo_color = Color( 0.168627, 0.109804, 0.109804, 1 )
+albedo_texture = SubResource( 1 )
 uv1_scale = Vector3( 0.1, 0.1, 0.1 )
 uv1_triplanar = true
