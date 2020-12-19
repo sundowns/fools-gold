@@ -17,7 +17,8 @@ func exit(_e, next_state):
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
-func process(_e, delta):
+func process(e, delta):
+	e.animated_sprite.play("move")
 	# Add handler code here
 	return delta
 

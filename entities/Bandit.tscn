@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://entities/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/enemymelee.PNG" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://entities/state-machines/bandit/NavigateToPlayer.gd" type="Script" id=5]
 [ext_resource path="res://entities/state-machines/bandit/Attack.gd" type="Script" id=6]
 [ext_resource path="res://animations/bandit_attack.tres" type="Animation" id=7]
+[ext_resource path="res://textures/enemy_walkrun.png" type="Texture" id=8]
 [ext_resource path="res://audio/enemy/enemy_death.wav" type="AudioStream" id=9]
 [ext_resource path="res://audio/Audio3D.tscn" type="PackedScene" id=10]
 [ext_resource path="res://audio/enemy/enemy_bark3.wav" type="AudioStream" id=11]
@@ -16,6 +17,7 @@
 [ext_resource path="res://audio/enemy/Slash 2.wav" type="AudioStream" id=15]
 [ext_resource path="res://audio/enemy/Slash 3.wav" type="AudioStream" id=16]
 [ext_resource path="res://entities/state-machines/bandit/FollowPath.gd" type="Script" id=17]
+[ext_resource path="res://textures/enemy_attack.png" type="Texture" id=18]
 [ext_resource path="res://effects/BanditSlashParticles.tscn" type="PackedScene" id=19]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -23,42 +25,82 @@ flags = 16
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 287, 547 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="AtlasTexture" id=2]
+flags = 16
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 356, 677 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 16
+atlas = ExtResource( 8 )
+region = Rect2( 356, 0, 356, 677 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 16
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 355, 676 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 16
+atlas = ExtResource( 18 )
+region = Rect2( 355, 0, 355, 676 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 16
+atlas = ExtResource( 18 )
+region = Rect2( 710, 0, 355, 676 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 16
+atlas = ExtResource( 18 )
+region = Rect2( 1065, 0, 355, 676 )
+
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 7.0
 } ]
 
-[sub_resource type="CapsuleShape" id=3]
+[sub_resource type="CapsuleShape" id=9]
 radius = 0.65
 height = 0.8
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=10]
 radius = 0.3
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="OpenSimplexNoise" id=11]
 
-[sub_resource type="NoiseTexture" id=6]
+[sub_resource type="NoiseTexture" id=12]
 seamless = true
-noise = SubResource( 5 )
+noise = SubResource( 11 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=13]
 flags_transparent = true
 flags_unshaded = true
 flags_do_not_receive_shadows = true
 flags_disable_ambient_light = true
 albedo_color = Color( 1, 0, 0, 0.521569 )
-albedo_texture = SubResource( 6 )
+albedo_texture = SubResource( 12 )
 
-[sub_resource type="SphereMesh" id=8]
+[sub_resource type="SphereMesh" id=14]
 radius = 2.0
 height = 4.0
 radial_segments = 16
 rings = 8
 
-[sub_resource type="SphereShape" id=9]
+[sub_resource type="SphereShape" id=15]
 radius = 0.5
 
 [node name="Bandit" instance=ExtResource( 1 )]
@@ -85,7 +127,8 @@ script = ExtResource( 17 )
 
 [node name="AnimatedSprite3D" parent="." index="1"]
 transform = Transform( 0.475, 0, 0, 0, 0.475, 0, 0, 0, 0.475, -0.0500918, 0, 0 )
-frames = SubResource( 2 )
+frames = SubResource( 8 )
+animation = "move"
 playing = true
 
 [node name="RayCast" type="RayCast" parent="GroundCheck" index="0"]
@@ -96,14 +139,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249261, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="BodyHitbox" index="0"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.0740399, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="HeadHitbox" parent="." index="5"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03513, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="HeadHitbox" index="0"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 10 )
 
 [node name="ActionAnimationPlayer" parent="." index="7"]
 anims/Attack = ExtResource( 7 )
@@ -114,8 +157,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.768, -0.3, -0.308 )
 [node name="SlashMeshInstance" type="MeshInstance" parent="Hand" index="0"]
 transform = Transform( -0.120208, 0.0420998, -0.112595, 0, 0.159233, 0.059538, 0.120208, 0.0420998, -0.112595, 0, 0, 0 )
 visible = false
-material_override = SubResource( 7 )
-mesh = SubResource( 8 )
+material_override = SubResource( 13 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="AttackHitbox" type="Area" parent="Hand" index="1"]
@@ -125,7 +168,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Hand/AttackHitbox" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 15 )
 
 [node name="BanditSlashParticles" parent="Hand" index="2" instance=ExtResource( 19 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )

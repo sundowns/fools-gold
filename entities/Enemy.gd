@@ -10,6 +10,7 @@ onready var attack_cooldown: Timer = $AttackCooldown
 onready var check_for_los_timer: Timer = $LosCheckTimer
 onready var hurt_sounds: RandomSound = $HurtSounds
 onready var death_sound: AudioStreamPlayer3D = $DeathSound
+onready var animated_sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 var can_attack := true
 var path := []

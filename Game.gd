@@ -2,6 +2,7 @@ extends Spatial
 
 # Initialise to spatial placeholder
 onready var current_world = $WorldScenePlaceHolder
+onready var beatz = $ANiceAssBeat
 
 func _ready():
 # warning-ignore:return_value_discarded
@@ -20,6 +21,10 @@ func load_world(new_world_scene: PackedScene):
 		current_world = null
 	current_world = new_world_scene.instance()
 	add_child(current_world)
+
+func _process(_delta):
+	if not beatz.is_playing():
+		beatz.play()
 
 func on_level_complete():
 	var next_world = LevelManager.get_next_level()

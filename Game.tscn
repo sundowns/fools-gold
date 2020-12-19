@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://audio/ScaledAudio.tscn" type="PackedScene" id=3]
+[ext_resource path="res://audio/music/7drl game jamm.wav" type="AudioStream" id=4]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -9,3 +11,8 @@ script = ExtResource( 1 )
 [node name="WorldScenePlaceHolder" type="Spatial" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="ANiceAssBeat" parent="." instance=ExtResource( 3 )]
+stream = ExtResource( 4 )
+volume_db = -9.0
+is_sfx = false

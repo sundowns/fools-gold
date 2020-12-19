@@ -6,6 +6,7 @@ onready var path_calc_timer: Timer = $PathRecalculateTimer
 var should_recalculate_path := false
 
 func enter(e):
+	e.animated_sprite.play("move")
 	e.velocity = Vector3.ZERO
 	e.calculate_path_to_player()
 	path_calc_timer.start()
@@ -16,7 +17,8 @@ func exit(e, next_state):
 	fsm._change_to(next_state)
 
 # Optional handler functions for game loop events
-func process(_e, delta):
+func process(e, delta):
+	e.animated_sprite.play("move")
 	# Add handler code here
 	return delta
 
