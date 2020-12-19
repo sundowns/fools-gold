@@ -592,6 +592,7 @@ transform = Transform( 0.156228, 0, -0.368229, 0, 0.4, 0, 0.368229, 0, 0.156228,
 
 [node name="Button" parent="Entities" index="1" instance=ExtResource( 24 )]
 transform = Transform( -8.57812e-08, 0, 1.96245, 0, 1.96245, 0, -1.96245, 0, -8.57812e-08, 57.2815, -3.5032, -37.6752 )
+one_shot = false
 
 [node name="ankh" parent="Entities" index="2" instance=ExtResource( 5 )]
 transform = Transform( 2.67103, 0, 0, 0, 2.67103, 0, 0, 0, 2.67103, 57.9376, -1.6626, -37.59 )
@@ -601,6 +602,7 @@ material/0 = SubResource( 6 )
 
 [node name="Button2" parent="Entities" index="3" instance=ExtResource( 24 )]
 transform = Transform( 2.57344e-07, 0, -1.96245, 0, 1.96245, 0, 1.96245, 0, 2.57344e-07, -58.1504, -3.5032, -37.59 )
+one_shot = false
 
 [node name="ankh2" parent="Entities" index="4" instance=ExtResource( 5 )]
 transform = Transform( -2.67103, 0, -2.33509e-07, 0, 2.67103, 0, 2.33509e-07, 0, -2.67103, -58.8893, -1.6626, -37.6752 )
@@ -691,7 +693,7 @@ spawn_interval = 0.1
 is_active = false
 
 [node name="AND-Button-Gate" parent="TriggersAndActors" index="5" instance=ExtResource( 26 )]
-time_to_press_both = 60.0
+time_to_press_both = 3000.0
 
 [node name="Actor" parent="TriggersAndActors" index="6" instance=ExtResource( 28 )]
 
@@ -704,17 +706,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.49357, -20.0717 )
 [node name="CollisionShape" type="CollisionShape" parent="TriggersAndActors/LevelEndZone" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 shape = SubResource( 9 )
-[connection signal="picked_up" from="Entities/Item" to="TriggersAndActors/MeleeSpawner" method="_on_Item_picked_up"]
 [connection signal="picked_up" from="Entities/Item" to="TriggersAndActors/MeleeSpawner2" method="_on_Item_picked_up"]
-[connection signal="activated" from="Entities/Button" to="TriggersAndActors/AND-Button-Gate" method="press_one"]
+[connection signal="picked_up" from="Entities/Item" to="TriggersAndActors/MeleeSpawner" method="_on_Item_picked_up"]
 [connection signal="activated" from="Entities/Button" to="TriggersAndActors/MeleeSpawner4" method="activate"]
-[connection signal="activated" from="Entities/Button2" to="TriggersAndActors/AND-Button-Gate" method="press_two"]
+[connection signal="activated" from="Entities/Button" to="TriggersAndActors/AND-Button-Gate" method="press_one"]
 [connection signal="activated" from="Entities/Button2" to="TriggersAndActors/MeleeSpawner3" method="activate"]
-[connection signal="both_pressed" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/Actor" method="play_one"]
+[connection signal="activated" from="Entities/Button2" to="TriggersAndActors/AND-Button-Gate" method="press_two"]
 [connection signal="both_pressed" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner5" method="activate"]
+[connection signal="both_pressed" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/Actor" method="play_one"]
+[connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner3" method="reset"]
 [connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner5" method="reset"]
 [connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner4" method="reset"]
-[connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner3" method="reset"]
 
 [editable path="Navigation/NavigationMeshInstance/Statics/Skybox"]
 
