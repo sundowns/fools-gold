@@ -179,10 +179,10 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape" id=11]
 extents = Vector3( 14, 9, 6 )
 
-[sub_resource type="BoxShape" id=13]
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 25, 8, 16 )
 
 [node name="World" instance=ExtResource( 2 )]
@@ -460,22 +460,22 @@ is_active = false
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -117.161, -13.7763, -206.777 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TriggersAndActors/PlayerEnterTriggerZone3" index="2"]
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="PlayerEnterTriggerZone4" parent="TriggersAndActors" index="14" instance=ExtResource( 10 )]
 transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -33, -16, -183 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TriggersAndActors/PlayerEnterTriggerZone4" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08605, 0, -7.5379 )
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 [connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone" to="TriggersAndActors/MultiPositionSpawner" method="activate"]
 [connection signal="all_spawned_enemies_dead" from="TriggersAndActors/MultiPositionSpawner2" to="TriggersAndActors/Actor" method="play_two"]
-[connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone2" to="TriggersAndActors/MultiPositionSpawner2" method="activate"]
 [connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone2" to="TriggersAndActors/Actor" method="play_one"]
+[connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone2" to="TriggersAndActors/MultiPositionSpawner2" method="activate"]
 [connection signal="finished" from="TriggersAndActors/MultiPositionSpawner3" to="TriggersAndActors/Actor2" method="play_one"]
 [connection signal="all_spawned_enemies_dead" from="TriggersAndActors/MultiPositionSpawner4" to="TriggersAndActors/Actor2" method="play_two"]
-[connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone3" to="TriggersAndActors/MultiPositionSpawner4" method="activate"]
 [connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone3" to="TriggersAndActors/MeleeSpawner" method="activate"]
+[connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone3" to="TriggersAndActors/MultiPositionSpawner4" method="activate"]
 [connection signal="triggered" from="TriggersAndActors/PlayerEnterTriggerZone4" to="TriggersAndActors/MultiPositionSpawner3" method="activate"]
 
 [editable path="Navigation/NavigationMeshInstance/Statics/wall1"]
