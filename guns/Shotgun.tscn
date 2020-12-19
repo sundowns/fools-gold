@@ -372,7 +372,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0976102, 0.094408, -0.12563
 
 [node name="FireAudio" parent="." index="3"]
 stream = ExtResource( 4 )
-volume_db = -3.0
+volume_db = -3.5
 
 [node name="PumpAudio" parent="." index="4" instance=ExtResource( 6 )]
 stream = ExtResource( 7 )
@@ -398,7 +398,7 @@ max_db = -11.0
 
 [node name="WorldHitAudio" parent="." index="9"]
 stream = ExtResource( 12 )
-unit_db = 2.0
+unit_db = -5.0
 max_db = -15.0
 
 [editable path="MeshLocation/Mesh"]

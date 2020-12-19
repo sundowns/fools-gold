@@ -691,6 +691,7 @@ spawn_interval = 0.1
 is_active = false
 
 [node name="AND-Button-Gate" parent="TriggersAndActors" index="5" instance=ExtResource( 26 )]
+time_to_press_both = 60.0
 
 [node name="Actor" parent="TriggersAndActors" index="6" instance=ExtResource( 28 )]
 
@@ -705,15 +706,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 shape = SubResource( 9 )
 [connection signal="picked_up" from="Entities/Item" to="TriggersAndActors/MeleeSpawner" method="_on_Item_picked_up"]
 [connection signal="picked_up" from="Entities/Item" to="TriggersAndActors/MeleeSpawner2" method="_on_Item_picked_up"]
-[connection signal="activated" from="Entities/Button" to="TriggersAndActors/MeleeSpawner4" method="activate"]
 [connection signal="activated" from="Entities/Button" to="TriggersAndActors/AND-Button-Gate" method="press_one"]
-[connection signal="activated" from="Entities/Button2" to="TriggersAndActors/MeleeSpawner3" method="activate"]
+[connection signal="activated" from="Entities/Button" to="TriggersAndActors/MeleeSpawner4" method="activate"]
 [connection signal="activated" from="Entities/Button2" to="TriggersAndActors/AND-Button-Gate" method="press_two"]
-[connection signal="both_pressed" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner5" method="activate"]
+[connection signal="activated" from="Entities/Button2" to="TriggersAndActors/MeleeSpawner3" method="activate"]
 [connection signal="both_pressed" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/Actor" method="play_one"]
+[connection signal="both_pressed" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner5" method="activate"]
 [connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner5" method="reset"]
-[connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner3" method="reset"]
 [connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner4" method="reset"]
+[connection signal="was_reset" from="TriggersAndActors/AND-Button-Gate" to="TriggersAndActors/MeleeSpawner3" method="reset"]
 
 [editable path="Navigation/NavigationMeshInstance/Statics/Skybox"]
 

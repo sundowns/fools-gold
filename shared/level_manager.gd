@@ -2,9 +2,9 @@ extends Node
 
 var levels = [
 #	"res://world/levels/E1M1.tscn",
+	"res://world/levels/Market.tscn",
 	"res://world/levels/Temple1.tscn",
 	"res://world/levels/Valley1.tscn",
-	"res://world/levels/Market.tscn",
 	"res://world/levels/Desert.tscn",
 ]
 var level_index = -1
